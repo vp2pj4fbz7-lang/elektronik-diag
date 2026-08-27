@@ -1,0 +1,1 @@
+Aby mieć ikonę na iPadzie: umieść folder na hostingu HTTPS, otwórz adres w Safari, wybierz Udostępnij → Dodaj do ekranu początkowego.
