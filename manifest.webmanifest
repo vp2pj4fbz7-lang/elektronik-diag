@@ -1,10 +1,10 @@
 {
-  "name": "Elektronik Diag V3",
+  "name": "Elektronik Diag V4",
   "short_name": "Elektronik Diag",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#0b1624",
-  "theme_color": "#0e1b2b",
+  "theme_color": "#102238",
   "icons": [
     {
       "src": "icon-192.png",
