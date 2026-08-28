@@ -1,8 +1,10 @@
 {
-  "name": "Elektronik Diag V5.2",
+  "name": "Elektronik Diag V6 – Akademia Diagnostyki",
   "short_name": "Elektronik Diag",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0b1624",
-  "theme_color": "#102238"
+  "theme_color": "#102238",
+  "description": "Diagnostyka PRO, Akademia Diagnostyki, Atlas podzespołów i wyszukiwanie datasheetów."
 }
