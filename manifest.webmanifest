@@ -1,7 +1,7 @@
 {
-  "name": "Elektronik Diag V6.1 – Akademia Diagnostyki",
-  "short_name": "Elektronik Diag",
-  "start_url": "./",
+  "name": "Elektronik Diag V6.2 – Akademia Diagnostyki",
+  "short_name": "Elektronik Diag V6.2",
+  "start_url": "./?v=6.2",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0b1624",
