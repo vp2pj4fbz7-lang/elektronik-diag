@@ -9,3 +9,7 @@ Nowości:
 - zachowane moduły V4: Internet, Atlas podzespołów, Datasheet.
 
 Do GitHub Pages wgraj index.html, sw.js, manifest.webmanifest oraz istniejące ikony.
+
+
+## V5.1 poprawka interfejsu
+Naprawiono kolejność inicjalizacji JavaScript (Diagnostyka PRO), zaktualizowano cache Service Workera oraz manifest PWA.
