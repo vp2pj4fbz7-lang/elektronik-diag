@@ -1,8 +1,11 @@
-Elektronik Diag V5
-- 100 najczęstszych usterek urządzeń elektronicznych
-- filtrowanie po kategorii i urządzeniu
-- przyczyny, pomiary, porady naprawcze
-- ostrzeżenia dla 230 V / HV
-- Internet, datasheet, atlas 25 podzespołów
-Do aktualizacji GitHub Pages wgraj i zastąp: index.html, sw.js, manifest.webmanifest.
-Ikony możesz również wgrać, ale nie są konieczne, jeśli poprzednie działają.
+Elektronik Diag V5 – Diagnostyka PRO
+
+Nowości:
+- moduł Diagnostyka PRO z procedurami krok po kroku,
+- schematy blokowe działania urządzeń,
+- interaktywne wyniki pomiarów: prawidłowy / nieprawidłowy,
+- wskazówki, gdzie szukać usterki po nieprawidłowym pomiarze,
+- procedury: SMPS, TV/monitory, laptopy, telefony/tablety, konsole, audio, AGD, BMS/Li-ion, USB-C/PD, płyty główne i elektronika samochodowa,
+- zachowane moduły V4: Internet, Atlas podzespołów, Datasheet.
+
+Do GitHub Pages wgraj index.html, sw.js, manifest.webmanifest oraz istniejące ikony.
