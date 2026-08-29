@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Elektronik Diag">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Elektronik Diag V6.6 – Słownik elektryki i elektroniki</title>
+<title>Elektronik Diag V6.7 – Słownik elektryki i elektroniki</title>
 <style>
 :root{--bg:#0b1624;--side:#102238;--panel:#132b45;--panel2:#1c3c5d;--border:#355a7f;--text:#f6f9fc;--muted:#b9c9d9;--accent:#68b6ff;--ok:#57d38c;--bad:#ff7a7a}
 *{box-sizing:border-box}
@@ -52,7 +52,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="app">
 <aside>
 <div class="brand">Elektronik Diag</div>
-<div class="version">V6.5 • Diagnostyka PRO + Baterie</div>
+<div class="version">V6.7 • Pakiety 18650 + Diagnostyka</div>
 <div class="nav">
 <button class="active" data-v="home">Pulpit</button>
 <button data-v="diagnostics">🧭 Diagnostyka PRO</button>
@@ -76,7 +76,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="card"><h2>🎓 Akademia Diagnostyki</h2><p>20 lekcji szkoleniowych, quizy, zapis postępu i interaktywny Trener usterek.</p></div>
 <div class="card"><h2>🌐 Szukaj naprawy</h2><p>Wpisz model, objaw albo oznaczenie układu i otwórz wyszukiwanie w wybranym źródle.</p></div>
 <div class="card"><h2>🧩 Atlas podzespołów</h2><p>Podstawowe elementy elektroniczne z opisem, pomiarem i typowymi uszkodzeniami.</p></div>
-<div class="card"><h2>🔋 Baterie elektronarzędzi</h2><p>BMS, ogniwa 18650/21700, schemat działania, pomiary sekcji, typowe usterki i trener diagnostyczny.</p></div>
+<div class="card"><h2>🔋 Baterie elektronarzędzi</h2><p>BMS, ogniwa 18650/21700, budowa pakietu krok po kroku, kalkulator S/P, analizator sekcji, pomiary, usterki i trener diagnostyczny.</p></div>
 </div>
 <div class="note"><b>Ważne:</b> wyniki z Internetu traktuj jako pomoc diagnostyczną. Zawsze weryfikuj schematem, datasheetem i własnymi pomiarami.</div>
 </section>
@@ -130,6 +130,9 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <option value="basics">Zasada działania</option>
 <option value="bms">BMS</option>
 <option value="cells">Ogniwa 18650/21700</option>
+<option value="build">Budowa pakietu 18650</option>
+<option value="calc">Kalkulator S/P</option>
+<option value="sections">Analizator sekcji</option>
 <option value="measure">Pomiary</option>
 <option value="faults">Usterki i naprawa</option>
 <option value="trainer">Trener diagnostyczny</option>
@@ -504,6 +507,106 @@ const batteryDB={
  ]
 };
 
+
+const batteryBuildSteps=[
+ {t:'1. Ustal wymagania pakietu',d:'Określ napięcie urządzenia, liczbę sekcji S, liczbę ogniw równoległych P, wymaganą pojemność, energię Wh oraz rzeczywisty prąd roboczy i chwilowy elektronarzędzia. Parametry BMS i ogniw muszą mieć odpowiedni zapas względem obciążenia.'},
+ {t:'2. Dobierz właściwe ogniwa',d:'Stosuj ogniwa tej samej chemii, modelu i najlepiej tej samej partii. W elektronarzędziach potrzebne są ogniwa wysokoprądowe; wysoka pojemność sama w sobie nie oznacza wysokiej wydajności prądowej.'},
+ {t:'3. Kwalifikacja ogniw',d:'Przed budową sprawdź napięcie spoczynkowe, pojemność, rezystancję wewnętrzną, samorozładowanie i zachowanie pod kontrolowanym obciążeniem. Odrzuć ogniwa zdeformowane, skorodowane, przegrzewające się lub o podejrzanej historii.'},
+ {t:'4. Dopasuj ogniwa',d:'Ogniwa pracujące razem powinny mieć możliwie zbliżoną pojemność i rezystancję wewnętrzną. Jedno słabe ogniwo w sekcji może ograniczyć cały pakiet, zwłaszcza przy dużym prądzie elektronarzędzia.'},
+ {t:'5. Wyrównaj napięcia przed łączeniem równoległym',d:'Nie łącz bezpośrednio równolegle ogniw o wyraźnie różnych napięciach. Duża różnica może spowodować niekontrolowany prąd wyrównawczy. Doprowadź ogniwa do zbliżonego stanu naładowania zgodnie z bezpieczną procedurą ładowania producenta.'},
+ {t:'6. Zaplanuj układ S/P',d:'Najpierw zaprojektuj sekcje równoległe, a następnie ich połączenie szeregowe. Przykład 5S2P: pięć sekcji po dwa ogniwa równolegle. Napięcie wynika z S, pojemność Ah z P.'},
+ {t:'7. Zabezpiecz mechanicznie ogniwa',d:'Zastosuj pierścienie izolacyjne na dodatnich biegunach, przekładki i izolację odporną na przetarcie. Metalowa obudowa ogniwa jest elektrycznie związana z biegunem ujemnym, dlatego uszkodzenie izolacji przy plusie może spowodować zwarcie.'},
+ {t:'8. Wykonaj połączenia prądowe',d:'Do pakietów cylindrycznych preferowane jest zgrzewanie odpowiednio dobranej taśmy lub połączeń przeznaczonych do danego prądu. Unikaj długiego nagrzewania biegunów lutownicą. Po każdym etapie sprawdzaj połączenie mechanicznie i elektrycznie.'},
+ {t:'9. Sprawdź pakiet przed BMS',d:'Zmierz każdą sekcję osobno i napięcie całego stosu. Napięcie całkowite powinno odpowiadać sumie sekcji. Sprawdź polaryzację kilka razy przed podłączeniem elektroniki.'},
+ {t:'10. Dobierz i podłącz BMS',d:'BMS musi odpowiadać liczbie sekcji, chemii i prądowi pakietu. Kolejność podłączania B−, B1, B2… B+ zależy od konkretnego BMS — stosuj dokumentację producenta płytki. Błędna kolejność może uszkodzić układ pomiarowy.'},
+ {t:'11. Podłącz NTC, ID i komunikację',d:'W markowych bateriach dodatkowe styki mogą służyć do temperatury, identyfikacji i komunikacji cyfrowej. Nie zakładaj, że wystarczą tylko PACK+ i PACK−.'},
+ {t:'12. Kontrola przed zamknięciem',d:'Sprawdź napięcia wszystkich sekcji, sumę pakietu, izolację, ciągłość połączeń, brak przypadkowych zwarć oraz poprawność temperatury/NTC. Upewnij się, że przewody pomiarowe nie mogą zostać przecięte przez obudowę.'},
+ {t:'13. Pierwsze ładowanie',d:'Użyj ładowarki właściwej dla konfiguracji i chemii. Obserwuj napięcia sekcji i temperaturę. Jeżeli jedna grupa szybko odjeżdża od pozostałych lub mocno się nagrzewa, przerwij test i ustal przyczynę.'},
+ {t:'14. Próba pod obciążeniem',d:'Po pomyślnym ładowaniu wykonaj kontrolowany test obciążenia i obserwuj napięcia sekcji. Sekcja o największym zapadzie napięcia jest kandydatem do dalszej diagnostyki ogniw lub połączeń.'},
+ {t:'15. Test końcowy',d:'Sprawdź działanie ładowania, rozładowania, zabezpieczeń, temperatury, komunikacji oraz zachowanie przy realnym obciążeniu. Pakiet przeznaczony do elektronarzędzia powinien pozostać stabilny termicznie i elektrycznie.'}
+];
+
+const batteryBuildChecklist=[
+ 'Konfiguracja S/P zgodna z urządzeniem i ładowarką',
+ 'Ogniwa jednego modelu i podobnego stanu',
+ 'Pojemność i rezystancja wewnętrzna zweryfikowane',
+ 'Napięcia ogniw wyrównane przed łączeniem równoległym',
+ 'Izolatory dodatniego bieguna i przekładki założone',
+ 'Połączenia prądowe dobrane do prądu pakietu',
+ 'Każda sekcja zmierzona przed podłączeniem BMS',
+ 'BMS zgodny z liczbą S, chemią i obciążeniem',
+ 'Przewody B−/B1…B+ podłączone według dokumentacji BMS',
+ 'NTC / ID / DATA podłączone zgodnie z konstrukcją',
+ 'Pierwsze ładowanie i test wykonane pod nadzorem',
+ 'Po teście brak nadmiernego grzania i dużego rozjazdu sekcji'
+];
+
+function renderBatteryBuild(){
+ const s=Number($('batConfig').value);
+ $('batContent').innerHTML=
+  '<div class="danger"><b>⚠️ Bezpieczeństwo:</b> nie buduj pakietu z uszkodzonych lub nieznanych ogniw, nie zwieraj sekcji i nie omijaj BMS. Podczas prac unikaj luźnych metalowych narzędzi nad odkrytymi szynami pakietu.</div>'+
+  batVoltRows(s)+
+  '<div class="card"><h2>Przepływ budowy</h2><div class="flow"><span>Wymagania</span><b>→</b><span>Dobór ogniw</span><b>→</b><span>Test</span><b>→</b><span>S/P</span><b>→</b><span>Zgrzewy</span><b>→</b><span>BMS</span><b>→</b><span>Kontrola</span><b>→</b><span>Ładowanie</span><b>→</b><span>Test obciążenia</span></div></div>'+
+  batteryBuildSteps.map(x=>'<div class="card"><h2>'+esc(x.t)+'</h2><p>'+esc(x.d)+'</p></div>').join('')+
+  '<div class="card"><h2>✅ Lista kontrolna przed zamknięciem baterii</h2>'+
+  batteryBuildChecklist.map((x,i)=>'<label class="step" style="display:block"><input type="checkbox"> '+esc(x)+'</label>').join('')+'</div>';
+}
+
+function renderBatteryCalc(){
+ const s=Number($('batConfig').value);
+ $('batContent').innerHTML=
+ '<div class="card"><h2>🧮 Kalkulator pakietu S/P</h2><p class="muted">Wyniki są obliczeniowe. Końcowe limity zawsze wynikają z datasheetu ogniwa, BMS, połączeń i konstrukcji termicznej.</p>'+
+ '<div class="grid">'+
+ '<label>S – liczba sekcji<input id="bcS" type="number" min="1" max="30" value="'+s+'"></label>'+
+ '<label>P – ogniwa równolegle<input id="bcP" type="number" min="1" max="20" value="2"></label>'+
+ '<label>Napięcie nominalne ogniwa [V]<input id="bcNom" type="number" step="0.01" value="3.6"></label>'+
+ '<label>Napięcie pełne ogniwa [V]<input id="bcFull" type="number" step="0.01" value="4.2"></label>'+
+ '<label>Pojemność jednego ogniwa [Ah]<input id="bcAh" type="number" step="0.1" value="2.5"></label>'+
+ '<label>Dopuszczalny prąd ciągły ogniwa [A]<input id="bcA" type="number" step="0.1" value="20"></label>'+
+ '</div><div class="toolbar"><button class="primary" id="bcCalc">Oblicz pakiet</button></div><div id="bcOut"></div></div>';
+ const calc=()=>{
+  const S=Math.max(1,Number($('bcS').value)||1),P=Math.max(1,Number($('bcP').value)||1);
+  const nom=Number($('bcNom').value)||0,full=Number($('bcFull').value)||0,ah=Number($('bcAh').value)||0,a=Number($('bcA').value)||0;
+  const packNom=S*nom, packFull=S*full, packAh=P*ah, wh=packNom*packAh, cells=S*P, theoretical=P*a;
+  $('bcOut').innerHTML='<div class="grid">'+
+   '<div class="result"><b>'+cells+'</b><br>ogniw</div>'+
+   '<div class="result"><b>'+packNom.toFixed(2)+' V</b><br>nominalnie</div>'+
+   '<div class="result"><b>'+packFull.toFixed(2)+' V</b><br>pełne naładowanie</div>'+
+   '<div class="result"><b>'+packAh.toFixed(2)+' Ah</b><br>pojemność</div>'+
+   '<div class="result"><b>'+wh.toFixed(1)+' Wh</b><br>energia nominalna</div>'+
+   '<div class="result"><b>≤ '+theoretical.toFixed(1)+' A*</b><br>suma prądów ogniw P</div></div>'+
+   '<p class="muted small">*To tylko teoretyczny limit wynikający z równoległych ogniw. Rzeczywisty bezpieczny prąd pakietu może być niższy z powodu BMS, zgrzewów, taśm, styków, temperatury i wymagań producenta ogniwa.</p>';
+ };
+ $('bcCalc').onclick=calc; calc();
+}
+
+function renderSectionAnalyzer(){
+ const s=Number($('batConfig').value);
+ const example=Array.from({length:s},(_,i)=>(3.95-(i===s-1?0.28:0)+(i%2?0.01:0)).toFixed(2)).join(', ');
+ $('batContent').innerHTML=
+ '<div class="card"><h2>📊 Analizator napięć sekcji</h2>'+
+ '<p>Wpisz napięcia kolejnych sekcji oddzielone przecinkami, np. dla '+s+'S:</p>'+
+ '<textarea id="secVals" rows="4" style="width:100%;padding:12px;border-radius:10px" placeholder="np. 4.05, 4.04, 4.06...">'+example+'</textarea>'+
+ '<div class="toolbar"><button class="primary" id="secAnalyze">Analizuj</button></div><div id="secOut"></div></div>'+
+ '<div class="note"><b>Najlepsza diagnostyka:</b> zapisz komplet napięć bez obciążenia, a potem drugi komplet podczas bezpiecznego kontrolowanego obciążenia. Duży dodatkowy spadek jednej sekcji może wskazywać wysoką rezystancję ogniwa albo połączenia.</div>';
+ const analyze=()=>{
+   const vals=$('secVals').value.split(/[,\s;]+/).map(x=>Number(x.replace(',','.'))).filter(Number.isFinite);
+   if(!vals.length){$('secOut').innerHTML='<div class="result">Wpisz napięcia sekcji.</div>';return;}
+   const min=Math.min(...vals),max=Math.max(...vals),avg=vals.reduce((a,b)=>a+b,0)/vals.length,delta=max-min;
+   const imin=vals.indexOf(min)+1, imax=vals.indexOf(max)+1;
+   let verdict='Sekcje są dość zbliżone napięciowo.';
+   if(delta>=0.10) verdict='Widoczny rozjazd sekcji — sprawdź słabszą grupę, jej pojemność, rezystancję wewnętrzną, samorozładowanie i połączenia.';
+   if(delta>=0.30) verdict='Duży rozjazd sekcji — nie traktuj pakietu jako sprawnego. Ustal przyczynę przed dalszym obciążaniem lub ładowaniem.';
+   $('secOut').innerHTML='<div class="grid">'+
+    '<div class="result"><b>'+min.toFixed(3)+' V</b><br>najniższa S'+imin+'</div>'+
+    '<div class="result"><b>'+max.toFixed(3)+' V</b><br>najwyższa S'+imax+'</div>'+
+    '<div class="result"><b>'+avg.toFixed(3)+' V</b><br>średnia</div>'+
+    '<div class="result"><b>'+delta.toFixed(3)+' V</b><br>różnica Δ</div></div>'+
+    '<div class="card"><h3>Wniosek</h3><p>'+esc(verdict)+'</p><p class="muted small">Samo napięcie spoczynkowe nie potwierdza sprawności ogniw. Porównaj zachowanie sekcji pod obciążeniem.</p></div>';
+ };
+ $('secAnalyze').onclick=analyze; analyze();
+}
+
 const batteryTrainer=[
  {q:'Pakiet 5S ma 20,2 V bez obciążenia, ale narzędzie wyłącza się po sekundzie. Co mierzysz najpierw?',a:['Tylko napięcie PACK po wyłączeniu','Każdą sekcję podczas kontrolowanego obciążenia','Mostkuję BMS'],ok:1,e:'Słaba grupa często wygląda dobrze bez obciążenia, a gwałtownie zapada się przy poborze prądu.'},
  {q:'Na B+–B− jest 20,5 V, na PACK+–PACK− jest 0 V. Najbardziej logiczny następny krok?',a:['Sprawdzić tor wyjściowy: bezpiecznik, MOSFET CHG/DSG i stan ochrony','Wymienić wszystkie ogniwa bez pomiarów','Podać 21 V bezpośrednio na PACK'],ok:0,e:'Różnica między napięciem stosu a wyjściem kieruje diagnostykę do BMS i toru mocy.'},
@@ -519,6 +622,9 @@ function renderBattery(){
  const tab=$('batTab').value, s=Number($('batConfig').value), c=$('batContent');
  if(tab==='basics') c.innerHTML=batVoltRows(s)+'<div class="card"><h2>Schemat blokowy pakietu</h2><div class="flow"><span>Ogniwa '+s+'S×P</span><b>→</b><span>przewody B0…B'+s+'</span><b>→</b><span>AFE / BMS</span><b>→</b><span>MOSFET CHG/DSG</span><b>→</b><span>PACK+/−</span></div><div class="flow"><span>NTC</span><b>→</b><span>BMS</span><b>←</b><span>shunt / pomiar prądu</span><b>←</b><span>ID / DATA</span></div></div>'+batteryDB.basics.map(x=>'<div class="card"><h2>'+esc(x.t)+'</h2><p>'+esc(x.d)+'</p></div>').join('');
  if(tab==='bms') c.innerHTML='<div class="card"><h2>Tor BMS</h2><div class="flow"><span>B−</span><b>→</b><span>B1…B'+s+'</span><b>→</b><span>AFE</span><b>→</b><span>MCU / logika ochrony</span><b>→</b><span>CHG/DSG</span></div></div>'+batteryDB.bms.map(x=>'<div class="card"><h2>'+esc(x.t)+'</h2><p>'+esc(x.d)+'</p></div>').join('');
+ if(tab==='build'){renderBatteryBuild();return;}
+ if(tab==='calc'){renderBatteryCalc();return;}
+ if(tab==='sections'){renderSectionAnalyzer();return;}
  if(tab==='cells') c.innerHTML=batVoltRows(s)+batteryDB.cells.map(x=>'<div class="card"><h2>'+esc(x.t)+'</h2><p>'+esc(x.d)+'</p></div>').join('');
  if(tab==='measure') c.innerHTML='<div class="note"><b>Zasada:</b> najpierw zmierz każdą sekcję bez obciążenia, następnie – jeśli jest to bezpieczne i potrzebne – obserwuj napięcia pod kontrolowanym obciążeniem. Nie używaj przypadkowego zwarcia jako testu.</div>'+batVoltRows(s)+batteryDB.measures.map(x=>'<div class="card"><h2>'+esc(x[0])+'</h2><div class="result"><b>Punkt:</b> '+esc(x[1])+'</div><p>'+esc(x[2])+'</p></div>').join('');
  if(tab==='faults') c.innerHTML=batteryDB.faults.map((x,i)=>'<div class="card"><span class="badge">Usterka '+(i+1)+'</span><h2>'+esc(x.s)+'</h2><h3>Możliwe przyczyny</h3><p>'+x.c.map(z=>'• '+esc(z)).join('<br>')+'</p><h3>Procedura</h3>'+x.p.map((z,j)=>'<div class="step"><b>'+(j+1)+'.</b> '+esc(z)+'</div>').join('')+'</div>').join('');

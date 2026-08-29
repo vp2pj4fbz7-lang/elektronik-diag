@@ -1,10 +1,10 @@
 {
-  "name": "Elektronik Diag V6.6 – Słownik elektryki i elektroniki",
-  "short_name": "Elektronik Diag V6.6",
-  "start_url": "./?v=6.6",
+  "name": "Elektronik Diag V6.7 – Budowa pakietu 18650",
+  "short_name": "Elektronik Diag V6.7",
+  "start_url": "./?v=6.7",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0b1624",
   "theme_color": "#102238",
-  "description": "Diagnostyka PRO, baterie, baza serwisowa oraz wyszukiwarka pojęć, definicji i formuł elektrycznych i elektronicznych."
+  "description": "Diagnostyka elektroniki, baza pojęć oraz moduł budowy i diagnostyki pakietów Li-ion 18650/21700."
 }
