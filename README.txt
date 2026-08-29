@@ -1,1 +1,4 @@
-Wgraj index.html, sw.js i manifest.webmanifest do tego samego katalogu na GitHub Pages. Jeśli masz icon-192.png, pozostaw go bez zmian. Po aktualizacji otwórz stronę raz w Safari i odśwież, aby Service Worker V6.4 przejął cache.
+Elektronik Diag V6.5 – Baterie elektronarzędzi
+
+Wgraj do GitHub Pages jednocześnie: index.html, sw.js, manifest.webmanifest.
+Po aktualizacji odśwież stronę / uruchom ponownie PWA. Nowy cache: v6-5-batteries.

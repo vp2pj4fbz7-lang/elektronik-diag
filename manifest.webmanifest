@@ -1,10 +1,10 @@
 {
-  "name": "Elektronik Diag V6.4 – Baza Serwisowa",
-  "short_name": "Elektronik Diag V6.4",
-  "start_url": "./?v=6.4",
+  "name": "Elektronik Diag V6.5 – Baterie elektronarzędzi",
+  "short_name": "Elektronik Diag V6.5",
+  "start_url": "./?v=6.5",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0b1624",
   "theme_color": "#102238",
-  "description": "Diagnostyka PRO, Akademia, schematy blokowe, pomiary, poradnik napraw, atlas i prawa elektroniki."
+  "description": "Diagnostyka PRO, Akademia, Atlas, baza serwisowa i diagnostyka baterii elektronarzędzi Li-ion/BMS."
 }

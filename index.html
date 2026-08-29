@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Elektronik Diag">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Elektronik Diag V6.4 – Baza Serwisowa</title>
+<title>Elektronik Diag V6.5 – Baterie elektronarzędzi</title>
 <style>
 :root{--bg:#0b1624;--side:#102238;--panel:#132b45;--panel2:#1c3c5d;--border:#355a7f;--text:#f6f9fc;--muted:#b9c9d9;--accent:#68b6ff;--ok:#57d38c;--bad:#ff7a7a}
 *{box-sizing:border-box}
@@ -52,13 +52,14 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="app">
 <aside>
 <div class="brand">Elektronik Diag</div>
-<div class="version">V6.4 • Diagnostyka PRO + Baza Serwisowa</div>
+<div class="version">V6.5 • Diagnostyka PRO + Baterie</div>
 <div class="nav">
 <button class="active" data-v="home">Pulpit</button>
 <button data-v="diagnostics">🧭 Diagnostyka PRO</button>
 <button data-v="academy">🎓 Akademia Diagnostyki</button>
 <button data-v="internet">🌐 Szukaj w Internecie</button>
 <button data-v="atlas">🧩 Atlas podzespołów</button>
+<button data-v="batteries">🔋 Baterie elektronarzędzi</button>
 <button data-v="schematics">🗺️ Schematy płyt</button>
 <button data-v="measurements">📏 Pomiary płyt</button>
 <button data-v="repairguide">🛠️ Zasady napraw</button>
@@ -68,13 +69,14 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 </aside>
 <main>
 <section id="home" class="view active">
-<h1>Elektronik Diag V6.4</h1>
+<h1>Elektronik Diag V6.5</h1>
 <p class="muted">Diagnostyka warsztatowa, szkolenie krok po kroku i graficzny atlas podzespołów.</p>
 <div class="grid">
 <div class="card"><h2>🧭 Diagnostyka PRO</h2><p>Procedury krok po kroku: zasada działania, pomiary, drzewo decyzji i typowe usterki.</p></div>
 <div class="card"><h2>🎓 Akademia Diagnostyki</h2><p>20 lekcji szkoleniowych, quizy, zapis postępu i interaktywny Trener usterek.</p></div>
 <div class="card"><h2>🌐 Szukaj naprawy</h2><p>Wpisz model, objaw albo oznaczenie układu i otwórz wyszukiwanie w wybranym źródle.</p></div>
 <div class="card"><h2>🧩 Atlas podzespołów</h2><p>Podstawowe elementy elektroniczne z opisem, pomiarem i typowymi uszkodzeniami.</p></div>
+<div class="card"><h2>🔋 Baterie elektronarzędzi</h2><p>BMS, ogniwa 18650/21700, schemat działania, pomiary sekcji, typowe usterki i trener diagnostyczny.</p></div>
 </div>
 <div class="note"><b>Ważne:</b> wyniki z Internetu traktuj jako pomoc diagnostyczną. Zawsze weryfikuj schematem, datasheetem i własnymi pomiarami.</div>
 </section>
@@ -117,6 +119,25 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div id="compList"></div><div id="compDetail"></div>
 </section>
 
+
+
+<section id="batteries" class="view">
+<h1>🔋 Baterie elektronarzędzi</h1>
+<p class="muted">Baza diagnostyczna pakietów Li‑ion: ogniwa 18650/21700, BMS, połączenia S/P, pomiary sekcji, usterki i procedury naprawcze.</p>
+<div class="danger"><b>⚠️ Li‑ion:</b> zwarcie lub przegrzanie pakietu może spowodować pożar. Nie zwieraj sekcji, nie przebijaj ogniw i nie omijaj zabezpieczeń BMS. Ogniwa spuchnięte, skorodowane, mechanicznie uszkodzone lub silnie przegrzane należy wycofać z użycia.</div>
+<div class="toolbar">
+<select id="batTab">
+<option value="basics">Zasada działania</option>
+<option value="bms">BMS</option>
+<option value="cells">Ogniwa 18650/21700</option>
+<option value="measure">Pomiary</option>
+<option value="faults">Usterki i naprawa</option>
+<option value="trainer">Trener diagnostyczny</option>
+</select>
+<select id="batConfig"><option value="5">5S – klasa 18 V</option><option value="6">6S – klasa 21,6 V</option><option value="10">10S – klasa 36 V</option></select>
+</div>
+<div id="batContent"></div>
+</section>
 
 <section id="schematics" class="view">
 <h1>🗺️ Schematy płyt i topologie</h1>
@@ -410,6 +431,15 @@ components.push(...[
 ['AGD','Driver silnika / inwerter','🌀','Steruje silnikiem BLDC/PMSM.','Szyna DC, zasilanie drivera, sygnały bramek, fazy; procedury HV.','zwarcie IGBT/MOSFET, brak fazy']
 ].map(x=>({cat:x[0],name:x[1],icon:x[2],desc:x[3],test:x[4],faults:x[5]})));
 
+
+components.push(...[
+ ['Baterie','Ogniwo 18650 / 21700','🔋','Ogniwo Li-ion stosowane w pakietach wysokoprądowych.','Napięcie spoczynkowe, test pod obciążeniem, pojemność, rezystancja wewnętrzna i temperatura.','utrata pojemności, wysoka rezystancja, samorozładowanie, uszkodzenie mechaniczne'],
+ ['Baterie','BMS / AFE','🧠','Monitoruje sekcje, temperaturę i prąd oraz steruje zabezpieczeniami.','Napięcia B0…Bn, zasilanie AFE, NTC, shunt, sterowanie CHG/DSG.','blokada, błędny pomiar sekcji, brak sterowania MOSFET'],
+ ['Baterie','MOSFET CHG / DSG','🔷','Wysokoprądowy klucz ładowania i rozładowania pakietu.','Test D-S/G-S po odłączeniu, porównanie napięć przed i za torem mocy.','zwarcie D-S, przerwa, uszkodzona bramka'],
+ ['Baterie','Shunt BMS','📐','Rezystor pomiaru prądu o bardzo małej rezystancji.','Oględziny, ciągłość, spadek mV pod kontrolowanym obciążeniem.','pęknięcie, zimny lut, zmiana wartości'],
+ ['Baterie','Taśma niklowa / zgrzew','🔗','Łączy ogniwa i sekcje w pakiecie.','Spadek napięcia pod obciążeniem, oględziny i kontrola mechaniczna.','pęknięty zgrzew, korozja, przegrzanie']
+ ].map(x=>({cat:x[0],name:x[1],icon:x[2],desc:x[3],test:x[4],faults:x[5]})));
+
 const compCats=['Wszystkie',...new Set(components.map(c=>c.cat))];
 $('compCat').innerHTML=compCats.map(c=>'<option>'+esc(c)+'</option>').join('');
 function renderComponents(){
@@ -425,6 +455,83 @@ function openComp(name){
  $('compDetail').scrollIntoView({behavior:'smooth',block:'start'});
 }
 $('compSearch').addEventListener('input',renderComponents);$('compCat').addEventListener('change',renderComponents);
+
+
+
+// ===== MODUŁ: BATERIE ELEKTRONARZĘDZI =====
+const batteryDB={
+ basics:[
+  {t:'Co oznacza S i P?',d:'S = liczba sekcji połączonych szeregowo, co zwiększa napięcie. P = liczba ogniw równolegle w sekcji, co zwiększa pojemność i dopuszczalny prąd. Pakiet 5S2P ma 5 sekcji, w każdej po 2 ogniwa równolegle.'},
+  {t:'Typowe napięcie ogniwa Li‑ion',d:'Dla wielu ogniw 18650/21700 stosowanych w elektronarzędziach napięcie nominalne wynosi ok. 3,6–3,7 V, a pełne naładowanie zwykle 4,20 V na sekcję. Dolny próg odcięcia zależy od ogniwa, BMS i producenta pakietu.'},
+  {t:'Przepływ energii',d:'Ogniwa → połączenia niklowe/miedziane → pomiar sekcji → BMS/AFE → MOSFET-y mocy → zaciski PACK. Osobno pracują NTC, pomiar prądu na shuncie i ewentualna komunikacja z ładowarką/narzędziem.'},
+  {t:'Balansowanie',d:'BMS może wyrównywać napięcia sekcji, zwykle przez pasywne rozładowywanie wyższych sekcji małym prądem. Balansowanie nie naprawi ogniwa o znacznie mniejszej pojemności lub dużej rezystancji wewnętrznej.'},
+  {t:'Dlaczego jedna sekcja wyłącza cały pakiet?',d:'BMS obserwuje każdą sekcję osobno. Jeśli jedna sekcja jako pierwsza osiągnie próg undervoltage przy obciążeniu, BMS odłączy cały pakiet mimo prawidłowego napięcia sumarycznego bez obciążenia.'}
+ ],
+ bms:[
+  {t:'AFE / układ pomiarowy',d:'Mierzy napięcia B−, B1, B2… B+ oraz często prąd i temperaturę. Przekazuje dane do kontrolera lub sam realizuje część zabezpieczeń.'},
+  {t:'MOSFET CHG / DSG',d:'Tranzystory mocy sterują ładowaniem i rozładowaniem. Ich zwarcie może odebrać ochronę, a przerwa lub brak sterowania może dawać pełne napięcie na celach, ale 0 V lub znacznie mniej na wyjściu PACK.'},
+  {t:'Shunt',d:'Rezystor o bardzo małej wartości, na którym BMS mierzy spadek napięcia i wylicza prąd. Pęknięcie połączeń lub zmiana wartości może powodować fałszywe odcięcia przeciążeniowe.'},
+  {t:'NTC',d:'Termistor informuje o temperaturze ogniw. Przerwa, zwarcie lub zła rezystancja może blokować ładowanie albo pracę narzędzia.'},
+  {t:'ID / DATA / CLK',d:'W inteligentnych bateriach dodatkowe styki mogą identyfikować pakiet i prowadzić komunikację z ładowarką/narzędziem. Samo prawidłowe napięcie PACK nie gwarantuje uruchomienia.'},
+  {t:'Bezpiecznik / fuse link',d:'Niektóre pakiety mają jednorazowe zabezpieczenie prądowe lub termiczne. Zanim je zastąpisz, trzeba ustalić przyczynę zadziałania; mostkowanie zabezpieczenia jest niebezpieczne.'}
+ ],
+ cells:[
+  {t:'18650',d:'Cylindryczne ogniwo ok. 18 × 65 mm. W elektronarzędziach stosuje się odmiany wysokoprądowe; ważniejsza od samej pojemności jest dopuszczalna wydajność prądowa i rezystancja wewnętrzna.'},
+  {t:'21700',d:'Większe ogniwo ok. 21 × 70 mm, często oferujące większą pojemność i/lub niższą rezystancję przy dużym obciążeniu.'},
+  {t:'Dobór zamienników',d:'W jednej sekcji i najlepiej w całym pakiecie używaj ogniw tego samego modelu, podobnej pojemności, rezystancji wewnętrznej, wieku i stanu naładowania. Nie mieszaj przypadkowych ogniw odzyskanych.'},
+  {t:'Test ogniwa',d:'Sprawdź napięcie spoczynkowe, zachowanie pod kontrolowanym obciążeniem, pojemność oraz rezystancję wewnętrzną. Samo 4,1 V bez obciążenia nie oznacza, że ogniwo jest sprawne.'},
+  {t:'Zgrzewanie',d:'Pakiety powinno się łączyć metodą przeznaczoną do ogniw cylindrycznych, zwykle zgrzewaniem taśmy. Długie grzanie bieguna lutownicą zwiększa ryzyko uszkodzenia ogniwa.'},
+  {t:'Kiedy odrzucić ogniwo',d:'Wycofaj ogniwo spuchnięte, skorodowane, przebite, zdeformowane, z oznakami wycieku lub takie, które nienormalnie się nagrzewa. Głęboko rozładowanych ogniw o nieznanej historii nie „budź” przez omijanie zabezpieczeń.'}
+ ],
+ measures:[
+  ['Napięcie całego pakietu','PACK+ ↔ PACK−','Porównaj z sumą napięć sekcji. Różnica może wskazywać odcięte MOSFET-y, bezpiecznik lub tor wyjściowy.'],
+  ['Sekcja 1','B1 ↔ B−','Mierz każdą sekcję osobno, nie tylko B+ ↔ B−.'],
+  ['Kolejne sekcje','B2 ↔ B1, B3 ↔ B2…','Wszystkie sekcje powinny być zbliżone przy podobnym stanie naładowania.'],
+  ['Test pod obciążeniem','PACK pod kontrolowanym obciążeniem','Obserwuj, która sekcja najszybciej siada napięciowo. To często ujawnia słabą grupę.'],
+  ['NTC','T ↔ GND/ID zgodnie z pakietem','Rezystancja powinna zmieniać się płynnie wraz z temperaturą; dokładna wartość zależy od typu NTC.'],
+  ['MOSFET-y mocy','D-S / G-S po odłączeniu zasilania','Sprawdź zwarcie D-S, diodę pasożytniczą i czy bramka nie jest przebita.'],
+  ['Shunt','spadek mV podczas obciążenia','Jeżeli masz dokumentację, porównaj spadek z oczekiwanym prądem; sprawdź pęknięcia i luty.'],
+  ['Połączenia między sekcjami','spadek napięcia pod obciążeniem','Luźny zgrzew lub pęknięta taśma może wyglądać jak uszkodzona sekcja.']
+ ],
+ faults:[
+  {s:'Bateria nie ładuje',c:['zbyt niska lub nierówna sekcja','NTC/ID poza zakresem','uszkodzony MOSFET CHG','przerwany bezpiecznik','problem komunikacji z ładowarką'],p:['Zmierz każdą sekcję.','Sprawdź NTC i styki sygnałowe.','Porównaj B+−B− z PACK+−PACK−.','Sprawdź MOSFET CHG oraz bezpiecznik.','Jeśli pakiet jest inteligentny, sprawdź komunikację i blokady producenta.']},
+  {s:'Pełne napięcie na ogniwach, 0 V na wyjściu',c:['BMS w ochronie','MOSFET-y DSG wyłączone/uszkodzone','bezpiecznik/przerwa toru PACK','błąd NTC/AFE'],p:['Potwierdź napięcie B+−B−.','Zmierz PACK+−PACK−.','Sprawdź różnice sekcji i temperaturę.','Sprawdź ciągłość bezpiecznika i tor MOSFET.','Nie mostkuj MOSFET-ów ochronnych.']},
+  {s:'Bateria działa bez obciążenia, odcina w narzędziu',c:['słaba sekcja','duża rezystancja wewnętrzna ogniw','pęknięty zgrzew','zbyt duży spadek na połączeniu','BMS widzi overcurrent'],p:['Zmierz sekcje bez obciążenia.','Powtórz pomiar pod kontrolowanym obciążeniem.','Znajdź sekcję z największym spadkiem.','Sprawdź zgrzewy i shunt.','Oceń ogniwa pojemnościowo i rezystancyjnie.']},
+  {s:'Jedna sekcja stale ma mniej V',c:['ogniwo o mniejszej pojemności','duży samorozładunek','upływ w torze balansowania','zły zgrzew / połączenie równoległe'],p:['Naładuj pakiet wyłącznie właściwą ładowarką i obserwuj sekcje.','Sprawdź czy ta sama sekcja ponownie ucieka.','Zmierz ogniwa tej grupy i połączenia.','Wymień wadliwą grupę tylko na zgodne, dopasowane ogniwa; po naprawie sprawdź balans i temperaturę.']},
+  {s:'Ładowarka zgłasza temperaturę / błąd',c:['NTC przerwa/zwarcie','zły styk T/ID','realne przegrzanie ogniw','usterka toru pomiarowego BMS'],p:['Pozwól pakietowi osiągnąć temperaturę otoczenia.','Sprawdź NTC i jego przewody.','Sprawdź styki sygnałowe.','Jeśli ogniwa nagrzewają się bez powodu, wycofaj pakiet z eksploatacji.']},
+  {s:'Po wymianie ogniw bateria nadal nie działa',c:['BMS pozostał zablokowany','niewłaściwa kolejność podłączenia przewodów sekcji','różne napięcia nowych grup','inteligentny licznik/ochrona producenta','uszkodzenie BMS niezależne od ogniw'],p:['Nie odłączaj/podłączaj przewodów balansowych losowo.','Sprawdź kolejno B−, B1, B2… B+.','Potwierdź zgodność napięć grup.','Sprawdź dokumentację konkretnego BMS; niektóre wymagają procedury aktywacji lub komunikacji.','Nie resetuj zabezpieczeń metodami nieznanymi dla danego modelu.']}
+ ]
+};
+
+const batteryTrainer=[
+ {q:'Pakiet 5S ma 20,2 V bez obciążenia, ale narzędzie wyłącza się po sekundzie. Co mierzysz najpierw?',a:['Tylko napięcie PACK po wyłączeniu','Każdą sekcję podczas kontrolowanego obciążenia','Mostkuję BMS'],ok:1,e:'Słaba grupa często wygląda dobrze bez obciążenia, a gwałtownie zapada się przy poborze prądu.'},
+ {q:'Na B+–B− jest 20,5 V, na PACK+–PACK− jest 0 V. Najbardziej logiczny następny krok?',a:['Sprawdzić tor wyjściowy: bezpiecznik, MOSFET CHG/DSG i stan ochrony','Wymienić wszystkie ogniwa bez pomiarów','Podać 21 V bezpośrednio na PACK'],ok:0,e:'Różnica między napięciem stosu a wyjściem kieruje diagnostykę do BMS i toru mocy.'},
+ {q:'Jedna sekcja ma 3,55 V, pozostałe około 4,05 V. Co to oznacza?',a:['Na pewno uszkodzony BMS','Pakiet jest istotnie niezbalansowany; trzeba ocenić tę grupę i przyczynę rozjazdu','To normalne dla pełnego pakietu'],ok:1,e:'Tak duża różnica jest ważnym sygnałem diagnostycznym; balansowanie nie zastąpi testu pojemności i rezystancji słabej grupy.'},
+ {q:'Ogniwo jest wgniecione i podczas testu szybko się nagrzewa. Co robisz?',a:['Używam dalej przy mniejszym prądzie','Wycofuję z użycia i przekazuję do właściwej utylizacji','Ładuję większym prądem, by sprawdzić'],ok:1,e:'Uszkodzenie mechaniczne i nietypowe grzanie to kryteria odrzucenia ogniwa.'}
+];
+let batteryTrainerIndex=0;
+function batVoltRows(s){
+ const nominal=(3.6*s).toFixed(1), full=(4.2*s).toFixed(1);
+ return '<div class="grid"><div class="card"><h3>'+s+'S – napięcie nominalne</h3><div class="result"><b>≈ '+nominal+' V</b></div></div><div class="card"><h3>'+s+'S – pełne naładowanie*</h3><div class="result"><b>≈ '+full+' V</b></div></div></div><p class="muted small">*Dla ogniw ładowanych do 4,20 V/celę. Zawsze sprawdź specyfikację konkretnego ogniwa i pakietu.</p>';
+}
+function renderBattery(){
+ const tab=$('batTab').value, s=Number($('batConfig').value), c=$('batContent');
+ if(tab==='basics') c.innerHTML=batVoltRows(s)+'<div class="card"><h2>Schemat blokowy pakietu</h2><div class="flow"><span>Ogniwa '+s+'S×P</span><b>→</b><span>przewody B0…B'+s+'</span><b>→</b><span>AFE / BMS</span><b>→</b><span>MOSFET CHG/DSG</span><b>→</b><span>PACK+/−</span></div><div class="flow"><span>NTC</span><b>→</b><span>BMS</span><b>←</b><span>shunt / pomiar prądu</span><b>←</b><span>ID / DATA</span></div></div>'+batteryDB.basics.map(x=>'<div class="card"><h2>'+esc(x.t)+'</h2><p>'+esc(x.d)+'</p></div>').join('');
+ if(tab==='bms') c.innerHTML='<div class="card"><h2>Tor BMS</h2><div class="flow"><span>B−</span><b>→</b><span>B1…B'+s+'</span><b>→</b><span>AFE</span><b>→</b><span>MCU / logika ochrony</span><b>→</b><span>CHG/DSG</span></div></div>'+batteryDB.bms.map(x=>'<div class="card"><h2>'+esc(x.t)+'</h2><p>'+esc(x.d)+'</p></div>').join('');
+ if(tab==='cells') c.innerHTML=batVoltRows(s)+batteryDB.cells.map(x=>'<div class="card"><h2>'+esc(x.t)+'</h2><p>'+esc(x.d)+'</p></div>').join('');
+ if(tab==='measure') c.innerHTML='<div class="note"><b>Zasada:</b> najpierw zmierz każdą sekcję bez obciążenia, następnie – jeśli jest to bezpieczne i potrzebne – obserwuj napięcia pod kontrolowanym obciążeniem. Nie używaj przypadkowego zwarcia jako testu.</div>'+batVoltRows(s)+batteryDB.measures.map(x=>'<div class="card"><h2>'+esc(x[0])+'</h2><div class="result"><b>Punkt:</b> '+esc(x[1])+'</div><p>'+esc(x[2])+'</p></div>').join('');
+ if(tab==='faults') c.innerHTML=batteryDB.faults.map((x,i)=>'<div class="card"><span class="badge">Usterka '+(i+1)+'</span><h2>'+esc(x.s)+'</h2><h3>Możliwe przyczyny</h3><p>'+x.c.map(z=>'• '+esc(z)).join('<br>')+'</p><h3>Procedura</h3>'+x.p.map((z,j)=>'<div class="step"><b>'+(j+1)+'.</b> '+esc(z)+'</div>').join('')+'</div>').join('');
+ if(tab==='trainer') renderBatteryTrainer();
+}
+function renderBatteryTrainer(){
+ const x=batteryTrainer[batteryTrainerIndex%batteryTrainer.length];
+ $('batContent').innerHTML='<div class="detailBox"><div class="toolbar"><button class="secondary" id="batPrev">← Poprzedni</button><button class="secondary" id="batNext">Następny →</button></div><span class="badge">Przypadek '+(batteryTrainerIndex%batteryTrainer.length+1)+'/'+batteryTrainer.length+'</span><h2>🧪 '+esc(x.q)+'</h2><div id="batAnswers">'+x.a.map((a,i)=>'<button class="quizOpt" data-ba="'+i+'">'+esc(a)+'</button>').join('')+'</div><div id="batExplain"></div></div>';
+ $('batPrev').onclick=()=>{batteryTrainerIndex=(batteryTrainerIndex-1+batteryTrainer.length)%batteryTrainer.length;renderBatteryTrainer()};
+ $('batNext').onclick=()=>{batteryTrainerIndex=(batteryTrainerIndex+1)%batteryTrainer.length;renderBatteryTrainer()};
+ document.querySelectorAll('[data-ba]').forEach(b=>b.onclick=()=>{const i=Number(b.dataset.ba);document.querySelectorAll('[data-ba]').forEach((q,j)=>{q.disabled=true;if(j===x.ok)q.classList.add('good');else if(j===i)q.classList.add('wrong')});$('batExplain').innerHTML='<div class="result"><b>'+(i===x.ok?'✅ Dobrze':'❌ Nie')+'</b><br>'+esc(x.e)+'</div>'});
+}
+$('batTab').addEventListener('change',renderBattery);$('batConfig').addEventListener('change',renderBattery);renderBattery();
+
 
 function enc(x){return encodeURIComponent((x||'').trim())}
 function webSearch(type){
