@@ -55,7 +55,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="app">
 <aside>
 <div class="brand">Elektronik Diag</div>
-<div class="version">V6.7.4 • Pakiety 18650 • Przykłady i porady</div>
+<div class="version">V6.8 • Naprawa Smartphone</div>
 <div class="nav">
 <button class="active" data-v="home">Pulpit</button>
 <button data-v="diagnostics">🧭 Diagnostyka PRO</button>
@@ -64,6 +64,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <button data-v="atlas">🧩 Atlas podzespołów</button>
 <button data-v="batteries">🔋 Baterie elektronarzędzi</button>
 <button data-v="packbuilder">🧰 Budowa pakietu 18650</button>
+<button data-v="smartphone">📱 Naprawa Smartphone</button>
 <button data-v="schematics">🗺️ Schematy płyt</button>
 <button data-v="measurements">📏 Pomiary płyt</button>
 <button data-v="repairguide">🛠️ Zasady napraw</button>
@@ -73,7 +74,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 </aside>
 <main>
 <section id="home" class="view active">
-<h1>Elektronik Diag V6.7.4</h1><div class="card"><h2>✅ AKTUALIZACJA V6.7.3</h2><p><b>Jeżeli widzisz ten komunikat, nowy index.html został prawidłowo wczytany z GitHub Pages.</b></p><p class="muted small">Build: ED-674-EXAMPLES-TIPS</p></div>
+<h1>Elektronik Diag V6.8</h1><div class="card"><h2>✅ AKTUALIZACJA V6.7.3</h2><p><b>Jeżeli widzisz ten komunikat, nowy index.html został prawidłowo wczytany z GitHub Pages.</b></p><p class="muted small">Build: ED-674-EXAMPLES-TIPS</p></div>
 <p class="muted">Diagnostyka warsztatowa, szkolenie krok po kroku i graficzny atlas podzespołów.</p>
 <div class="grid">
 <div class="card"><h2>🧭 Diagnostyka PRO</h2><p>Procedury krok po kroku: zasada działania, pomiary, drzewo decyzji i typowe usterki.</p></div>
@@ -165,6 +166,26 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 </select>
 </div>
 <div id="pbContent"></div>
+</section>
+
+
+<section id="smartphone" class="view">
+<h1>📱 Naprawa Smartphone</h1>
+<p class="muted">Diagnostyka, typowe usterki i procedury napraw: iPhone, Samsung, Xiaomi i Motorola.</p>
+<div class="toolbar">
+<select id="spBrand">
+<option>iPhone</option><option>Samsung</option><option>Xiaomi</option><option>Motorola</option>
+</select>
+<select id="spRepair">
+<option value="display">Wymiana wyświetlacza</option>
+<option value="battery">Wymiana baterii</option>
+<option value="charge">Naprawa modułu ładowania</option>
+<option value="buzzer">Wymiana buzzera / dźwięku</option>
+<option value="mic">Wymiana mikrofonu</option>
+<option value="speaker">Wymiana głośnika rozmów</option>
+</select>
+</div>
+<div id="spContent"></div>
 </section>
 
 <section id="schematics" class="view">
@@ -711,6 +732,23 @@ function renderPackBuilder(){
 $('pbMode').addEventListener('change',renderPackBuilder);
 $('pbS').addEventListener('change',renderPackBuilder);
 renderPackBuilder();
+
+const smartphoneDB={"display":{"title":"Wymiana wyświetlacza","sym":["Brak obrazu mimo uruchamiania telefonu","Pasy, migotanie, plamy OLED/LCD","Brak lub niestabilny dotyk","Pęknięcie szkła / uszkodzenie mechaniczne"],"diag":["Sprawdź, czy telefon rzeczywiście startuje: wibracja, dźwięki, pobór prądu, wykrywanie przez komputer.","Obejrzyj złącze FPC i okolice pod mikroskopem: wygięte piny, korozja, naderwane pady.","Jeśli to możliwe, wykonaj próbę ze znanym sprawnym ekranem odpowiednim dla modelu.","Przy braku obrazu po upadku nie zakładaj automatycznie uszkodzenia ekranu — sprawdź również obwód zasilania/sterowania wyświetlaczem."],"repair":["Wyłącz urządzenie i odłącz baterię przed wypinaniem oraz wpinaniem taśm wyświetlacza.","Podgrzewaj klej kontrolowanie i chroń baterię oraz taśmy przed narzędziem.","Oczyść ramkę ze starego kleju, sprawdź jej odkształcenie i wykonaj test nowego ekranu przed ostatecznym sklejeniem.","Po montażu sprawdź obraz, dotyk na całej powierzchni, jasność, czujniki, kamery i funkcje znajdujące się przy ekranie."],"tip":"Przed sklejeniem zostaw telefon uruchomiony na kilka minut i sprawdź cały panel dotykowy. Oszczędza to ponownego otwierania urządzenia."},"battery":{"title":"Wymiana baterii","sym":["Szybkie rozładowywanie","Wyłączanie przy obciążeniu","Puchnięcie baterii","Nieprawidłowy procent naładowania / restarty"],"diag":["Sprawdź historię objawu i zachowanie napięcia baterii pod obciążeniem.","Obejrzyj baterię pod kątem deformacji i uszkodzenia.","Sprawdź złącze baterii i okolice płyty.","Jeśli system udostępnia dane kondycji baterii, traktuj je jako dodatkową informację, nie jedyny test."],"repair":["Odłącz zasilanie i baterię możliwie wcześnie po otwarciu telefonu.","Nie wyginaj, nie przebijaj i nie podważaj ogniwa ostrym metalowym narzędziem.","Usuń baterię zgodnie z konstrukcją kleju/taśm danego modelu i zastosuj właściwe nowe mocowanie.","Po wymianie wykonaj test ładowania, rozładowania, temperatury i stabilności telefonu."],"tip":"Spuchniętej baterii nie dociskaj z powrotem do obudowy. Wymaga bezpiecznego usunięcia i właściwej utylizacji."},"charge":{"title":"Naprawa modułu ładowania","sym":["Brak ładowania","Ładowanie przerywa przy poruszaniu przewodem","Wolne ładowanie","Brak transmisji danych / akcesoriów","Telefon pokazuje wilgoć lub błąd portu"],"diag":["Najpierw sprawdź znaną sprawną ładowarkę i przewód.","Obejrzyj port pod powiększeniem: brud, korozja, wyłamane styki, uszkodzenie mechaniczne.","Zmierz zachowanie poboru z zasilacza/testera USB i porównaj z typowym zachowaniem sprawnego urządzenia.","Jeśli model ma osobną płytkę dolną/flex ładowania, sprawdź jej złącza, taśmy i połączenie z płytą główną.","Jeżeli wymiana portu/modułu nie pomaga, przejdź do diagnostyki linii zasilania, USB/CC i układów zarządzania ładowaniem na płycie."],"repair":["Usuń zanieczyszczenia bez uszkadzania styków.","W modelach z wymiennym modułem dolnym przetestuj właściwy moduł dla dokładnego wariantu telefonu.","Przy lutowaniu portu zabezpiecz elementy sąsiednie i kontroluj temperaturę.","Po naprawie sprawdź ładowanie zwykłe/szybkie, transmisję danych, mikrofon dolny i inne funkcje umieszczone na tej samej płytce."],"tip":"Port może wyglądać dobrze, a mieć zużyte styki. Z drugiej strony sam brak ładowania nie oznacza uszkodzonego portu — problem może być na płycie głównej."},"buzzer":{"title":"Wymiana buzzera / głośnika multimedialnego","sym":["Brak dzwonka","Cichy dźwięk","Charczenie","Dźwięk zanika okresowo"],"diag":["Sprawdź ustawienia, Bluetooth i test dźwięku, aby wykluczyć problem programowy.","Sprawdź kratkę akustyczną i zabrudzenie.","Obejrzyj styki sprężynowe, flex i złącza.","Jeżeli konstrukcja pozwala, wykonaj próbę ze sprawnym modułem."],"repair":["Oczyść kanał akustyczny bez wciskania zabrudzeń głębiej.","Wymień moduł na zgodny z dokładnym modelem.","Sprawdź docisk styków i elementy uszczelniające.","Po montażu testuj przy kilku poziomach głośności."],"tip":"Charczenie nie zawsze oznacza uszkodzony głośnik — luźna osłona, zabrudzenie lub nieszczelne osadzenie może rezonować."},"mic":{"title":"Wymiana / naprawa mikrofonu","sym":["Rozmówca nie słyszy","Dźwięk jest bardzo cichy","Szumy i trzaski","Nie działa nagrywanie w określonym trybie"],"diag":["Sprawdź mikrofon w rozmowie, dyktafonie i nagrywaniu wideo — telefony mają kilka mikrofonów używanych w różnych trybach.","Wyłącz etui i sprawdź, czy otwór mikrofonu nie jest zatkany.","Sprawdź dolny moduł/flex oraz złącza.","Jeżeli jeden tryb działa, a drugi nie, ustal który fizyczny mikrofon obsługuje daną funkcję w konkretnym modelu."],"repair":["Nie przebijaj otworu mikrofonu igłą — można uszkodzić membranę MEMS.","Jeśli mikrofon jest częścią dolnej płytki/flexu, wymień właściwy moduł lub element zgodnie z konstrukcją.","Przy pracy hot-air chroń mikrofon MEMS przed przegrzaniem i bezpośrednim nadmuchem.","Po naprawie wykonaj test wszystkich trybów nagrywania i rozmowy."],"tip":"Najpierw ustal, który mikrofon jest uszkodzony. Współczesny telefon może mieć mikrofon dolny, górny i dodatkowe mikrofony redukcji szumu."},"speaker":{"title":"Wymiana głośnika rozmów","sym":["Nie słychać rozmówcy","Bardzo cichy odsłuch","Charczenie","Dźwięk działa tylko na głośnomówiącym"],"diag":["Jeśli tryb głośnomówiący działa, a odsłuch przy uchu nie, skoncentruj się na torze głośnika rozmów.","Sprawdź zabrudzenie siatki i kanału akustycznego.","Obejrzyj styki/złącze modułu oraz taśmy w górnej części telefonu.","Wykonaj test ze sprawnym elementem, jeśli konstrukcja na to pozwala."],"repair":["Oczyść siatkę i kanał akustyczny ostrożnie.","Wymień głośnik zgodny z modelem i prawidłowo osadź uszczelnienie.","Uważaj na taśmy czujników i moduły znajdujące się przy głośniku.","Po naprawie sprawdź rozmowę, czujnik zbliżeniowy i inne funkcje górnego modułu."],"tip":"W niektórych modelach okolice głośnika rozmów są zintegrowane z ważnymi czujnikami lub elementami biometrycznymi. Nie przekładaj i nie wymieniaj ich bez sprawdzenia konstrukcji modelu."}};
+const smartphoneBrandNotes={"iPhone":"Zwróć uwagę na parowanie/kalibrację niektórych części i komunikaty systemowe po wymianie. W okolicy górnego modułu zachowaj szczególną ostrożność przy elementach związanych z Face ID. Dokładne procedury zależą od generacji.","Samsung":"Sprawdź dokładny wariant modelu i typ zespołu wyświetlacza. W wielu modelach port USB-C znajduje się na osobnej płytce dolnej, ale konfiguracja mikrofonów i połączeń różni się między seriami.","Xiaomi":"Zweryfikuj pełny numer modelu/wersję płyty. Dolne płytki ładowania i flexy mogą wyglądać podobnie, lecz nie być zamienne. Po naprawie testuj szybkie ładowanie i wszystkie mikrofony.","Motorola":"Sprawdź oznaczenie wariantu urządzenia przed zamówieniem części. Konstrukcja modułu ładowania, anten i mikrofonów zależy od modelu; po otwarciu zwróć uwagę na przewody koncentryczne i styki antenowe."};
+
+function renderSmartphone(){
+ const brand=$('spBrand').value,key=$('spRepair').value,x=smartphoneDB[key],c=$('spContent');
+ c.innerHTML='<div class="card"><h2>'+esc(brand)+' • '+esc(x.title)+'</h2><div class="note"><b>📌 Specyfika marki</b><br>'+esc(smartphoneBrandNotes[brand])+'</div></div>'+
+ '<div class="grid">'+
+ '<div class="card"><h2>⚠️ Typowe objawy</h2>'+x.sym.map(v=>'<div class="step">• '+esc(v)+'</div>').join('')+'</div>'+
+ '<div class="card"><h2>🔍 Diagnostyka</h2>'+x.diag.map((v,i)=>'<div class="step"><b>'+(i+1)+'.</b> '+esc(v)+'</div>').join('')+'</div></div>'+
+ '<div class="card"><h2>🛠️ Procedura naprawy</h2>'+x.repair.map((v,i)=>'<div class="step"><b>'+(i+1)+'.</b> '+esc(v)+'</div>').join('')+'</div>'+
+ '<div class="result"><b>💡 Porada warsztatowa</b><br>'+esc(x.tip)+'</div>'+
+ '<div class="card"><h2>✅ Test po naprawie</h2><p>Uruchom urządzenie przed ostatecznym sklejeniem. Sprawdź naprawianą funkcję oraz funkcje sąsiednich modułów, które były odłączane podczas demontażu. Dopiero po pozytywnym teście zamknij urządzenie i wykonaj kontrolę końcową.</p></div>';
+}
+$('spBrand').addEventListener('change',renderSmartphone);
+$('spRepair').addEventListener('change',renderSmartphone);
+renderSmartphone();
 
 
 })();

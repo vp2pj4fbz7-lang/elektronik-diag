@@ -1,1 +1,6 @@
-V6.7.4: każdy z 15 etapów budowy pakietu ma opis, przykład, poradę warsztatową i punkt kontrolny. Usterki również mają przykłady i porady. Wgraj index.html, RESET.html, sw.js i manifest.webmanifest, następnie uruchom RESET.html.
+Elektronik Diag V6.8 – Naprawa Smartphone
+Nowy moduł w głównym menu: 📱 Naprawa Smartphone.
+Marki: iPhone, Samsung, Xiaomi, Motorola.
+Naprawy: wyświetlacz, bateria, moduł ładowania, buzzer/głośnik multimedialny, mikrofon, głośnik rozmów.
+Każdy temat: objawy, diagnostyka, procedura naprawy, specyfika marki, porada i test końcowy.
+Wgraj index.html, RESET.html, sw.js, manifest.webmanifest. Następnie otwórz RESET.html.

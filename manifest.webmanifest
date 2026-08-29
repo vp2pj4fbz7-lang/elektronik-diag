@@ -1,10 +1,10 @@
 {
-  "name": "Elektronik Diag V6.7.4 – Pakiety 18650",
-  "short_name": "Elektronik Diag V6.7.4",
-  "start_url": "./index.html?v=6.7.4",
+  "name": "Elektronik Diag V6.8 – Naprawa Smartphone",
+  "short_name": "Elektronik Diag V6.8",
+  "start_url": "./index.html?v=6.8",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0b1624",
   "theme_color": "#102238",
-  "description": "Moduł budowy pakietów 18650 z przykładami, poradami warsztatowymi i punktami kontrolnymi."
+  "description": "Diagnostyka i procedury napraw smartfonów: iPhone, Samsung, Xiaomi i Motorola."
 }
