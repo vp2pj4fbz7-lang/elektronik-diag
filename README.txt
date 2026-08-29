@@ -1,4 +1,4 @@
-Elektronik Diag V6.5 – Baterie elektronarzędzi
+Elektronik Diag V6.6
 
-Wgraj do GitHub Pages jednocześnie: index.html, sw.js, manifest.webmanifest.
-Po aktualizacji odśwież stronę / uruchom ponownie PWA. Nowy cache: v6-5-batteries.
+Podmień na GitHub Pages: index.html, sw.js i manifest.webmanifest.
+Nowa zakładka: 📚 Słownik i formuły. Baza jest wbudowana w index.html i nie wymaga importu.
