@@ -55,7 +55,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="app">
 <aside>
 <div class="brand">Elektronik Diag</div>
-<div class="version">V6.7.2 • HARD RESET • Pakiety 18650</div>
+<div class="version">V6.7.3 • FIX modułu 18650</div>
 <div class="nav">
 <button class="active" data-v="home">Pulpit</button>
 <button data-v="diagnostics">🧭 Diagnostyka PRO</button>
@@ -73,7 +73,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 </aside>
 <main>
 <section id="home" class="view active">
-<h1>Elektronik Diag V6.7.2</h1><div class="card"><h2>✅ AKTUALIZACJA V6.7.2</h2><p><b>Jeżeli widzisz ten komunikat, nowy index.html został prawidłowo wczytany z GitHub Pages.</b></p><p class="muted small">Build: ED-672-HARDRESET</p></div>
+<h1>Elektronik Diag V6.7.3</h1><div class="card"><h2>✅ AKTUALIZACJA V6.7.3</h2><p><b>Jeżeli widzisz ten komunikat, nowy index.html został prawidłowo wczytany z GitHub Pages.</b></p><p class="muted small">Build: ED-673-INTERNAL-FIX</p></div>
 <p class="muted">Diagnostyka warsztatowa, szkolenie krok po kroku i graficzny atlas podzespołów.</p>
 <div class="grid">
 <div class="card"><h2>🧭 Diagnostyka PRO</h2><p>Procedury krok po kroku: zasada działania, pomiary, drzewo decyzji i typowe usterki.</p></div>
@@ -148,7 +148,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 
 
 <section id="packbuilder" class="view">
-<h1>🧰 Budowa pakietu 18650</h1><div class="result"><b>MODUŁ ZAŁADOWANY • V6.7.2</b></div>
+<h1>🧰 Budowa pakietu 18650</h1><div class="result"><b>MODUŁ ZAŁADOWANY • V6.7.3</b><br><span class="muted small">Kod wewnętrzny: ED-673-INTERNAL-FIX</span></div>
 <p class="muted">Osobny moduł warsztatowy: procedura budowy, kalkulator S/P, kontrola sekcji i lista typowych usterek.</p>
 <div class="danger"><b>⚠️ Bezpieczeństwo Li-ion:</b> pracuj tylko na sprawnych, zweryfikowanych ogniwach. Nie zwieraj sekcji, nie przebijaj ogniw, nie omijaj BMS i nie podłączaj przewodów BMS w przypadkowej kolejności.</div>
 <div class="toolbar">
@@ -684,8 +684,6 @@ $('googlePartBtn').addEventListener('click',()=>{const q=$('dsQuery').value.trim
 renderLessons();renderDiag();renderComponents();initServiceDB();
 
 
-})();
-
 function renderPackBuilder(){
  const mode=$('pbMode').value, s=Number($('pbS').value), c=$('pbContent');
  if(mode==='procedure'){
@@ -703,16 +701,16 @@ function renderPackBuilder(){
    '<label>Pojemność ogniwa [Ah]<input id="pbAh" type="number" step="0.1" value="2.5"></label>'+
    '<label>Prąd ciągły ogniwa [A]<input id="pbAmp" type="number" step="0.1" value="20"></label></div>'+
    '<div class="toolbar"><button class="primary" id="pbCalcBtn">Oblicz</button></div><div id="pbCalcOut"></div></div>';
-   const f=()=>{let S=+pbCS.value||1,P=+pbCP.value||1,nom=+pbNom.value||0,full=+pbFull.value||0,ah=+pbAh.value||0,a=+pbAmp.value||0;
-     pbCalcOut.innerHTML='<div class="grid"><div class="result"><b>'+S*P+'</b><br>ogniw</div><div class="result"><b>'+(S*nom).toFixed(2)+' V</b><br>nominalnie</div><div class="result"><b>'+(S*full).toFixed(2)+' V</b><br>pełne</div><div class="result"><b>'+(P*ah).toFixed(2)+' Ah</b><br>pojemność</div><div class="result"><b>'+((S*nom)*(P*ah)).toFixed(1)+' Wh</b><br>energia</div><div class="result"><b>≤ '+(P*a).toFixed(1)+' A*</b><br>teoretycznie</div></div><p class="muted small">*Rzeczywisty limit może być niższy przez BMS, taśmy, zgrzewy, styki i temperaturę.</p>';
+   const f=()=>{let S=+$('pbCS').value||1,P=+$('pbCP').value||1,nom=+$('pbNom').value||0,full=+$('pbFull').value||0,ah=+$('pbAh').value||0,a=+$('pbAmp').value||0;
+     $('pbCalcOut').innerHTML='<div class="grid"><div class="result"><b>'+S*P+'</b><br>ogniw</div><div class="result"><b>'+(S*nom).toFixed(2)+' V</b><br>nominalnie</div><div class="result"><b>'+(S*full).toFixed(2)+' V</b><br>pełne</div><div class="result"><b>'+(P*ah).toFixed(2)+' Ah</b><br>pojemność</div><div class="result"><b>'+((S*nom)*(P*ah)).toFixed(1)+' Wh</b><br>energia</div><div class="result"><b>≤ '+(P*a).toFixed(1)+' A*</b><br>teoretycznie</div></div><p class="muted small">*Rzeczywisty limit może być niższy przez BMS, taśmy, zgrzewy, styki i temperaturę.</p>';
    }; $('pbCalcBtn').onclick=f; f();
  }
  if(mode==='analyzer'){
    const ex=Array.from({length:s},(_,i)=>(3.95-(i===s-1?0.25:0)).toFixed(2)).join(', ');
    c.innerHTML='<div class="card"><h2>📊 Napięcia sekcji</h2><textarea id="pbVals" rows="4" style="width:100%;padding:12px;border-radius:10px">'+ex+'</textarea><div class="toolbar"><button class="primary" id="pbAnalyze">Analizuj</button></div><div id="pbAOut"></div></div>';
-   const a=()=>{const v=pbVals.value.split(/[,;\s]+/).map(Number).filter(Number.isFinite);if(!v.length)return;let mi=Math.min(...v),ma=Math.max(...v),d=ma-mi,im=v.indexOf(mi)+1;
+   const a=()=>{const v=$('pbVals').value.split(/[,;\s]+/).map(x=>Number(String(x).replace(',','.'))).filter(Number.isFinite);if(!v.length)return;let mi=Math.min(...v),ma=Math.max(...v),d=ma-mi,im=v.indexOf(mi)+1;
       let msg=d<0.05?'Sekcje napięciowo są bardzo zbliżone.':d<0.10?'Niewielki rozjazd — obserwuj pod obciążeniem.':d<0.30?'Wyraźny rozjazd — sprawdź sekcję S'+im+' pod obciążeniem, pojemność, IR i połączenia.':'Duży rozjazd — pakiet wymaga diagnostyki przed dalszą pracą.';
-      pbAOut.innerHTML='<div class="grid"><div class="result"><b>'+mi.toFixed(3)+' V</b><br>min S'+im+'</div><div class="result"><b>'+ma.toFixed(3)+' V</b><br>max</div><div class="result"><b>'+d.toFixed(3)+' V</b><br>Δ</div></div><div class="card"><b>Wniosek:</b> '+esc(msg)+'</div>';
+      $('pbAOut').innerHTML='<div class="grid"><div class="result"><b>'+mi.toFixed(3)+' V</b><br>min S'+im+'</div><div class="result"><b>'+ma.toFixed(3)+' V</b><br>max</div><div class="result"><b>'+d.toFixed(3)+' V</b><br>Δ</div></div><div class="card"><b>Wniosek:</b> '+esc(msg)+'</div>';
    }; $('pbAnalyze').onclick=a;a();
  }
  if(mode==='faults'){
@@ -729,6 +727,9 @@ function renderPackBuilder(){
 $('pbMode').addEventListener('change',renderPackBuilder);
 $('pbS').addEventListener('change',renderPackBuilder);
 renderPackBuilder();
+
+
+})();
 
 
 </script>
