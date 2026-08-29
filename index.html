@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Elektronik Diag">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Elektronik Diag V6.3 – Akademia Diagnostyki</title>
+<title>Elektronik Diag V6.4 – Baza Serwisowa</title>
 <style>
 :root{--bg:#0b1624;--side:#102238;--panel:#132b45;--panel2:#1c3c5d;--border:#355a7f;--text:#f6f9fc;--muted:#b9c9d9;--accent:#68b6ff;--ok:#57d38c;--bad:#ff7a7a}
 *{box-sizing:border-box}
@@ -52,19 +52,23 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="app">
 <aside>
 <div class="brand">Elektronik Diag</div>
-<div class="version">V6.3 • Diagnostyka PRO + Akademia + Atlas</div>
+<div class="version">V6.4 • Diagnostyka PRO + Baza Serwisowa</div>
 <div class="nav">
 <button class="active" data-v="home">Pulpit</button>
 <button data-v="diagnostics">🧭 Diagnostyka PRO</button>
 <button data-v="academy">🎓 Akademia Diagnostyki</button>
 <button data-v="internet">🌐 Szukaj w Internecie</button>
 <button data-v="atlas">🧩 Atlas podzespołów</button>
+<button data-v="schematics">🗺️ Schematy płyt</button>
+<button data-v="measurements">📏 Pomiary płyt</button>
+<button data-v="repairguide">🛠️ Zasady napraw</button>
+<button data-v="laws">⚡ Prawa elektroniki</button>
 <button data-v="datasheet">📄 Znajdź datasheet</button>
 </div>
 </aside>
 <main>
 <section id="home" class="view active">
-<h1>Elektronik Diag V6.3</h1>
+<h1>Elektronik Diag V6.4</h1>
 <p class="muted">Diagnostyka warsztatowa, szkolenie krok po kroku i graficzny atlas podzespołów.</p>
 <div class="grid">
 <div class="card"><h2>🧭 Diagnostyka PRO</h2><p>Procedury krok po kroku: zasada działania, pomiary, drzewo decyzji i typowe usterki.</p></div>
@@ -113,6 +117,33 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div id="compList"></div><div id="compDetail"></div>
 </section>
 
+
+<section id="schematics" class="view">
+<h1>🗺️ Schematy płyt i topologie</h1>
+<p class="muted">Wbudowana baza blokowych schematów diagnostycznych. Dla konkretnej płyty użyj numeru PCB/chassis i dokumentacji serwisowej danego modelu.</p>
+<div class="toolbar"><input id="schSearch" placeholder="Szukaj: Samsung, Apple, TV, telefon, pralka, płyta..."><select id="schCat"></select></div>
+<div id="schList"></div><div id="schDetail"></div>
+</section>
+
+<section id="measurements" class="view">
+<h1>📏 Wartości pomiarowe</h1>
+<p class="muted">Typowe zakresy napięć i kolejność kontroli sektorów płyt. Wartości są orientacyjne — model i rewizja płyty mają pierwszeństwo.</p>
+<div class="toolbar"><input id="measSearch" placeholder="Szukaj: VBAT, PFC, 3V3, T-CON, CPU, PMIC..."><select id="measCat"></select></div>
+<div id="measList"></div>
+</section>
+
+<section id="repairguide" class="view">
+<h1>🛠️ Zasady napraw elektroniki</h1>
+<div class="danger"><b>Uwaga:</b> TV, monitory i AGD mogą zawierać napięcia niebezpieczne również po odłączeniu od sieci. Przy stronie pierwotnej SMPS wymagane są właściwe kwalifikacje, separacja i odpowiednie sondy.</div>
+<div id="repairRules"></div>
+</section>
+
+<section id="laws" class="view">
+<h1>⚡ Definicje i prawa elektroniki</h1>
+<div class="toolbar"><input id="lawSearch" placeholder="Szukaj: Ohm, Kirchhoff, moc, RC, kondensator..."></div>
+<div id="lawList"></div>
+</section>
+
 <section id="datasheet" class="view">
 <h1>📄 Znajdź datasheet</h1>
 <div class="card"><p>Wpisz dokładne oznaczenie z obudowy elementu, np. <b>TPS51225</b>, <b>RT8243</b>, <b>25Q64</b>.</p>
@@ -134,6 +165,73 @@ function showView(id){
  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.v===id));
 }
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.v)));
+
+
+const schematicDB=[
+{cat:'Telefon',brand:'Samsung',name:'Smartfon Samsung – typowa architektura płyty',flow:['USB-C / bateria','ochrona ESD/OVP','charger / PMIC','szyny ALW','SoC + RAM','UFS','RF','display/audio'],notes:'Diagnoza: VBUS/VBAT → zwarcia → PMIC → szyny always-on → sekwencja SoC → pamięć i peryferia.'},
+{cat:'Telefon',brand:'Apple',name:'iPhone – typowa architektura logic board',flow:['Lightning/USB-C','ochrona / charger','bateria','PMIC','AP/SoC + RAM','NAND','baseband/RF','display/audio'],notes:'Szukaj po numerze płyty i modelu. Na niskich szynach rdzenia naturalnie może występować mała rezystancja do GND.'},
+{cat:'Tablet',brand:'Apple',name:'iPad – typowa architektura płyty',flow:['USB-C/Lightning','charger','bateria','PMIC','SoC/RAM','NAND','LCD/backlight','Wi‑Fi/RF'],notes:'Przy braku startu zacznij od poboru prądu, VBAT, głównych szyn oraz reset/clock.'},
+{cat:'Tablet',brand:'Lenovo',name:'Tablet Lenovo – typowa architektura',flow:['USB-C','charger','PMIC','SoC','RAM/eMMC','LCD','Wi‑Fi'],notes:'Sprawdź VBUS, stan baterii/NTC oraz wyjścia PMIC.'},
+{cat:'Telewizor',brand:'Samsung',name:'TV Samsung LED/LCD – bloki płyty',flow:['230 V AC','PSU + PFC','STBY','MAIN','T-CON / panel','LED driver','audio'],notes:'Brak obrazu: test latarki → BL_ON/LED → T-CON/panel. Brak startu: STBY → PS_ON → główne szyny.'},
+{cat:'Telewizor',brand:'LG',name:'TV LG LED/OLED – bloki płyty',flow:['230 V AC','PSU','STBY','MAIN/SoC','T-CON/panel','LED/OLED power','audio'],notes:'W OLED napięcia panelu są specyficzne dla modelu — nie stosuj wartości z LCD.'},
+{cat:'Komputer',brand:'Lenovo',name:'Laptop Lenovo – sekwencja zasilania',flow:['DC/USB-C','MOSFET wejściowy','charger','3V/5V ALW','EC/KBC','S5→S3→S0','CPU/RAM','BIOS'],notes:'Martwy laptop: VIN → MOSFET → ALW → EC → POWER → enable kolejnych przetwornic.'},
+{cat:'Komputer',brand:'Apple',name:'MacBook – typowa sekwencja logic board',flow:['USB-C PD','wejście mocy','PPBUS','always-on','SMC/SoC','główne buck','RAM/SSD','display'],notes:'Profile USB-C i nazwy szyn zależą od generacji płyty.'},
+{cat:'Zmywarka',brand:'Samsung/LG',name:'Zmywarka – moduł sterujący',flow:['230 V','EMI/MOV','SMPS','5/12 V','MCU','przekaźniki/triaki','pompy/grzałka/zawory','NTC/czujniki'],notes:'Najpierw zasilacz pomocniczy i MCU, potem sterowanie wykonawcze. Obwody mocy są sieciowe.'},
+{cat:'Pralka',brand:'Samsung/LG',name:'Pralka – moduł główny/inwerter',flow:['230 V','filtr','SMPS','MCU','przekaźniki/triaki','inwerter silnika','grzałka/pompa','czujniki'],notes:'Przy inwerterze silnika występuje wysokonapięciowa szyna DC.'},
+{cat:'Lodówka',brand:'Samsung/LG',name:'Lodówka – płyta sterująca',flow:['230 V','SMPS','5/12/15 V','MCU','inwerter sprężarki','wentylatory','grzałki','NTC/czujniki'],notes:'Nie myl problemu sterowania z usterką układu chłodniczego.'}
+];
+const measurementDB=[
+{cat:'Telefon / tablet',sector:'VBAT / bateria',val:'zwykle ok. 3.0–4.45 V DC',check:'Sprawdź napięcie bez i pod obciążeniem, NTC/ID baterii i ciągłość do charger/PMIC.'},
+{cat:'Telefon / tablet',sector:'VBUS USB',val:'5 V przed negocjacją; wyższe profile zależą od USB-PD/QC',check:'Port, ESD/OVP, CC1/CC2, charger, MOSFET-y toru.'},
+{cat:'Telefon / tablet',sector:'Szyny I/O',val:'często 1.8 V / 2.8 V / 3.0–3.3 V',check:'LDO/buck, EN, zwarcie do GND.'},
+{cat:'Telefon / tablet',sector:'SoC core',val:'często ~0.5–1.2 V, dynamicznie',check:'Mierz na cewce. Niska rezystancja rdzenia nie zawsze oznacza zwarcie.'},
+{cat:'Telefon / tablet',sector:'UFS/eMMC/NAND',val:'często 1.2 V / 1.8 V / 2.8–3.3 V zależnie od pamięci',check:'VCC/VCCQ, reset, clock, komunikacja.'},
+{cat:'Telefon / tablet',sector:'Podświetlenie LCD',val:'zwykle kilkanaście–kilkadziesiąt V w układach boost LED',check:'EN, cewka, SW, dioda/rectifier, ciągłość do złącza LCD.'},
+{cat:'TV',sector:'Sieć wejściowa',val:'230 V AC PL/EU',check:'Bezpiecznik, NTC, MOV, mostek. UWAGA: napięcie niebezpieczne.'},
+{cat:'TV',sector:'Kondensator główny bez aktywnego PFC',val:'ok. 310–325 V DC przy 230 V AC',check:'Pomiar tylko odpowiednim sprzętem i procedurą HV.'},
+{cat:'TV',sector:'PFC',val:'często ok. 380–400 V DC podczas pracy',check:'Sterownik PFC, MOSFET, dioda, rezystor pomiarowy. UWAGA HV.'},
+{cat:'TV',sector:'Standby',val:'najczęściej 3.3 V lub 5 V',check:'Stabilność, tętnienia, PS_ON.'},
+{cat:'TV',sector:'Mainboard',val:'często 12 V / 5 V / 3.3 V / 1.8 V / 1.2 V / ~1.0 V',check:'Kolejno wejście → buck/LDO → SoC/RAM/eMMC.'},
+{cat:'TV',sector:'T-CON',val:'wejście często 12 V; AVDD często ~13–18 V; VGH/VGL zależne od matrycy',check:'Bezpiecznik SMD, DC-DC T-CON, zwarcia po stronie panelu.'},
+{cat:'TV',sector:'LED backlight',val:'od kilkudziesięciu do >200 V DC zależnie od panelu',check:'Driver LED i łańcuchy LED. UWAGA wysokie napięcie.'},
+{cat:'Laptop / komputer',sector:'Wejście',val:'często 19–20 V; USB-C PD zależnie od profilu',check:'MOSFET wejściowe, charger IC, rezystor pomiarowy.'},
+{cat:'Laptop / komputer',sector:'3V/5V ALW',val:'3.3 V i 5 V',check:'Obecne przed POWER w wielu konstrukcjach; sprawdź EN/PGOOD.'},
+{cat:'Laptop / komputer',sector:'CPU core',val:'zwykle ~0.5–1.3 V dynamicznie',check:'VRM, PWM, DrMOS/MOSFET, PGOOD.'},
+{cat:'Laptop / komputer',sector:'RAM',val:'zależne od generacji DDR, zwykle ~1.1–1.5 V + linie pomocnicze',check:'VDD/VDDQ/VPP/VTT zgodnie z platformą.'},
+{cat:'Laptop / komputer',sector:'SPI BIOS',val:'3.3 V lub 1.8 V',check:'VCC, CS, CLK, aktywność DATA podczas startu.'},
+{cat:'AGD',sector:'Zasilacz modułu',val:'często 5 V / 12 V / 15 V',check:'SMPS, kondensatory, sprzężenie zwrotne.'},
+{cat:'AGD',sector:'MCU',val:'najczęściej 3.3 V lub 5 V',check:'VCC, reset, oscylator.'},
+{cat:'AGD',sector:'Przekaźniki',val:'cewki często 5/12 V DC; styki mogą przełączać 230 V AC',check:'Driver, dioda, cewka, styki. UWAGA sieć.'},
+{cat:'AGD',sector:'NTC',val:'rezystancja zależna od temperatury i modelu',check:'Porównaj z tabelą serwisową konkretnego urządzenia.'}
+];
+const repairRulesDB=[
+['Odłącz zasilanie','Rezystancję, ciągłość i test diody wykonuj na odłączonym urządzeniu, chyba że procedura producenta mówi inaczej.'],
+['ESD','Przy SoC, PMIC, pamięciach, RF i płytach logicznych stosuj matę oraz opaskę ESD.'],
+['Kondensatory HV','Przed dotknięciem strony pierwotnej sprawdź miernikiem napięcie kondensatora głównego. Nie rozładowuj go przypadkowym zwarciem.'],
+['Nie mierz Ω pod napięciem','Omomierz na zasilonej płycie może dać błędny wynik i uszkodzić miernik lub urządzenie.'],
+['Ograniczenie prądu','Przy zasilaczu laboratoryjnym ustaw limit prądu. Do wstrzykiwania napięcia zaczynaj od bezpiecznej, niskiej wartości.'],
+['Nie wstrzykuj napięcia w ciemno','Najpierw ustal nazwę i nominalne napięcie szyny oraz co jest do niej podłączone.'],
+['Kolejność startu','Zapisuj: wejście → standby/always-on → POWER/EN → główne szyny → reset → clock → komunikacja.'],
+['Porównuj kanały','Jeśli urządzenie ma dwa identyczne tory, porównanie sprawnego z uszkodzonym jest bardzo cennym punktem odniesienia.'],
+['Po naprawie','Sprawdź pobór, temperatury, tętnienia, komunikację, funkcje peryferiów i stabilność w dłuższym teście.'],
+['Dokumentacja','Numer modelu to za mało: zapisuj również numer PCB/chassis, rewizję płyty, panelu lub modułu.']
+];
+const lawsDB=[
+['Prawo Ohma','U = I × R','Łączy napięcie, prąd i rezystancję.'],['Moc elektryczna','P = U × I','Podstawowa zależność mocy dla DC.'],['Moc rezystora','P = I²R = U²/R','Pomaga oszacować straty i nagrzewanie.'],['I prawo Kirchhoffa','ΣI = 0 w węźle','Suma prądów wpływających i wypływających z węzła jest równa zero.'],['II prawo Kirchhoffa','ΣU = 0 w oczku','Suma algebraiczna napięć w zamkniętym oczku jest równa zero.'],['Dzielnik napięcia','Uout = Uin × R2/(R1+R2)','Częsty w feedback, pomiarze baterii i napięciach referencyjnych.'],['Stała czasowa RC','τ = R × C','Opisuje szybkość ładowania i rozładowania kondensatora.'],['Reaktancja kondensatora','Xc = 1/(2πfC)','Rośnie przy spadku częstotliwości i maleje przy wzroście pojemności.'],['Reaktancja cewki','Xl = 2πfL','Rośnie z częstotliwością i indukcyjnością.'],['Energia kondensatora','E = ½ C U²','Wyjaśnia energię przechowywaną także po odłączeniu zasilania.'],['Połączenie szeregowe R','R = R1 + R2 + ...','Rezystancje szeregowe sumują się.'],['Połączenie równoległe R','1/R = 1/R1 + 1/R2 + ...','Rezystancja zastępcza jest mniejsza od najmniejszej gałęzi.']
+];
+function initServiceDB(){
+ const sc=['Wszystkie',...new Set(schematicDB.map(x=>x.cat))]; $('schCat').innerHTML=sc.map(x=>'<option>'+esc(x)+'</option>').join('');
+ const mc=['Wszystkie',...new Set(measurementDB.map(x=>x.cat))]; $('measCat').innerHTML=mc.map(x=>'<option>'+esc(x)+'</option>').join('');
+ renderSchematics();renderMeasurements();renderRepairRules();renderLaws();
+ $('schSearch').addEventListener('input',renderSchematics);$('schCat').addEventListener('change',renderSchematics);
+ $('measSearch').addEventListener('input',renderMeasurements);$('measCat').addEventListener('change',renderMeasurements);$('lawSearch').addEventListener('input',renderLaws);
+}
+function renderSchematics(){const q=$('schSearch').value.toLowerCase().trim(),c=$('schCat').value;const a=schematicDB.filter(x=>(c==='Wszystkie'||x.cat===c)&&JSON.stringify(x).toLowerCase().includes(q));$('schList').innerHTML=a.map((x,i)=>'<div class="card diagItem" data-sch="'+schematicDB.indexOf(x)+'"><span class="badge">'+esc(x.cat)+'</span><span class="badge">'+esc(x.brand)+'</span><h2>'+esc(x.name)+'</h2><div class="flow">'+x.flow.map((y,j)=>'<span>'+esc(y)+'</span>'+(j<x.flow.length-1?'<b>→</b>':'')).join('')+'</div></div>').join('')||'<p class="muted">Brak wyników.</p>';document.querySelectorAll('[data-sch]').forEach(e=>e.onclick=()=>openSch(Number(e.dataset.sch)))}
+function openSch(i){const x=schematicDB[i];$('schDetail').innerHTML='<div class="detailBox"><button class="secondary" id="closeSch">Zamknij</button><h2>'+esc(x.name)+'</h2><div class="flow">'+x.flow.map((y,j)=>'<span>'+esc(y)+'</span>'+(j<x.flow.length-1?'<b>→</b>':'')).join('')+'</div><h3>Wskazówka diagnostyczna</h3><div class="result">'+esc(x.notes)+'</div><p class="muted small">Dla schematu serwisowego konkretnego modelu wyszukuj po numerze PCB/chassis/revision.</p></div>'; $('closeSch').onclick=()=>{$('schDetail').innerHTML=''};}
+function renderMeasurements(){const q=$('measSearch').value.toLowerCase().trim(),c=$('measCat').value;const a=measurementDB.filter(x=>(c==='Wszystkie'||x.cat===c)&&JSON.stringify(x).toLowerCase().includes(q));$('measList').innerHTML=a.map(x=>'<div class="card"><span class="badge">'+esc(x.cat)+'</span><h2>'+esc(x.sector)+'</h2><div class="result"><b>Typowa wartość:</b> '+esc(x.val)+'</div><p><b>Co sprawdzić:</b> '+esc(x.check)+'</p></div>').join('')||'<p class="muted">Brak wyników.</p>';}
+function renderRepairRules(){$('repairRules').innerHTML=repairRulesDB.map((x,i)=>'<div class="card"><h2>'+(i+1)+'. '+esc(x[0])+'</h2><p>'+esc(x[1])+'</p></div>').join('')}
+function renderLaws(){const q=$('lawSearch').value.toLowerCase().trim();const a=lawsDB.filter(x=>JSON.stringify(x).toLowerCase().includes(q));$('lawList').innerHTML=a.map(x=>'<div class="card"><h2>'+esc(x[0])+'</h2><div class="result"><b>'+esc(x[1])+'</b></div><p>'+esc(x[2])+'</p></div>').join('')||'<p class="muted">Brak wyników.</p>';}
+
 
 const academyLessons=[
 {cat:'Podstawy',title:'Diagnostyka od zera',level:'Podstawowy',desc:'Uniwersalny tok myślenia: objaw → blok → pomiar → wniosek → potwierdzenie.',goals:['Oddzielić objaw od przyczyny','Wyznaczyć kolejne punkty pomiarowe','Nie wymieniać elementów bez potwierdzenia'],steps:['Zapisz dokładny objaw i warunki występowania.','Wykonaj oględziny płyty.','Sprawdź wejście zasilania i zwarcia do masy.','Podziel urządzenie na bloki funkcjonalne.','Znajdź pierwszy blok, w którym znika prawidłowy sygnał.','Po naprawie wykonaj test stabilności.'],quiz:{q:'Masz 19 V na gnieździe laptopa, ale za MOSFET-em wejściowym jest 0 V. Co jest najlepszym następnym krokiem?',a:['Wymienić CPU','Sprawdzić sterowanie bramki MOSFET-u i sygnały ACDET/ACOK','Przeprogramować BIOS'],ok:1,why:'Zasilanie zatrzymuje się na wejściowym kluczu, więc trzeba sprawdzić MOSFET i jego sterowanie.'}},
@@ -293,6 +391,25 @@ const components=[
 ['Mechaniczne','Złącze FFC/FPC','🎗️','Łączy taśmy sygnałowe.','Oględziny, ciągłość, docisk.','wyrwane piny, korozja'],
 ['Zabezpieczenia','Bezpiecznik SMD','🧯','Przerywa obwód przy nadmiernym prądzie.','Ciągłość i spadek napięcia pod obciążeniem.','przerwa jako skutek zwarcia']
 ].map(x=>({cat:x[0],name:x[1],icon:x[2],desc:x[3],test:x[4],faults:x[5]}));
+
+components.push(...[
+['Zabezpieczenia','Warystor MOV','⚡','Chroni wejście sieciowe przed przepięciami.','Po odłączeniu zasilania sprawdź brak zwarcia; oględziny pęknięć i nadpaleń.','zwarcie po przepięciu, pęknięcie'],
+['Zabezpieczenia','NTC ograniczający prąd','🌡️','Ogranicza prąd rozruchowy zasilacza.','Pomiar rezystancji na zimno i oględziny.','przerwa, pęknięcie'],
+['Pasywne','Rezystor bocznikowy','📐','Mierzy prąd przez małą znaną rezystancję.','Pomiar spadku mV pod obciążeniem; kontrola połączeń Kelvin.','przerwa, zmiana wartości'],
+['Pasywne','Rezonator / kwarc','⏱️','Zapewnia sygnał zegarowy dla układów cyfrowych.','Oscyloskop lub kontrola aktywności zegara odpowiednią sondą.','brak oscylacji, niestabilność'],
+['Półprzewodniki','Mostek prostowniczy','🌉','Prostuje napięcie AC na DC.','Test czterech złącz w trybie diody po rozładowaniu obwodu.','zwarcie, przerwa diody'],
+['Zasilanie','Sterownik ładowania','🔋','Steruje ładowaniem baterii i torem zasilania.','VIN/VBUS, BAT, SYS, sense, enable i komunikacja.','brak ładowania, zwarcie, błędna detekcja'],
+['Zasilanie','Kontroler PFC','⚙️','Kształtuje pobór prądu i podnosi szynę HV w zasilaczach.','VCC, gate, feedback, rezystor pomiarowy; wyłącznie procedury HV.','brak PFC, uszkodzony MOSFET/driver'],
+['Interfejsy','Transceiver HDMI','🖥️','Nadaje lub odbiera sygnał HDMI.','Zasilania, HPD, DDC, zegar i linie różnicowe.','brak obrazu, brak EDID'],
+['Interfejsy','PHY USB','🔌','Warstwa fizyczna komunikacji USB.','Zasilania, reset, linie D+/D- lub SuperSpeed; porównanie do sprawnego portu.','brak enumeracji, uszkodzenie ESD'],
+['Logika','eMMC / UFS','💽','Pamięć masowa telefonu, tabletu i innych urządzeń.','VCC/VCCQ, reset, clock i aktywność magistrali.','brak boot, degradacja, zwarcie'],
+['Logika','SoC / CPU','🧠','Główny układ obliczeniowy urządzenia.','Najpierw wszystkie szyny, reset, zegary i sekwencja startowa; nie diagnozuj CPU przez samą rezystancję.','brak startu, przegrzanie, uszkodzenie BGA'],
+['Wyświetlanie','Driver LED','💡','Zasila szeregi LED podświetlenia.','VIN, EN/BL_ON, SW i napięcie wyjściowe; zachowaj zasady HV.','brak podświetlenia, protekcja'],
+['Wyświetlanie','T-CON DC-DC','📺','Generuje napięcia sterujące matrycy LCD.','VIN, AVDD, VGH, VGL i bezpieczniki SMD zgodnie z panelem.','brak obrazu, zwarcie matrycy'],
+['AGD','Driver przekaźnika','🧲','Steruje cewką przekaźnika z MCU.','Sygnał wejściowy, tranzystor, dioda gasząca, napięcie cewki.','brak załączenia, zwarcie tranzystora'],
+['AGD','Driver silnika / inwerter','🌀','Steruje silnikiem BLDC/PMSM.','Szyna DC, zasilanie drivera, sygnały bramek, fazy; procedury HV.','zwarcie IGBT/MOSFET, brak fazy']
+].map(x=>({cat:x[0],name:x[1],icon:x[2],desc:x[3],test:x[4],faults:x[5]})));
+
 const compCats=['Wszystkie',...new Set(components.map(c=>c.cat))];
 $('compCat').innerHTML=compCats.map(c=>'<option>'+esc(c)+'</option>').join('');
 function renderComponents(){
@@ -325,7 +442,7 @@ document.querySelectorAll('[data-search]').forEach(b=>b.addEventListener('click'
 $('dsBtn').addEventListener('click',()=>{const q=$('dsQuery').value.trim();if(q)window.open('https://www.google.com/search?q='+enc(q+' datasheet pdf'),'_blank','noopener');else alert('Wpisz oznaczenie elementu.')});
 $('googlePartBtn').addEventListener('click',()=>{const q=$('dsQuery').value.trim();if(q)window.open('https://www.google.com/search?q='+enc(q),'_blank','noopener');else alert('Wpisz oznaczenie elementu.')});
 
-renderLessons();renderDiag();renderComponents();
+renderLessons();renderDiag();renderComponents();initServiceDB();
 
 if('serviceWorker' in navigator){
  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
