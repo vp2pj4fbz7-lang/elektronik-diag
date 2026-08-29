@@ -1,0 +1,54 @@
+{
+  "laws_definitions": [
+    {
+      "name": "Prawo Ohma",
+      "formula": "U = I × R",
+      "meaning": "Napięcie jest iloczynem prądu i rezystancji."
+    },
+    {
+      "name": "Moc elektryczna",
+      "formula": "P = U × I",
+      "meaning": "Podstawowa zależność mocy dla DC."
+    },
+    {
+      "name": "Moc na rezystorze",
+      "formula": "P = I²R = U²/R",
+      "meaning": "Pomaga ocenić grzanie rezystorów i elementów stratnych."
+    },
+    {
+      "name": "I prawo Kirchhoffa",
+      "formula": "ΣI = 0 w węźle",
+      "meaning": "Suma prądów wpływających i wypływających z węzła jest równa zero."
+    },
+    {
+      "name": "II prawo Kirchhoffa",
+      "formula": "ΣU = 0 w oczku",
+      "meaning": "Suma algebraiczna napięć w zamkniętym obwodzie jest równa zero."
+    },
+    {
+      "name": "Dzielnik napięcia",
+      "formula": "Uout = Uin × R2/(R1+R2)",
+      "meaning": "Częsty w sprzężeniu zwrotnym, pomiarze baterii i liniach referencyjnych."
+    },
+    {
+      "name": "Stała czasowa RC",
+      "formula": "τ = R × C",
+      "meaning": "Opisuje szybkość ładowania/rozładowania kondensatora."
+    },
+    {
+      "name": "Reaktancja kondensatora",
+      "formula": "Xc = 1/(2πfC)",
+      "meaning": "Im wyższa częstotliwość lub pojemność, tym niższa impedancja kondensatora."
+    },
+    {
+      "name": "Reaktancja cewki",
+      "formula": "Xl = 2πfL",
+      "meaning": "Im wyższa częstotliwość lub indukcyjność, tym większa reaktancja cewki."
+    },
+    {
+      "name": "Energia kondensatora",
+      "formula": "E = 1/2 C U²",
+      "meaning": "Wyjaśnia, dlaczego kondensatory wysokonapięciowe mogą pozostać niebezpieczne po odłączeniu zasilania."
+    }
+  ]
+}

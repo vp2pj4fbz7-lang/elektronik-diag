@@ -1,0 +1,44 @@
+{
+  "repair_rules": [
+    {
+      "title": "Bezpieczeństwo ESD",
+      "content": "Używaj opaski i maty ESD przy pracy z płytami logicznymi, pamięciami, SoC, PMIC i układami RF."
+    },
+    {
+      "title": "Odłącz zasilanie",
+      "content": "Przed pomiarem rezystancji, ciągłości i testem diody odłącz zasilanie oraz baterię."
+    },
+    {
+      "title": "Rozładuj kondensatory",
+      "content": "W zasilaczach impulsowych i TV przed pracą potwierdź miernikiem bezpieczny poziom napięcia na kondensatorze głównym."
+    },
+    {
+      "title": "Nie mierz omomierzem pod napięciem",
+      "content": "Pomiar rezystancji na zasilonej płycie może uszkodzić miernik, płytę lub dać błędny wynik."
+    },
+    {
+      "title": "Ograniczenie prądu",
+      "content": "Do wstrzykiwania napięcia używaj zasilacza laboratoryjnego z ograniczeniem prądu i zaczynaj od niskich wartości."
+    },
+    {
+      "title": "Nie wstrzykuj napięcia w linię w ciemno",
+      "content": "Najpierw ustal przeznaczenie szyny, dopuszczalne napięcie i elementy na niej podłączone."
+    },
+    {
+      "title": "Pomiary względem masy",
+      "content": "Napięcia DC na płytach zwykle mierz względem GND urządzenia, o ile dokumentacja nie wskazuje inaczej."
+    },
+    {
+      "title": "Porównuj z dobrym kanałem",
+      "content": "W układach wielokanałowych porównanie z identycznym sprawnym torem często jest szybsze niż szukanie nominalnej wartości."
+    },
+    {
+      "title": "Dokumentuj kolejność startu",
+      "content": "Przy braku uruchomienia zapisuj kolejno: napięcie wejściowe, standby, sygnał power, główne szyny, reset, zegary, komunikację."
+    },
+    {
+      "title": "230/400 V – praca tylko z odpowiednimi kwalifikacjami",
+      "content": "Zasilacze TV i AGD zawierają napięcia niebezpieczne także po odłączeniu od sieci. Stosuj separację, właściwe sondy i procedury HV."
+    }
+  ]
+}

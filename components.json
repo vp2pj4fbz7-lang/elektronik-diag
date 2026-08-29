@@ -1,0 +1,220 @@
+{
+  "components": [
+    {
+      "name": "Rezystor",
+      "symbol": "R",
+      "description": "Ogranicza prąd, ustala polaryzację, tworzy dzielniki.",
+      "test": "Pomiar Ω po wyłączeniu zasilania; wynik może być zaniżony przez elementy równoległe.",
+      "faults": [
+        "przerwa",
+        "zmiana wartości",
+        "nadpalenie"
+      ]
+    },
+    {
+      "name": "Kondensator ceramiczny MLCC",
+      "symbol": "C",
+      "description": "Filtruje i odsprzęga szyny zasilania.",
+      "test": "Sprawdzenie zwarcia/rezystancji do GND; pojemność najlepiej mierzyć po odlutowaniu.",
+      "faults": [
+        "zwarcie",
+        "pęknięcie",
+        "utrata pojemności"
+      ]
+    },
+    {
+      "name": "Kondensator elektrolityczny",
+      "symbol": "C",
+      "description": "Magazynuje energię i filtruje tętnienia.",
+      "test": "Pojemność, ESR, oględziny.",
+      "faults": [
+        "wysoki ESR",
+        "wyschnięcie",
+        "wybrzuszenie",
+        "zwarcie"
+      ]
+    },
+    {
+      "name": "Dioda prostownicza",
+      "symbol": "D",
+      "description": "Przewodzi głównie w jednym kierunku.",
+      "test": "Tryb diody: typowo ok. 0.2–0.8 V zależnie od typu.",
+      "faults": [
+        "zwarcie",
+        "przerwa",
+        "upływ"
+      ]
+    },
+    {
+      "name": "Dioda Schottky",
+      "symbol": "D",
+      "description": "Szybka dioda o niskim spadku napięcia.",
+      "test": "Tryb diody, często ok. 0.15–0.45 V.",
+      "faults": [
+        "zwarcie",
+        "przerwa",
+        "upływ termiczny"
+      ]
+    },
+    {
+      "name": "Dioda Zenera/TVS",
+      "symbol": "ZD/TVS",
+      "description": "Ogranicza napięcie i chroni linie.",
+      "test": "Tryb diody wykryje zwarcie; napięcie przebicia wymaga kontrolowanego źródła.",
+      "faults": [
+        "zwarcie",
+        "upływ",
+        "przerwa"
+      ]
+    },
+    {
+      "name": "Tranzystor MOSFET",
+      "symbol": "Q",
+      "description": "Klucz mocy lub element sterujący.",
+      "test": "Sprawdź D-S na zwarcie, złącza wewnętrzne i reakcję bramki.",
+      "faults": [
+        "D-S zwarcie",
+        "przebita bramka",
+        "upływ"
+      ]
+    },
+    {
+      "name": "Tranzystor BJT",
+      "symbol": "Q",
+      "description": "Wzmacnia lub przełącza sygnały.",
+      "test": "Złącza B-E i B-C jak diody, zwykle ~0.55–0.75 V dla krzemu.",
+      "faults": [
+        "zwarcie złączy",
+        "przerwa",
+        "spadek wzmocnienia"
+      ]
+    },
+    {
+      "name": "Cewka / dławik",
+      "symbol": "L",
+      "description": "Magazynuje energię w przetwornicach i filtruje zakłócenia.",
+      "test": "Ciągłość i rezystancja DC; przerwa jest podejrzana.",
+      "faults": [
+        "przerwa",
+        "przegrzanie",
+        "pęknięty rdzeń"
+      ]
+    },
+    {
+      "name": "Bezpiecznik SMD",
+      "symbol": "F",
+      "description": "Chroni obwód przed nadmiernym prądem.",
+      "test": "Ciągłość, blisko 0 Ω.",
+      "faults": [
+        "przerwa"
+      ]
+    },
+    {
+      "name": "LDO",
+      "symbol": "U",
+      "description": "Liniowy stabilizator napięcia.",
+      "test": "Sprawdź VIN, EN, VOUT, GND.",
+      "faults": [
+        "brak wyjścia",
+        "zwarcie wejście-wyjście",
+        "grzanie"
+      ]
+    },
+    {
+      "name": "Przetwornica buck",
+      "symbol": "U/L/Q",
+      "description": "Obniża napięcie z wysoką sprawnością.",
+      "test": "VIN, EN, SW, napięcie na cewce, sprzężenie FB.",
+      "faults": [
+        "zwarcie MOSFET",
+        "brak enable",
+        "uszkodzony kontroler"
+      ]
+    },
+    {
+      "name": "Przetwornica boost",
+      "symbol": "U/L/D/Q",
+      "description": "Podwyższa napięcie.",
+      "test": "VIN, EN, SW, dioda/rectifier, VOUT.",
+      "faults": [
+        "brak startu",
+        "zwarcie wyjścia",
+        "uszkodzona cewka/dioda"
+      ]
+    },
+    {
+      "name": "PMIC",
+      "symbol": "U",
+      "description": "Zarządza wieloma szynami zasilania urządzenia.",
+      "test": "Sprawdź wejścia, always-on, enable, kolejność szyn i temperaturę.",
+      "faults": [
+        "brak jednej szyny",
+        "zwarcie",
+        "brak sekwencji"
+      ]
+    },
+    {
+      "name": "Pamięć eMMC/UFS/NAND",
+      "symbol": "U",
+      "description": "Pamięć masowa urządzenia.",
+      "test": "Sprawdź wszystkie wymagane szyny, reset/clock i aktywność interfejsu.",
+      "faults": [
+        "brak komunikacji",
+        "degradacja pamięci",
+        "zwarcie zasilania"
+      ]
+    },
+    {
+      "name": "EEPROM/SPI Flash",
+      "symbol": "U",
+      "description": "Przechowuje firmware, konfigurację lub BIOS.",
+      "test": "VCC, CS, CLK, DATA; odczyt programatorem po identyfikacji układu.",
+      "faults": [
+        "uszkodzony wsad",
+        "brak zasilania",
+        "uszkodzenie komórki"
+      ]
+    },
+    {
+      "name": "Optoizolator",
+      "symbol": "PC/U",
+      "description": "Przenosi sygnał przez barierę izolacji.",
+      "test": "LED wejściowa w trybie diody, strona wyjściowa według typu.",
+      "faults": [
+        "przerwa LED",
+        "utrata CTR",
+        "zwarcie"
+      ]
+    },
+    {
+      "name": "Triak",
+      "symbol": "TR/Q",
+      "description": "Steruje obciążeniami AC w AGD.",
+      "test": "Sprawdź zwarcie MT1-MT2 i obwód bramki.",
+      "faults": [
+        "zwarcie",
+        "brak wyzwalania"
+      ]
+    },
+    {
+      "name": "Przekaźnik",
+      "symbol": "K/RY",
+      "description": "Galwanicznie przełącza obciążenie.",
+      "test": "Rezystancja cewki, napięcie sterujące, ciągłość styków.",
+      "faults": [
+        "spalona cewka",
+        "sklejone/wypalone styki"
+      ]
+    },
+    {
+      "name": "Warystor MOV",
+      "symbol": "RV/MOV",
+      "description": "Chroni przed przepięciami sieciowymi.",
+      "test": "Oględziny, brak zwarcia przy normalnym napięciu pomiarowym.",
+      "faults": [
+        "zwarcie po przepięciu",
+        "pęknięcie"
+      ]
+    }
+  ]
+}

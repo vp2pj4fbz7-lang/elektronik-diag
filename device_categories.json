@@ -1,0 +1,315 @@
+{
+  "device_categories": [
+    {
+      "id": "phone",
+      "name": "Telefon / smartfon",
+      "brands": [
+        "Samsung",
+        "Apple",
+        "LG",
+        "Lenovo",
+        "Motorola",
+        "Xiaomi",
+        "Huawei"
+      ],
+      "board_sections": [
+        {
+          "section": "VBAT / wejście baterii",
+          "typical": "3.0–4.45 V DC",
+          "checks": [
+            "zwarcie do GND",
+            "spadek napięcia pod obciążeniem",
+            "ciągłość do PMIC"
+          ]
+        },
+        {
+          "section": "VBUS USB",
+          "typical": "5 V bez negocjacji; wyższe profile zależne od USB-PD/QC",
+          "checks": [
+            "gniazdo",
+            "ESD",
+            "CC1/CC2",
+            "układ ładowania"
+          ]
+        },
+        {
+          "section": "szyny always-on",
+          "typical": "najczęściej 1.8 V / 3.0 V / 3.3 V, zależnie od platformy",
+          "checks": [
+            "rezystancja do masy",
+            "obecność po podaniu zasilania"
+          ]
+        },
+        {
+          "section": "CPU / SoC core",
+          "typical": "ok. 0.6–1.2 V dynamicznie",
+          "checks": [
+            "sekcja buck",
+            "cewki",
+            "zwarcie niskoomowe vs naturalnie niska rezystancja rdzenia"
+          ]
+        },
+        {
+          "section": "RAM",
+          "typical": "ok. 0.6–1.2 V zależnie od typu pamięci",
+          "checks": [
+            "zasilanie DRAM",
+            "sygnały enable"
+          ]
+        },
+        {
+          "section": "NAND/UFS/eMMC",
+          "typical": "często 1.2 V / 1.8 V / 2.8–3.3 V",
+          "checks": [
+            "VCC/VCCQ",
+            "oscylator/clock",
+            "komunikacja"
+          ]
+        },
+        {
+          "section": "RF",
+          "typical": "1.8 V / 2.8 V / VBAT zależnie od toru",
+          "checks": [
+            "PA",
+            "transceiver",
+            "LDO RF",
+            "zwarcia po upadku/zalaniu"
+          ]
+        },
+        {
+          "section": "podświetlenie LCD",
+          "typical": "kilkanaście do kilkudziesięciu V w układach boost LED",
+          "checks": [
+            "cewka",
+            "dioda/układ boost",
+            "ciągłość linii anody"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tv",
+      "name": "Telewizor",
+      "brands": [
+        "Samsung",
+        "LG",
+        "Sony",
+        "Philips",
+        "TCL",
+        "Hisense"
+      ],
+      "board_sections": [
+        {
+          "section": "AC wejście zasilacza",
+          "typical": "230 V AC w PL/EU",
+          "checks": [
+            "bezpiecznik",
+            "NTC",
+            "mostek prostowniczy",
+            "PFC"
+          ],
+          "danger": "wysokie napięcie"
+        },
+        {
+          "section": "szyna po prostowniku",
+          "typical": "ok. 310–325 V DC bez PFC przy 230 V AC",
+          "checks": [
+            "kondensator główny"
+          ],
+          "danger": "niebezpieczne napięcie"
+        },
+        {
+          "section": "PFC",
+          "typical": "często ok. 380–400 V DC podczas pracy",
+          "checks": [
+            "MOSFET PFC",
+            "dioda",
+            "sterownik",
+            "rezystory pomiarowe"
+          ],
+          "danger": "niebezpieczne napięcie"
+        },
+        {
+          "section": "standby",
+          "typical": "najczęściej 3.3 V lub 5 V",
+          "checks": [
+            "STBY",
+            "PS-ON",
+            "stabilność tętnień"
+          ]
+        },
+        {
+          "section": "main board",
+          "typical": "często 12 V / 5 V / 3.3 V / 1.8 V / 1.2 V / ~1.0 V",
+          "checks": [
+            "buck/LDO",
+            "SoC",
+            "DDR",
+            "eMMC"
+          ]
+        },
+        {
+          "section": "T-CON",
+          "typical": "wejście zwykle 12 V; AVDD często ok. 13–18 V; VGH/VGL zależne od matrycy",
+          "checks": [
+            "bezpiecznik SMD",
+            "DC-DC",
+            "zwarcia matrycy"
+          ]
+        },
+        {
+          "section": "LED backlight",
+          "typical": "od kilkudziesięciu do ponad 200 V DC zależnie od panelu",
+          "checks": [
+            "łańcuchy LED",
+            "driver LED"
+          ],
+          "danger": "wysokie napięcie"
+        }
+      ]
+    },
+    {
+      "id": "laptop_pc",
+      "name": "Laptop / komputer",
+      "brands": [
+        "Apple",
+        "Lenovo",
+        "Dell",
+        "HP",
+        "ASUS",
+        "Acer",
+        "MSI"
+      ],
+      "board_sections": [
+        {
+          "section": "wejście DC",
+          "typical": "laptopy często 19–20 V; USB-C PD może negocjować różne profile",
+          "checks": [
+            "MOSFET wejściowe",
+            "charger IC",
+            "rezystor pomiarowy"
+          ]
+        },
+        {
+          "section": "3V/5V always",
+          "typical": "3.3 V i 5 V",
+          "checks": [
+            "cewki standby",
+            "EN",
+            "S5/S3"
+          ]
+        },
+        {
+          "section": "CPU core",
+          "typical": "zwykle ~0.5–1.3 V dynamicznie",
+          "checks": [
+            "VRM",
+            "PWM",
+            "MOSFET/DrMOS",
+            "cewki"
+          ]
+        },
+        {
+          "section": "RAM",
+          "typical": "zależne od DDR generacji, zwykle ~1.1–1.5 V oraz linie pomocnicze",
+          "checks": [
+            "VDD/VDDQ",
+            "VTT"
+          ]
+        },
+        {
+          "section": "SPI BIOS",
+          "typical": "3.3 V lub 1.8 V zależnie od pamięci",
+          "checks": [
+            "VCC",
+            "CS",
+            "CLK",
+            "aktywność przy starcie"
+          ]
+        },
+        {
+          "section": "USB",
+          "typical": "5 V VBUS",
+          "checks": [
+            "bezpieczniki",
+            "power switch",
+            "ESD"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "appliance",
+      "name": "AGD: pralka / zmywarka / lodówka",
+      "brands": [
+        "Samsung",
+        "LG",
+        "Bosch",
+        "Siemens",
+        "Whirlpool",
+        "Electrolux",
+        "Beko"
+      ],
+      "board_sections": [
+        {
+          "section": "wejście sieciowe",
+          "typical": "230 V AC",
+          "checks": [
+            "bezpiecznik",
+            "warystor",
+            "NTC",
+            "filtr EMI"
+          ],
+          "danger": "wysokie napięcie"
+        },
+        {
+          "section": "zasilacz pomocniczy",
+          "typical": "często 5 V / 12 V / 15 V zależnie od konstrukcji",
+          "checks": [
+            "SMPS",
+            "kondensatory",
+            "sprzężenie zwrotne"
+          ]
+        },
+        {
+          "section": "mikrokontroler",
+          "typical": "najczęściej 3.3 V lub 5 V",
+          "checks": [
+            "reset",
+            "oscylator",
+            "VCC"
+          ]
+        },
+        {
+          "section": "przekaźniki",
+          "typical": "cewki często 5/12 V DC, styki przełączają 230 V AC",
+          "checks": [
+            "tranzystor driver",
+            "dioda",
+            "cewka",
+            "styki"
+          ],
+          "danger": "sieć 230 V"
+        },
+        {
+          "section": "triaki",
+          "typical": "sterowanie logiczne, obwód mocy 230 V AC",
+          "checks": [
+            "bramka",
+            "zwarcie MT1-MT2",
+            "optoizolacja"
+          ],
+          "danger": "sieć 230 V"
+        },
+        {
+          "section": "czujniki NTC",
+          "typical": "rezystancja silnie zależna od temperatury i modelu",
+          "checks": [
+            "porównaj z tabelą serwisową",
+            "brak przerwy/zwarcia"
+          ]
+        }
+      ]
+    }
+  ]
+}

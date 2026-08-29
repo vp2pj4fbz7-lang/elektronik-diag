@@ -1,0 +1,93 @@
+{
+  "schematic_index": [
+    {
+      "device": "Telefon",
+      "brand": "Samsung",
+      "kind": "schemat blokowy / boardview / service manual",
+      "status": "miejsce na rekordy modelowe",
+      "fields": [
+        "model",
+        "board_code",
+        "source",
+        "revision",
+        "notes"
+      ]
+    },
+    {
+      "device": "Telefon",
+      "brand": "Apple",
+      "kind": "schemat blokowy / boardview / service manual",
+      "status": "miejsce na rekordy modelowe",
+      "fields": [
+        "model",
+        "board_code",
+        "source",
+        "revision",
+        "notes"
+      ]
+    },
+    {
+      "device": "Telewizor",
+      "brand": "Samsung",
+      "kind": "power/main/T-CON",
+      "status": "miejsce na rekordy modelowe",
+      "fields": [
+        "model",
+        "chassis",
+        "board_code",
+        "panel",
+        "source"
+      ]
+    },
+    {
+      "device": "Telewizor",
+      "brand": "LG",
+      "kind": "power/main/T-CON",
+      "status": "miejsce na rekordy modelowe",
+      "fields": [
+        "model",
+        "chassis",
+        "board_code",
+        "panel",
+        "source"
+      ]
+    },
+    {
+      "device": "Komputer/Laptop",
+      "brand": "Lenovo",
+      "kind": "mainboard schematic / boardview",
+      "status": "miejsce na rekordy modelowe",
+      "fields": [
+        "model",
+        "machine_type",
+        "board_code",
+        "revision",
+        "source"
+      ]
+    },
+    {
+      "device": "Komputer/Laptop",
+      "brand": "Apple",
+      "kind": "logic board schematic / boardview",
+      "status": "miejsce na rekordy modelowe",
+      "fields": [
+        "model",
+        "board_code",
+        "revision",
+        "source"
+      ]
+    },
+    {
+      "device": "AGD",
+      "brand": "Samsung/LG",
+      "kind": "wiring diagram / control board",
+      "status": "miejsce na rekordy modelowe",
+      "fields": [
+        "model",
+        "pcb_code",
+        "wiring_code",
+        "source"
+      ]
+    }
+  ]
+}
