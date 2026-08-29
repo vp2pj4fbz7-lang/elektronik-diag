@@ -1,10 +1,10 @@
 {
-  "name": "Elektronik Diag V6.7 – Budowa pakietu 18650",
-  "short_name": "Elektronik Diag V6.7",
-  "start_url": "./?v=6.7",
+  "name": "Elektronik Diag V6.7.2 – Pakiety 18650",
+  "short_name": "Elektronik Diag V6.7.2",
+  "start_url": "./index.html?v=6.7.2",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0b1624",
   "theme_color": "#102238",
-  "description": "Diagnostyka elektroniki, baza pojęć oraz moduł budowy i diagnostyki pakietów Li-ion 18650/21700."
+  "description": "Wersja diagnostyczna bez cache Service Workera, z modułem budowy pakietów 18650."
 }

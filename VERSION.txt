@@ -1,0 +1,2 @@
+Elektronik Diag V6.7.2
+Build: ED-672-HARDRESET
