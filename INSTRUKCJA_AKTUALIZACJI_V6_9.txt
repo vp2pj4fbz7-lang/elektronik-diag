@@ -1,0 +1,26 @@
+ELEKTRONIK DIAG V6.9 – GRAFICZNY ATLAS PODZESPOŁÓW
+
+CO NOWEGO
+- 45 kart elementów dostępnych w wyszukiwarce Atlasu.
+- Graficzne symbole lub schematy blokowe.
+- Opis wyprowadzeń i oznaczeń na PCB.
+- Pomiar krok po kroku.
+- Osobne pola: wynik prawidłowy i podejrzenie uszkodzenia.
+- Typowe zastosowania, usterki i zasady doboru zamiennika.
+- Nowa pamięć aplikacji V6.9 z obsługą pracy offline.
+
+JAK WGRAĆ NA GITHUB Z IPADA
+1. Rozpakuj pobrany plik ZIP w aplikacji Pliki.
+2. W repozytorium elektronik-diag na GitHub naciśnij Add file.
+3. Wybierz Upload files.
+4. Wgraj WSZYSTKIE pliki znajdujące się wewnątrz folderu elektronik-diag-main.
+5. Zatwierdź przyciskiem Commit changes.
+6. Poczekaj około 2–5 minut na aktualizację GitHub Pages.
+7. Otwórz w Safari plik RESET.html z adresu swojej aplikacji i wykonaj reset pamięci.
+8. Ponownie otwórz aplikację. Na pulpicie powinien być napis „Elektronik Diag V6.9”.
+
+WAŻNE
+- Nie wgrywaj samego folderu jako dodatkowego podfolderu.
+- Plik index.html musi pozostać w katalogu głównym repozytorium.
+- Nie usuwaj ikon, manifest.webmanifest ani sw.js.
+- Pomiary na części sieciowej i szynie wysokiego napięcia wykonuj tylko z zachowaniem zasad bezpieczeństwa.
