@@ -1,2 +1,2 @@
-Elektronik Diag V7.0
-Build: ED-700-AIXUN-WORKSHOP
+Elektronik Diag V7.1
+Build: ED-710-FNIRSI-DSO152

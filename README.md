@@ -1,8 +1,9 @@
-# Elektronik Diag V7.0 – AiXun Workshop
+# Elektronik Diag V7.1 – FNIRSI DSO-152
 
-Kompletna aplikacja PWA do diagnostyki elektroniki. Wersja V7.0 dodaje moduły obsługi AiXun P3208 i AiXun H314, zachowując wcześniejszą bazę wiedzy, Akademię, Diagnostykę PRO i Graficzny Atlas.
+Kompletna aplikacja PWA do diagnostyki elektroniki. Wersja V7.1 dodaje moduł obsługi oscyloskopu FNIRSI DSO-152, zachowując moduły AiXun P3208 i H314, bazę wiedzy, Akademię, Diagnostykę PRO i Graficzny Atlas.
 
 ## Nowe moduły
+- FNIRSI DSO-152 – obsługa, ustawienia, wyzwalanie, sonda, pomiary, asystent i przykłady warsztatowe.
 - AiXun P3208 – zasilacz DC, BOOT telefonu, analiza poboru, SC Repair, USB/QC, baterie i ustawienia.
 - AiXun H314 – obsługa hot-air, tryby, krzywe/segmenty, presety, dysze, Wi-Fi i konserwacja.
 

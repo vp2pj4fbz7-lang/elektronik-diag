@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-title" content="Elektronik Diag">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Elektronik Diag V7.0 – AiXun Workshop</title>
+<title>Elektronik Diag V7.1 – FNIRSI DSO-152</title>
 <style>
 :root{--bg:#0b1624;--side:#102238;--panel:#132b45;--panel2:#1c3c5d;--border:#355a7f;--text:#f6f9fc;--muted:#b9c9d9;--accent:#68b6ff;--ok:#57d38c;--bad:#ff7a7a}
 *{box-sizing:border-box}
@@ -57,7 +57,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="app">
 <aside>
 <div class="brand">Elektronik Diag</div>
-<div class="version">V7.0 • AiXun Workshop</div>
+<div class="version">V7.1 • Oscyloskop DSO-152</div>
 <div class="nav">
 <button class="active" data-v="home">Pulpit</button>
 <button data-v="diagnostics">🧭 Diagnostyka PRO</button>
@@ -69,6 +69,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <button data-v="smartphone">📱 Naprawa Smartphone</button>
 <button data-v="p3208">⚡ AiXun P3208</button>
 <button data-v="h314">🔥 AiXun H314</button>
+<button data-v="dso152">〰️ FNIRSI DSO-152</button>
 <button data-v="schematics">🗺️ Schematy płyt</button>
 <button data-v="measurements">📏 Pomiary płyt</button>
 <button data-v="repairguide">🛠️ Zasady napraw</button>
@@ -78,7 +79,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 </aside>
 <main>
 <section id="home" class="view active">
-<h1>Elektronik Diag V7.0</h1><div class="card"><h2>✅ NOWE MODUŁY AiXun</h2><p><b>Obsługa P3208 i H314: funkcje, ustawienia, procedury, diagnostyka oraz bezpieczeństwo.</b></p><p class="muted small">Build: ED-700-AIXUN-WORKSHOP</p></div>
+<h1>Elektronik Diag V7.1</h1><div class="card"><h2>✅ NOWY MODUŁ FNIRSI DSO-152</h2><p><b>Obsługa oscyloskopu, ustawianie przebiegu, wyzwalanie, sonda, pomiary i przykłady warsztatowe.</b></p><p class="muted small">Build: ED-710-FNIRSI-DSO152</p></div>
 <p class="muted">Diagnostyka warsztatowa, szkolenie krok po kroku i graficzny atlas podzespołów.</p>
 <div class="grid">
 <div class="card"><h2>🧭 Diagnostyka PRO</h2><p>Procedury krok po kroku: zasada działania, pomiary, drzewo decyzji i typowe usterki.</p></div>
@@ -88,6 +89,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="card"><h2>🔋 Baterie elektronarzędzi</h2><p>BMS, ogniwa 18650/21700, budowa pakietu krok po kroku, kalkulator S/P, analizator sekcji, pomiary, usterki i trener diagnostyczny.</p></div>
 <div class="card"><h2>⚡ AiXun P3208</h2><p>Zasilanie płyt, analiza poboru, uruchamianie telefonu, SC Repair, szybkie ładowanie i testy baterii.</p></div>
 <div class="card"><h2>🔥 AiXun H314</h2><p>Hot-air: tryby nadmuchu, profile krzywej i segmentowe, presety, dobór dyszy, Wi‑Fi i konserwacja.</p></div>
+<div class="card"><h2>〰️ FNIRSI DSO-152</h2><p>Podstawy oscyloskopu, AUTO, V/div, podstawa czasu, trigger, AC/DC, sonda ×1/×10 i diagnoza przebiegów.</p></div>
 </div>
 <div class="note"><b>Ważne:</b> wyniki z Internetu traktuj jako pomoc diagnostyczną. Zawsze weryfikuj schematem, datasheetem i własnymi pomiarami.</div>
 </section>
@@ -209,6 +211,14 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="danger"><b>⚠️ Gorące powietrze:</b> pracuj przy sprawnym uziemieniu i odciągu oparów. Osłoń baterie, kamery, mikrofony MEMS i tworzywa. Nie kieruj dyszy na skórę ani materiały łatwopalne. Po pracy odłóż kolbę do uchwytu i pozwól wykonać automatyczne chłodzenie.</div>
 <div class="moduleHero"><h2>H314 • precyzyjny hot-air 1400 W</h2><div class="specGrid"><div class="specTile"><b>100–480°C</b><span>zakres producenta</span></div><div class="specTile"><b>do 120 L/min</b><span>przepływ powietrza</span></div><div class="specTile"><b>3,5″ IPS</b><span>ekran sterowania</span></div><div class="specTile"><b>9 kanałów</b><span>profile robocze</span></div></div></div>
 <div id="h314Tabs" class="moduleTabs"></div><div id="h314Content"></div>
+</section>
+
+<section id="dso152" class="view">
+<h1>〰️ FNIRSI DSO-152</h1>
+<p class="muted">Praktyczny przewodnik po jednokanałowym oscyloskopie kieszonkowym do podstawowych pomiarów w elektronice.</p>
+<div class="danger"><b>⚠️ Bezpieczeństwo pomiaru:</b> zacisk masy sondy jest punktem odniesienia pomiaru. Nie podłączaj go przypadkowo do przewodu fazowego, strony pierwotnej zasilacza ani punktu o nieznanym potencjale. DSO‑152 nie zastępuje oscyloskopu z odpowiednią sondą różnicową i kategorią bezpieczeństwa.</div>
+<div class="moduleHero"><h2>DSO‑152 • szybki podgląd podstawowych sygnałów</h2><div class="specGrid"><div class="specTile"><b>200 kHz</b><span>pasmo analogowe</span></div><div class="specTile"><b>2,5 MS/s</b><span>próbkowanie</span></div><div class="specTile"><b>1 kanał</b><span>wejście pomiarowe</span></div><div class="specTile"><b>2,8″ LCD</b><span>320 × 240 px</span></div></div></div>
+<div id="dsoTabs" class="moduleTabs"></div><div id="dsoContent"></div>
 </section>
 
 <section id="schematics" class="view">
@@ -848,7 +858,105 @@ function renderH314(){
  if(h314Tab==='presets') extra='<div class="card"><h2>Orientacyjne punkty startowe</h2><div style="overflow:auto"><table class="presetTable"><thead><tr><th>Praca</th><th>Temperatura stacji</th><th>Nadmuch</th><th>Dysza</th><th>Uwagi</th></tr></thead><tbody>'+h314Presets.map(r=>'<tr>'+r.map(c=>'<td>'+esc(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div><div class="danger" style="margin-top:12px"><b>Uwaga:</b> są to zakresy orientacyjne. Stop lutowniczy, wielowarstwowa płyta, preheater i kalibracja stacji mogą całkowicie zmienić potrzebne ustawienia.</div></div>';
  $('h314Content').innerHTML='<div class="card"><span class="badge">AiXun H314</span><h2>'+esc(x.title)+'</h2><p>'+esc(x.intro)+'</p></div><div class="grid"><div class="card"><h2>Procedura krok po kroku</h2>'+stepsHTML(x.steps)+'</div><div class="card"><h2>Porady warsztatowe</h2>'+tipsHTML(x.tips)+'</div></div>'+extra+'<div class="card"><h2>✅ Checklista przed grzaniem</h2><label class="workCheck"><input type="checkbox"> Bateria i zasilanie płyty odłączone</label><label class="workCheck"><input type="checkbox"> Elementy wrażliwe osłonięte</label><label class="workCheck"><input type="checkbox"> Dysza, profil i nadmuch dobrane</label><label class="workCheck"><input type="checkbox"> Topnik, chwytak i odciąg przygotowane</label><label class="workCheck"><input type="checkbox"> Po naprawie płyta ostygła przed testem</label></div>';
 }
-renderP3208Tabs();renderP3208();renderH314Tabs();renderH314();
+const dsoTabs=[
+ ['start','Możliwości'],['keys','Przyciski i ekran'],['first','Pierwszy przebieg'],['vertical','V/div'],['time','Czas/div'],
+ ['trigger','Wyzwalanie'],['coupling','AC/DC i sonda'],['measure','Odczyt pomiarów'],['advisor','Dobór ustawień'],['workshop','Przykłady'],['limits','Ograniczenia']
+];
+const dsoData={
+ start:{title:'Co potrafi FNIRSI DSO-152',intro:'To prosty oscyloskop jednokanałowy do obserwacji wolnych i średnio szybkich sygnałów analogowych oraz podstawowych sygnałów cyfrowych.',steps:[
+  'Wyświetla kształt napięcia w czasie i pozwala ocenić, czy sygnał jest stały, okresowy, impulsowy albo zaszumiony.',
+  'Mierzy podstawowe parametry przebiegu, m.in. częstotliwość, okres oraz wartości napięcia dostępne na ekranie urządzenia.',
+  'Obsługuje podstawę czasu 10 µs/div–50 s/div i czułość pionową 10 mV/div–20 V/div.',
+  'Oferuje tryby wyzwalania AUTO, NORMAL i SINGLE oraz sprzężenie wejścia AC/DC.',
+  'Przycisk AUTO automatycznie dobiera ustawienia; długie przytrzymanie AUTO wykonuje kalibrację linii bazowej.',
+  'Wbudowany akumulator 1000 mAh zapewnia według producenta około 4 godzin pracy; USB‑C służy do ładowania i aktualizacji.'
+ ],tips:['Najlepiej nadaje się do audio, PWM, czujników, tętnień niskiej częstotliwości, sygnałów sterujących i nauki oscyloskopu.','Pasmo 200 kHz oznacza, że nie jest narzędziem do wiarygodnej oceny HDMI, USB High-Speed, szybkich zegarów procesora ani RF.','Jeden kanał pozwala oglądać jeden sygnał względem masy; nie porównasz jednocześnie dwóch przebiegów ani ich przesunięcia fazowego.']},
+ keys:{title:'Przyciski, pola ekranu i szybkie funkcje',intro:'Najpierw naucz się rozróżniać pozycję przebiegu, V/div, podstawę czasu, poziom triggera, sprzężenie i mnożnik sondy.',steps:[
+  'POWER: dłuższe naciśnięcie włącza urządzenie, krótkie naciśnięcie wyłącza je.',
+  'AUTO: krótkie naciśnięcie automatycznie szuka czytelnego przebiegu; długie kalibruje linię bazową przy prawidłowo odłączonym sygnale zgodnie z instrukcją.',
+  'Klawisze wyboru przechodzą między parametrami; klawisze regulacji zmieniają zaznaczoną wartość.',
+  'V/div mówi, ile woltów przypada na jedną pionową kratkę; s/div mówi, ile czasu przypada na jedną poziomą kratkę.',
+  'Strzałka/znacznik triggera pokazuje poziom napięcia, przy którym oscyloskop ma rozpocząć rejestrację.',
+  'Wskaźnik ×1/×10 na ekranie musi być zgodny z fizycznym przełącznikiem sondy.'
+ ],tips:['Jeżeli przyciski w Twojej rewizji mają inne symbole, kieruj się nazwą zaznaczonego parametru na ekranie.','AUTO jest dobrym początkiem, ale później ręcznie popraw V/div, czas/div i trigger.','Przed pomiarem sprawdź poziom akumulatora — gaśnięcie ekranu może oznaczać potrzebę ładowania.']},
+ first:{title:'Pierwszy poprawny przebieg krok po kroku',intro:'Do nauki użyj wbudowanego wyjścia kalibracyjnego 1 kHz / 50% i sondy ustawionej zgodnie z ekranem.',steps:[
+  'Podłącz czarny zacisk masy sondy do masy wyjścia kalibracyjnego, a końcówkę pomiarową do sygnału 1 kHz.',
+  'Ustaw ten sam mnożnik sondy w oscyloskopie i na sondzie: ×1 albo ×10.',
+  'Wybierz sprzężenie DC i naciśnij AUTO.',
+  'Ustaw przebieg w pionie tak, aby nie dotykał górnej ani dolnej krawędzi ekranu.',
+  'Dostosuj czas/div tak, aby było widać około 2–5 pełnych okresów.',
+  'Ustaw zbocze narastające oraz poziom triggera mniej więcej pośrodku amplitudy.',
+  'Sprawdź, czy odczyt częstotliwości jest bliski 1 kHz, a wypełnienie bliskie 50%.'
+ ],tips:['Jeżeli prostokąt ma zaokrąglone lub przeregulowane naroża przy sondzie P6100, wyreguluj kompensację sondy małym trymerem.','Zawsze najpierw podłącz masę, później końcówkę sygnałową; odłączaj w odwrotnej kolejności.','Długi przewód masy zbiera zakłócenia i pogarsza obraz szybszych zboczy.']},
+ vertical:{title:'Czułość pionowa V/div i położenie zera',intro:'V/div określa wysokość przebiegu. Mniejsza wartość daje większe powiększenie napięcia.',steps:[
+  'Zacznij od większego V/div, aby nie wyprowadzić przebiegu poza ekran.',
+  'Stopniowo zmniejszaj V/div, aż sygnał zajmie około 4–6 działek pionowych.',
+  'Przesuń pozycję pionową tak, aby poziom 0 V i cały przebieg były czytelne.',
+  'Dla sondy ×10 pamiętaj, że napięcie na końcówce jest dziesięciokrotnie większe od napięcia doprowadzanego do wejścia — ustawienie ekranowe powinno przeliczać to automatycznie.',
+  'Jeżeli sygnał jest obcięty u góry lub dołu, zwiększ V/div albo przesuń pozycję.'
+ ],tips:['Zakres producenta wynosi 10 mV/div–20 V/div.','Do małych tętnień na napięciu stałym użyj sprzężenia AC i małego V/div, ale wcześniej sprawdź poziom DC w bezpiecznym zakresie.','Nie myl położenia linii na ekranie z napięciem — punkt odniesienia 0 V zależy od ustawionej pozycji.']},
+ time:{title:'Podstawa czasu i częstotliwość',intro:'Czas/div decyduje, jak szeroki fragment czasu widzisz. Mniejsza wartość pokazuje szybsze szczegóły, większa — wolne zmiany.',steps:[
+  'Jeżeli przebieg jest gęstą plamą, zmniejsz czas/div, czyli przejdź do krótszego czasu na działkę.',
+  'Jeżeli widzisz tylko fragment jednego zbocza, zwiększ czas/div, aby objąć więcej czasu.',
+  'Dla czytelnego pomiaru częstotliwości ustaw 2–5 okresów na szerokość ekranu.',
+  'Okres T zmierz liczbą działek jednego cyklu pomnożoną przez czas/div.',
+  'Częstotliwość oblicz ze wzoru f = 1/T.'
+ ],tips:['Zakres podstawy czasu producenta: 10 µs/div–50 s/div.','Przy sygnale 1 kHz okres wynosi 1 ms; ustawienie w okolicy setek µs/div zwykle pokaże kilka cykli.','DSO‑152 może wyświetlić częstotliwość sygnału poza użytecznym pasmem, ale kształt i amplituda nie muszą być wtedy wiarygodne.']},
+ trigger:{title:'Trigger: AUTO, NORMAL i SINGLE',intro:'Wyzwalanie stabilizuje przebieg w tym samym miejscu ekranu albo łapie pojedyncze zdarzenie.',steps:[
+  'AUTO: pokazuje przebieg nawet bez spełnienia warunku triggera; najlepszy do wyszukania nieznanego sygnału.',
+  'NORMAL: odświeża ekran tylko wtedy, gdy sygnał przekroczy ustawiony poziom we właściwym kierunku; dobry do stabilnego sygnału okresowego.',
+  'SINGLE: uzbraja jednorazowe przechwycenie; użyj do impulsu startowego, resetu, włączenia przekaźnika lub krótkiego zaniku.',
+  'Wybierz zbocze narastające dla przejścia z niskiego na wysokie albo opadające dla przeciwnego kierunku.',
+  'Ustaw poziom triggera wewnątrz amplitudy sygnału — dla prostokąta zwykle blisko połowy wysokości.',
+  'Jeżeli przebieg „ucieka”, sprawdź poziom, zbocze, tryb i czy sygnał rzeczywiście przecina próg.'
+ ],tips:['SINGLE przygotuj przed uruchomieniem badanego urządzenia.','Trigger nie naprawia złej podstawy czasu ani V/div — wszystkie trzy ustawienia muszą do siebie pasować.','Przy zaszumionym sygnale stabilność może poprawić krótsza masa sondy i ustawienie poziomu z dala od szumu.']},
+ coupling:{title:'Sprzężenie AC/DC i sonda ×1/×10',intro:'DC pokazuje napięcie stałe wraz ze zmianami. AC odcina składową stałą i ułatwia powiększenie tętnień.',steps:[
+  'DC: wybierz do PWM, sygnałów logicznych, czujników, zasilania i kontroli rzeczywistych poziomów napięcia.',
+  'AC: wybierz do małych tętnień lub składowej zmiennej na dużym napięciu stałym; obraz nie pokazuje wtedy prawdziwego poziomu DC.',
+  '×1: większa czułość dla małych, wolnych sygnałów, ale mniejsze dopuszczalne napięcie i większe obciążenie badanego układu.',
+  '×10: mniejsze obciążenie układu i większy zakres napięcia; wymaga zgodnego ustawienia mnożnika na ekranie.',
+  'Przed pomiarem zawsze potwierdź położenie przełącznika sondy i wartość wyświetlaną przez oscyloskop.'
+ ],tips:['Producent podaje zakres wejścia ×1 do ±40 V oraz ×10 do ±400 V, lecz nie oznacza to automatycznie bezpiecznego pomiaru sieci energetycznej.','P6100 wymaga odpowiedniego adaptera do wejścia DSO‑152.','Do obwodów połączonych z siecią używaj tylko sprzętu, sond i metod o właściwej kategorii oraz izolacji.']},
+ measure:{title:'Jak odczytywać napięcie, okres i wypełnienie',intro:'Najpierw ustaw czytelny, stabilny przebieg. Automatyczny odczyt sprawdzaj ręcznym przeliczeniem kratek.',steps:[
+  'Vpp: policz pionowe działki od minimum do maksimum i pomnóż przez V/div.',
+  'Vmax/Vmin: licz względem znacznika 0 V, uwzględniając V/div i mnożnik sondy.',
+  'Okres T: policz działki między dwoma identycznymi punktami kolejnych cykli i pomnóż przez czas/div.',
+  'Częstotliwość: f = 1/T; dla T w milisekundach f[kHz] = 1/T[ms].',
+  'Wypełnienie: czas stanu wysokiego podziel przez cały okres i pomnóż przez 100%.',
+  'Tętnienia: użyj AC, małego V/div i krótkiego połączenia masy; zapisz Vpp oraz warunki obciążenia.'
+ ],tips:['Jeżeli mnożnik sondy jest błędnie ustawiony, wszystkie odczyty napięcia będą błędne dziesięciokrotnie.','Pomiar częstotliwości nie mówi, czy amplituda i zbocza są odwzorowane poprawnie.','Notuj: punkt pomiarowy, masa, sonda, sprzężenie, V/div, czas/div, trigger i obciążenie urządzenia.']},
+ workshop:{title:'Zastosowania w warsztacie',intro:'DSO‑152 jest najbardziej użyteczny tam, gdzie sygnał mieści się w jego paśmie i można bezpiecznie odnieść pomiar do masy.',steps:[
+  'Audio: sprawdź obecność sygnału od wejścia przez kolejne stopnie wzmacniacza; użyj AC i zacznij od większego V/div.',
+  'PWM wentylatora, podświetlenia lub przetwornicy: użyj DC, ustaw trigger pośrodku poziomów i zmierz częstotliwość/wypełnienie.',
+  'Czujnik samochodowy niskiej częstotliwości: zasil układ prawidłowo, połącz masy i obserwuj zmianę podczas ruchu; nie używaj do zapłonu ani wtrysku bez właściwych sond/tłumików.',
+  'Tętnienia wyjścia zasilacza niskonapięciowego: użyj AC, krótkiej masy i zmierz Vpp pod obciążeniem.',
+  'Impuls POWER/RESET: tryb SINGLE, właściwy poziom triggera i uruchomienie badanego urządzenia po uzbrojeniu.',
+  'Linie I²C/UART o małej szybkości: możesz potwierdzić aktywność, poziomy i obecność impulsów, ale DSO‑152 nie dekoduje protokołów.'
+ ],tips:['W telefonach przyda się do wolnych sygnałów sterujących, tętnień i prostych impulsów, ale nie do magistral o wysokiej prędkości.','W elektronice samochodowej zawsze najpierw sprawdź maksymalne napięcie i możliwe przepięcia.','Porównanie ze sprawnym urządzeniem tego samego modelu jest często cenniejsze niż sam „ładny” przebieg.']},
+ limits:{title:'Czego DSO-152 nie mierzy wiarygodnie',intro:'Znajomość ograniczeń chroni przed błędną diagnozą. Pasmo 200 kHz jest odpowiednie tylko dla stosunkowo wolnych sygnałów.',steps:[
+  'Nie oceniaj nim integralności USB 2.0 High-Speed, USB‑C/PD na szybkich liniach danych, HDMI, MIPI, pamięci RAM/UFS ani zegarów procesora.',
+  'Nie traktuj go jako analizatora CAN o wysokiej jakości sygnału; można zobaczyć aktywność wolniejszych przebiegów, ale pełna ocena magistrali wymaga odpowiedniego pasma i sondowania różnicowego.',
+  'Nie wykonuj bezpośrednich pomiarów strony pierwotnej SMPS, sieci 230 V ani układów „hot ground” zwykłym zaciskiem masy.',
+  'Nie mierz dwóch punktów jednocześnie — urządzenie ma tylko jeden kanał.',
+  'Nie ufaj amplitudzie blisko lub powyżej granicy pasma; wraz z częstotliwością sygnał jest coraz bardziej tłumiony i zaokrąglany.',
+  'Nie interpretuj szumu bez sprawdzenia sondy, masy, sprzężenia, ładowarki USB i otoczenia.'
+ ],tips:['Dla przebiegów o istotnych harmonicznych praktyczne wymagane pasmo jest wielokrotnie większe od częstotliwości podstawowej.','Jeśli naprawiasz HDMI/USB‑C/retimer, użyj DSO‑152 do kontroli wolnych napięć i enable/reset, a nie do oglądania samego szybkiego strumienia danych.','Do pomiaru między dwoma punktami niepołączonymi z masą potrzebna jest właściwa sonda różnicowa i oscyloskop o odpowiednich parametrach.']}
+};
+let dsoTab='start';
+function renderDsoTabs(){
+ $('dsoTabs').innerHTML=dsoTabs.map(x=>'<button class="secondary '+(x[0]===dsoTab?'active':'')+'" data-dso="'+x[0]+'">'+esc(x[1])+'</button>').join('');
+ document.querySelectorAll('[data-dso]').forEach(b=>b.onclick=()=>{dsoTab=b.dataset.dso;renderDsoTabs();renderDso()});
+}
+function dsoAdvisorHTML(){return '<div class="card"><h2>🧭 Asystent ustawień startowych</h2><div class="readingInput"><label>Rodzaj pomiaru<select id="dsoSignal"><option value="pwm">PWM / prostokąt</option><option value="ripple">Tętnienia zasilania</option><option value="audio">Sygnał audio</option><option value="pulse">Pojedynczy impuls</option><option value="sensor">Wolny czujnik</option></select></label><label>Przewidywana częstotliwość [Hz]<input id="dsoFreq" type="number" min="0" value="1000"></label><label>Przewidywane napięcie maks. [V]<input id="dsoVolt" type="number" min="0" step="0.1" value="5"></label></div><div class="toolbar"><button class="primary" id="dsoAdvise">Dobierz ustawienia</button></div><div id="dsoAdvice"></div></div>'}
+function renderDso(){
+ const x=dsoData[dsoTab];let extra=dsoTab==='advisor'?dsoAdvisorHTML():'';
+ if(dsoTab==='measure') extra='<div class="card"><h2>🧮 Kalkulator przebiegu</h2><div class="readingInput"><label>Działki jednego okresu<input id="dsoDivs" type="number" min="0.1" step="0.1" value="5"></label><label>Czas na działkę<input id="dsoTimeVal" type="number" min="0.001" step="0.001" value="0.2"></label><label>Jednostka<select id="dsoTimeUnit"><option value="0.001">ms/div</option><option value="0.000001">µs/div</option><option value="1">s/div</option></select></label></div><div class="toolbar"><button class="primary" id="dsoCalc">Oblicz okres i częstotliwość</button></div><div id="dsoCalcOut"></div></div>';
+ $('dsoContent').innerHTML='<div class="card"><span class="badge">FNIRSI DSO‑152</span><h2>'+esc(x.title)+'</h2><p>'+esc(x.intro)+'</p></div><div class="grid"><div class="card"><h2>Krok po kroku</h2>'+stepsHTML(x.steps)+'</div><div class="card"><h2>Porady warsztatowe</h2>'+tipsHTML(x.tips)+'</div></div>'+extra+'<div class="card"><h2>✅ Checklista pomiaru</h2><label class="workCheck"><input type="checkbox"> Masa i potencjał badanego punktu są bezpieczne</label><label class="workCheck"><input type="checkbox"> Mnożnik ×1/×10 jest zgodny na sondzie i ekranie</label><label class="workCheck"><input type="checkbox"> Sygnał mieści się w zakresie napięcia i pasma</label><label class="workCheck"><input type="checkbox"> Ustawiono właściwe AC/DC, V/div, czas/div i trigger</label><label class="workCheck"><input type="checkbox"> Wynik zapisano razem z warunkami pomiaru</label></div>';
+ if($('dsoAdvise')) $('dsoAdvise').onclick=()=>{const type=$('dsoSignal').value,f=+$('dsoFreq').value||0,v=+$('dsoVolt').value||0;let coupling=type==='ripple'||type==='audio'?'AC':'DC',trigger=type==='pulse'?'SINGLE':'AUTO → NORMAL',probe=v>20?'×10':'×1 lub ×10';let tb='zacznij od AUTO';if(f>0){const period=1/f;const perDiv=period/2;tb=perDiv>=1?perDiv.toFixed(2)+' s/div':perDiv>=.001?(perDiv*1000).toFixed(2)+' ms/div':(perDiv*1e6).toFixed(0)+' µs/div'}let verdict=f>200000?'Poza pasmem 200 kHz — wynik kształtu i amplitudy będzie niewiarygodny.':'Sygnał mieści się częstotliwością w zakresie podstawowego zastosowania, ale zachowaj zapas pasma dla zboczy.';$('dsoAdvice').innerHTML='<div class="grid"><div class="result"><b>'+coupling+'</b><br>sprzężenie</div><div class="result"><b>'+probe+'</b><br>sonda</div><div class="result"><b>'+trigger+'</b><br>trigger</div><div class="result"><b>'+tb+'</b><br>czas startowy</div></div><div class="note" style="margin-top:10px"><b>Ocena:</b> '+esc(verdict)+'</div>'};
+ if($('dsoCalc')) $('dsoCalc').onclick=()=>{const d=+$('dsoDivs').value||0,t=+$('dsoTimeVal').value||0,u=+$('dsoTimeUnit').value||1,T=d*t*u,f=T?1/T:0;$('dsoCalcOut').innerHTML='<div class="grid"><div class="result"><b>'+((T<.001)?(T*1e6).toFixed(2)+' µs':T<1?(T*1000).toFixed(3)+' ms':T.toFixed(3)+' s')+'</b><br>okres T</div><div class="result"><b>'+(f>=1000?(f/1000).toFixed(3)+' kHz':f.toFixed(2)+' Hz')+'</b><br>częstotliwość f</div></div>'};
+}
+
+renderP3208Tabs();renderP3208();renderH314Tabs();renderH314();renderDsoTabs();renderDso();
 
 function enc(x){return encodeURIComponent((x||'').trim())}
 function webSearch(type){
