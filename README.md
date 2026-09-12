@@ -1,6 +1,10 @@
-# Elektronik Diag – Baza Wiedzy V1
+# Elektronik Diag V7.0 – AiXun Workshop
 
-Pakiet startowy do aplikacji PWA.
+Kompletna aplikacja PWA do diagnostyki elektroniki. Wersja V7.0 dodaje moduły obsługi AiXun P3208 i AiXun H314, zachowując wcześniejszą bazę wiedzy, Akademię, Diagnostykę PRO i Graficzny Atlas.
+
+## Nowe moduły
+- AiXun P3208 – zasilacz DC, BOOT telefonu, analiza poboru, SC Repair, USB/QC, baterie i ustawienia.
+- AiXun H314 – obsługa hot-air, tryby, krzywe/segmenty, presety, dysze, Wi-Fi i konserwacja.
 
 ## Pliki
 - elektronik_diag_db_v1.json – kompletna baza

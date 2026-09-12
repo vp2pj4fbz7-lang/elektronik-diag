@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-title" content="Elektronik Diag">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Elektronik Diag V6.9 – Graficzny Atlas podzespołów</title>
+<title>Elektronik Diag V7.0 – AiXun Workshop</title>
 <style>
 :root{--bg:#0b1624;--side:#102238;--panel:#132b45;--panel2:#1c3c5d;--border:#355a7f;--text:#f6f9fc;--muted:#b9c9d9;--accent:#68b6ff;--ok:#57d38c;--bad:#ff7a7a}
 *{box-sizing:border-box}
@@ -47,8 +47,9 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 .quizOpt.good{border-color:var(--ok);background:#163427}.quizOpt.wrong{border-color:var(--bad);background:#3a2025}
 .trainerChoice{display:block;width:100%;text-align:left;margin:8px 0}.lessonStep{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}.lessonStep .num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--panel2);font-weight:900}
 .academyTop{display:grid;grid-template-columns:2fr 1fr;gap:14px}
+.moduleHero{background:linear-gradient(135deg,#153958,#102238);border:1px solid #4b7ca7;border-radius:18px;padding:18px;margin:12px 0}.moduleHero h2{font-size:25px}.specGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}.specTile{background:#0d1c2d;border:1px solid var(--border);border-radius:12px;padding:12px}.specTile b{display:block;color:var(--accent);font-size:19px;margin-bottom:3px}.moduleTabs{display:flex;gap:8px;overflow:auto;padding:4px 0 10px}.moduleTabs button{white-space:nowrap}.moduleTabs button.active{background:var(--accent);color:#07111a;border-color:var(--accent)}.presetTable{width:100%;border-collapse:collapse}.presetTable th,.presetTable td{padding:10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}.presetTable th{color:var(--muted);font-size:12px}.workCheck{display:flex;gap:9px;align-items:flex-start;padding:10px;margin:7px 0;background:#0f2135;border-radius:10px}.workCheck input{width:auto;margin-top:3px}.readingInput{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.readingInput label{font-size:13px;color:var(--muted)}
 @media(max-width:1000px){.academyGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.academyTop{grid-template-columns:1fr}}
-@media(max-width:820px){.app{grid-template-columns:1fr}aside{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--border)}.nav{display:flex;overflow:auto}.nav button{min-width:max-content}main{padding:14px}.grid{grid-template-columns:1fr}.sourceBtns{grid-template-columns:1fr 1fr}.sheetTop,.sheetGrid{grid-template-columns:1fr}.atlasHero{grid-template-columns:1fr}.atlasCount{text-align:left}}
+@media(max-width:820px){.app{grid-template-columns:1fr}aside{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--border)}.nav{display:flex;overflow:auto}.nav button{min-width:max-content}main{padding:14px}.grid{grid-template-columns:1fr}.sourceBtns{grid-template-columns:1fr 1fr}.sheetTop,.sheetGrid{grid-template-columns:1fr}.atlasHero{grid-template-columns:1fr}.atlasCount{text-align:left}.specGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.readingInput{grid-template-columns:1fr}}
 @media(max-width:650px){.academyGrid{grid-template-columns:1fr}.compCard{grid-template-columns:75px 1fr}}
 </style>
 </head>
@@ -56,7 +57,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="app">
 <aside>
 <div class="brand">Elektronik Diag</div>
-<div class="version">V6.9 • Graficzny Atlas</div>
+<div class="version">V7.0 • AiXun Workshop</div>
 <div class="nav">
 <button class="active" data-v="home">Pulpit</button>
 <button data-v="diagnostics">🧭 Diagnostyka PRO</button>
@@ -66,6 +67,8 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <button data-v="batteries">🔋 Baterie elektronarzędzi</button>
 <button data-v="packbuilder">🧰 Budowa pakietu 18650</button>
 <button data-v="smartphone">📱 Naprawa Smartphone</button>
+<button data-v="p3208">⚡ AiXun P3208</button>
+<button data-v="h314">🔥 AiXun H314</button>
 <button data-v="schematics">🗺️ Schematy płyt</button>
 <button data-v="measurements">📏 Pomiary płyt</button>
 <button data-v="repairguide">🛠️ Zasady napraw</button>
@@ -75,7 +78,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 </aside>
 <main>
 <section id="home" class="view active">
-<h1>Elektronik Diag V6.9</h1><div class="card"><h2>✅ NOWY GRAFICZNY ATLAS</h2><p><b>Karty podzespołów zawierają schemat, wyprowadzenia, pomiary, prawidłowe wyniki, usterki i dobór zamiennika.</b></p><p class="muted small">Build: ED-690-GRAPHIC-ATLAS</p></div>
+<h1>Elektronik Diag V7.0</h1><div class="card"><h2>✅ NOWE MODUŁY AiXun</h2><p><b>Obsługa P3208 i H314: funkcje, ustawienia, procedury, diagnostyka oraz bezpieczeństwo.</b></p><p class="muted small">Build: ED-700-AIXUN-WORKSHOP</p></div>
 <p class="muted">Diagnostyka warsztatowa, szkolenie krok po kroku i graficzny atlas podzespołów.</p>
 <div class="grid">
 <div class="card"><h2>🧭 Diagnostyka PRO</h2><p>Procedury krok po kroku: zasada działania, pomiary, drzewo decyzji i typowe usterki.</p></div>
@@ -83,6 +86,8 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="card"><h2>🌐 Szukaj naprawy</h2><p>Wpisz model, objaw albo oznaczenie układu i otwórz wyszukiwanie w wybranym źródle.</p></div>
 <div class="card"><h2>🧩 Atlas podzespołów</h2><p>Podstawowe elementy elektroniczne z opisem, pomiarem i typowymi uszkodzeniami.</p></div>
 <div class="card"><h2>🔋 Baterie elektronarzędzi</h2><p>BMS, ogniwa 18650/21700, budowa pakietu krok po kroku, kalkulator S/P, analizator sekcji, pomiary, usterki i trener diagnostyczny.</p></div>
+<div class="card"><h2>⚡ AiXun P3208</h2><p>Zasilanie płyt, analiza poboru, uruchamianie telefonu, SC Repair, szybkie ładowanie i testy baterii.</p></div>
+<div class="card"><h2>🔥 AiXun H314</h2><p>Hot-air: tryby nadmuchu, profile krzywej i segmentowe, presety, dobór dyszy, Wi‑Fi i konserwacja.</p></div>
 </div>
 <div class="note"><b>Ważne:</b> wyniki z Internetu traktuj jako pomoc diagnostyczną. Zawsze weryfikuj schematem, datasheetem i własnymi pomiarami.</div>
 </section>
@@ -188,6 +193,22 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 </select>
 </div>
 <div id="spContent"></div>
+</section>
+
+<section id="p3208" class="view">
+<h1>⚡ AiXun P3208</h1>
+<p class="muted">Praktyczny przewodnik po inteligentnym zasilaczu serwisowym 32 V / 8 A do diagnostyki elektroniki i płyt telefonów.</p>
+<div class="danger"><b>⚠️ Najważniejsze:</b> przed włączeniem wyjścia sprawdź napięcie, limit prądu i polaryzację. Nie podawaj 4,2 V bezpośrednio na przypadkowe piny złącza baterii. Do funkcji BOOT i testów baterii stosuj zgodny przewód lub adapter z właściwym pinoutem.</div>
+<div class="moduleHero"><h2>P3208 • centrum zasilania i analizy poboru</h2><div class="specGrid"><div class="specTile"><b>0,2–32 V</b><span>regulowane DC</span></div><div class="specTile"><b>0–8 A</b><span>limit prądu</span></div><div class="specTile"><b>320 W</b><span>moc maksymalna</span></div><div class="specTile"><b>0,1 mA</b><span>rozdzielczość wskazań</span></div></div></div>
+<div id="p3208Tabs" class="moduleTabs"></div><div id="p3208Content"></div>
+</section>
+
+<section id="h314" class="view">
+<h1>🔥 AiXun H314</h1>
+<p class="muted">Obsługa inteligentnej stacji gorącego powietrza do prac SMD/BGA. H314 jest stacją hot-air — nie klasyczną lutownicą grotową.</p>
+<div class="danger"><b>⚠️ Gorące powietrze:</b> pracuj przy sprawnym uziemieniu i odciągu oparów. Osłoń baterie, kamery, mikrofony MEMS i tworzywa. Nie kieruj dyszy na skórę ani materiały łatwopalne. Po pracy odłóż kolbę do uchwytu i pozwól wykonać automatyczne chłodzenie.</div>
+<div class="moduleHero"><h2>H314 • precyzyjny hot-air 1400 W</h2><div class="specGrid"><div class="specTile"><b>100–480°C</b><span>zakres producenta</span></div><div class="specTile"><b>do 120 L/min</b><span>przepływ powietrza</span></div><div class="specTile"><b>3,5″ IPS</b><span>ekran sterowania</span></div><div class="specTile"><b>9 kanałów</b><span>profile robocze</span></div></div></div>
+<div id="h314Tabs" class="moduleTabs"></div><div id="h314Content"></div>
 </section>
 
 <section id="schematics" class="view">
@@ -721,6 +742,113 @@ function renderBatteryTrainer(){
 }
 $('batTab').addEventListener('change',renderBattery);$('batConfig').addEventListener('change',renderBattery);renderBattery();
 
+
+// ===== MODUŁY WARSZTATOWE AiXun P3208 / H314 =====
+const p3208Tabs=[
+ ['start','Start i obsługa'],['dc','Zasilacz DC'],['phone','Płyta telefonu'],['current','Pobór prądu'],
+ ['short','SC Repair'],['usb','USB/QC'],['battery','Baterie'],['settings','Pamięci i ustawienia']
+];
+const p3208Data={
+ start:{title:'Pierwsze uruchomienie i elementy sterujące',intro:'P3208 łączy regulowane wyjście bananowe DC z portami serwisowymi do telefonów, funkcjami szybkiego ładowania i analizą poboru.',steps:[
+  'Podłącz urządzenie do prawidłowo uziemionego gniazda i pozostaw drożne otwory wentylacyjne.',
+  'Przed dołączeniem naprawianej płyty ustaw napięcie oraz ograniczenie prądu.',
+  'Sprawdź polaryzację czerwonego (+) i czarnego (−) przewodu miernikiem, szczególnie przy przewodach uniwersalnych.',
+  'Podłącz odbiornik przy wyłączonym wyjściu, obejrzyj połączenie i dopiero włącz OUTPUT.',
+  'Obserwuj tryb CV/CC, napięcie, prąd i wykres. Po teście wyłącz OUTPUT przed odpinaniem.'
+ ],tips:['Pokrętło funkcyjne służy do wyboru funkcji i zmiany wartości; M1/M2/M3 przywołują zapisane ustawienia.','CV oznacza utrzymywanie zadanego napięcia. CC oznacza, że zasilacz osiągnął limit prądu — to cenna informacja diagnostyczna.','Do dokładnej analizy małych poborów używaj krótkich, pewnych przewodów i czystych styków.']},
+ dc:{title:'Praca jako regulowany zasilacz DC',intro:'Wyjście bananowe pozwala zasilać urządzenia w zakresie zasilacza, ale napięcie i limit muszą wynikać z dokumentacji badanego układu.',steps:[
+  'Odczytaj wymagane napięcie badanego urządzenia. Nie zgaduj na podstawie wyglądu złącza.',
+  'Ustaw napięcie przy wyłączonym OUTPUT.',
+  'Ustaw niski, ale wystarczający limit prądu; zwiększaj go dopiero po ocenie zachowania układu.',
+  'Połącz minus z masą i plus z właściwym wejściem zasilania.',
+  'Włącz wyjście i obserwuj, czy P3208 pozostaje w CV, czy natychmiast przechodzi w CC.'
+ ],tips:['Dla nieznanego modułu najpierw sprawdź rezystancję wejścia do masy bez zasilania.','Spadek napięcia na przewodzie przy większym prądzie może zafałszować diagnozę.','Maksymalne 32 V / 8 A / 320 W nie oznacza, że każde ustawienie V×A jest dostępne bez ograniczenia mocy.']},
+ phone:{title:'Uruchamianie płyty telefonu bez baterii',intro:'Najbezpieczniej użyć adaptera BOOT, który pasuje mechanicznie i elektrycznie do konkretnego modelu. Sam zgodny kształt wtyczki nie potwierdza pinoutu.',steps:[
+  'Ustal dokładny model telefonu i pinout złącza baterii: B+, GND, NTC/BSI/ID oraz ewentualne linie danych.',
+  'Użyj przewodu z wtykiem będącym odpowiednikiem wtyczki baterii — nie drugiego gniazda takiego jak na płycie.',
+  'Jeśli używasz uniwersalnego kabla z bananami, potwierdź polaryzację miernikiem przed podłączeniem.',
+  'Ustaw napięcie zgodne z symulacją baterii danego telefonu oraz bezpieczny limit prądu.',
+  'Podłącz płytę, aktywuj właściwą funkcję BOOT lub zasymuluj przycisk POWER zgodnie z płytą i obserwuj przebieg prądu.'
+ ],tips:['W Galaxy S10 nie wciskaj niezgodnej końcówki na siłę. Uszkodzenie pinów gniazda baterii może stworzyć dodatkową usterkę.','Niektóre płyty nie uruchomią się z samych B+ i GND bez prawidłowej identyfikacji baterii/temperatury.','Prąd rozruchowy bywa impulsowy; sama pojedyncza wartość jest mniej użyteczna niż przebieg od chwili naciśnięcia POWER.']},
+ current:{title:'Interpretacja poboru prądu płyty telefonu',intro:'Wartości zależą od modelu i etapu startu. Traktuj je jako wzorce zachowania, nie jako uniwersalne progi.',steps:[
+  '0,000 A przed POWER może być normalne; po POWER brak reakcji kieruje uwagę na połączenie, przycisk, linię startową lub wejście zasilania.',
+  'Natychmiastowe CC po podłączeniu zwykle wskazuje zwarcie albo za niskie ustawienie limitu.',
+  'Krótki impuls i powrót do zera oznacza próbę startu zakończoną ochroną, resetem lub zanikiem jednej z szyn.',
+  'Stały niski pobór po POWER może wskazywać zatrzymanie we wczesnej sekwencji PMIC/clock/reset.',
+  'Pobór zmieniający się cyklicznie może oznaczać boot-loop; potwierdź temperaturą, szynami i komunikacją USB.'
+ ],tips:['Porównuj badaną płytę ze sprawną płytą tego samego modelu przy tej samej konfiguracji.','Najpierw zapisuj: prąd spoczynkowy, reakcję na POWER, maksimum impulsu, pobór stały i czas do resetu.','Nie zwiększaj limitu tylko po to, aby układ przestał pracować w CC — najpierw wyklucz zwarcie.']},
+ short:{title:'SC Repair — lokalizacja zwarcia',intro:'Tryb impulsowego podawania zasilania może pomóc ogrzać zwarty element. Wymaga znajomości napięcia badanej szyny.',steps:[
+  'Odłącz baterię i inne źródła zasilania. Potwierdź zwarcie pomiarem rezystancji lub spadku w trybie diody.',
+  'Ustal, która szyna jest zwarta i jakie ma normalne napięcie robocze. Nigdy nie zaczynaj od wysokiego napięcia.',
+  'Ustaw niskie napięcie, kontrolowany limit prądu, krótki czas impulsu i przerwę.',
+  'Podaj impuls i obserwuj płytę kamerą termowizyjną, IPA lub środkiem do lokalizacji ciepła.',
+  'Gdy znajdziesz pierwszy grzejący się punkt, wyłącz wyjście i sprawdź, czy jest przyczyną, czy tylko przewodzi prąd do zwarcia.'
+ ],tips:['Na niskonapięciowych szynach CPU/GPU nawet pozornie małe napięcie może być za wysokie.','Nie wstrzykuj napięcia w płytę z podłączoną baterią.','Zaczynaj od minimalnej energii i zwiększaj stopniowo; kontroluj temperaturę elementów i przewodów.']},
+ usb:{title:'Porty USB i szybkie ładowanie',intro:'P3208 może zasilać urządzenia przez porty USB i prezentować napięcie, prąd oraz moc. Dostępne protokoły zależą od portu, trybu i wersji firmware.',steps:[
+  'Użyj przewodu obsługującego wymagany prąd i transmisję linii negocjacyjnych.',
+  'Podłącz urządzenie i obserwuj napięcie początkowe oraz moment negocjacji szybkiego ładowania.',
+  'Sprawdź, czy napięcie zmienia się na wartość oczekiwaną dla protokołu urządzenia.',
+  'Obserwuj moc i stabilność. Przerywanie negocjacji może wynikać z przewodu, portu, temperatury, baterii lub układu ładowania.',
+  'Przy dwóch aktywnych kanałach uwzględnij podział dostępnej mocy opisany dla urządzenia.'
+ ],tips:['Brak szybkiego ładowania nie dowodzi od razu usterki telefonu — sprawdź drugi pewny przewód.','PD/PPS/QC/AFC/FCP/SCP wymagają prawidłowej komunikacji; samo występowanie 5 V nie potwierdza pełnej sprawności portu.','Nie używaj uszkodzonego przewodu USB-C przy wyższych napięciach i mocach.']},
+ battery:{title:'Ładowanie i testowanie baterii',intro:'Funkcje Batt-QC i Battery Calibration wymagają właściwego modułu/adaptera oraz zgodnego połączenia z baterią. Dostępne są cykle, test wydajności, rozładowanie i ładowanie.',steps:[
+  'Sprawdź stan mechaniczny baterii. Spuchniętej, przebitej, zalanej lub przegrzanej baterii nie testuj cyklem.',
+  'Dobierz adapter do konkretnej rodziny baterii i potwierdź B+, B−, NTC oraz linie identyfikacji/komunikacji.',
+  'Ustaw prawidłowy typ baterii, napięcia graniczne i prądy zgodnie z jej specyfikacją.',
+  'Wybierz Charge Test, Discharge Test, Performance Test albo Auto Cycle zależnie od celu.',
+  'Prowadź test pod nadzorem; obserwuj temperaturę, napięcie, czas i zarejestrowaną pojemność.',
+  'Porównaj wynik pojemności z wartością znamionową oraz oceń spadek napięcia i nagrzewanie pod obciążeniem.'
+ ],tips:['Adaptery BC01/BC02 spotykane przy P3208 są zwykle przeznaczone do określonych baterii iPhone — nie zakładaj kompatybilności z Samsungiem S10.','Kabel BOOT służący do uruchamiania płyty nie zastępuje automatycznie adaptera kalibracji baterii.','Test pojemności wymaga pełnego, kontrolowanego cyklu; samo napięcie spoczynkowe nie określa kondycji.']},
+ settings:{title:'Pamięci M1–M3, wykres i aktualizacje',intro:'Pamięci skracają przygotowanie stanowiska, ale po ich przywołaniu zawsze zweryfikuj parametry przed włączeniem wyjścia.',steps:[
+  'Ustaw napięcie i limit prądu dla często wykonywanej pracy.',
+  'Zapisz zestaw w M1, M2 lub M3 zgodnie z menu urządzenia.',
+  'Oznacz sobie przeznaczenie pamięci, np. telefon / 5 V / 12 V.',
+  'Przełączaj widok liczbowy, wskazówkowy lub krzywą zależnie od rodzaju diagnozy.',
+  'Aktualizacje wykonuj przez obsługiwane połączenie urządzenia; nie odłączaj zasilania podczas procesu.'
+ ],tips:['Pamięć ustawień nie rozpoznaje automatycznie podłączonego urządzenia.','Po aktualizacji sprawdź zapisane presety i zachowanie OUTPUT na obciążeniu testowym.','Wi‑Fi/łączność służą m.in. aktualizacjom; funkcje mogą się zmieniać wraz z firmware.']}
+};
+let p3208Tab='start';
+function stepsHTML(items){return items.map((x,i)=>'<div class="step"><b>'+(i+1)+'.</b> '+esc(x)+'</div>').join('')}
+function tipsHTML(items){return items.map(x=>'<div class="note" style="margin-top:8px"><b>💡</b> '+esc(x)+'</div>').join('')}
+function renderP3208Tabs(){
+ $('p3208Tabs').innerHTML=p3208Tabs.map(x=>'<button class="secondary '+(x[0]===p3208Tab?'active':'')+'" data-p32="'+x[0]+'">'+esc(x[1])+'</button>').join('');
+ document.querySelectorAll('[data-p32]').forEach(b=>b.onclick=()=>{p3208Tab=b.dataset.p32;renderP3208Tabs();renderP3208()});
+}
+function renderP3208(){
+ const x=p3208Data[p3208Tab];let extra='';
+ if(p3208Tab==='current') extra='<div class="card"><h2>🧪 Notatnik poboru</h2><div class="readingInput"><label>Przed POWER [A]<input id="psuIdle" type="number" step="0.001" value="0"></label><label>Szczyt po POWER [A]<input id="psuPeak" type="number" step="0.001" value="0.35"></label><label>Pobór stały [A]<input id="psuHold" type="number" step="0.001" value="0.12"></label></div><div class="toolbar"><button class="primary" id="psuEvaluate">Oceń wzorzec</button></div><div id="psuEval"></div></div>';
+ $('p3208Content').innerHTML='<div class="card"><span class="badge">AiXun P3208</span><h2>'+esc(x.title)+'</h2><p>'+esc(x.intro)+'</p></div><div class="grid"><div class="card"><h2>Procedura krok po kroku</h2>'+stepsHTML(x.steps)+'</div><div class="card"><h2>Porady warsztatowe</h2>'+tipsHTML(x.tips)+'</div></div>'+extra+'<div class="card"><h2>✅ Kontrola końcowa</h2><label class="workCheck"><input type="checkbox"> OUTPUT wyłączony przed zmianą połączeń</label><label class="workCheck"><input type="checkbox"> Napięcie i limit prądu zweryfikowane</label><label class="workCheck"><input type="checkbox"> Polaryzacja i pinout sprawdzone</label><label class="workCheck"><input type="checkbox"> Wyniki pomiarów zapisane</label></div>';
+ if($('psuEvaluate')) $('psuEvaluate').onclick=()=>{const idle=+$('psuIdle').value||0,peak=+$('psuPeak').value||0,hold=+$('psuHold').value||0;let msg='Płyta reaguje na POWER. Dalsza ocena wymaga porównania z tym samym modelem i pomiaru sekwencji zasilania.';if(idle>0.5)msg='Duży pobór jeszcze przed POWER: przerwij test i sprawdź zwarcie oraz poprawność napięcia.';else if(peak===0&&hold===0)msg='Brak reakcji na POWER: sprawdź kabel, masę, pinout, przycisk/linię POWER i wejście zasilania.';else if(peak>0&&hold===0)msg='Jest impuls, lecz płyta gaśnie: możliwa ochrona, reset albo brak jednej z szyn. Sprawdź przebieg i temperaturę.';$('psuEval').innerHTML='<div class="result"><b>Wstępna interpretacja:</b><br>'+esc(msg)+'</div><p class="muted small">To wskazówka diagnostyczna, nie rozpoznanie konkretnej usterki.</p>'};
+}
+
+const h314Tabs=[['start','Start i sterowanie'],['modes','Tryby pracy'],['profiles','Krzywa i segmenty'],['presets','Dobór parametrów'],['nozzles','Dysze i technika'],['settings','Wi‑Fi i ustawienia'],['care','Konserwacja']];
+const h314Data={
+ start:{title:'Uruchomienie i ekran główny',intro:'Dwa pokrętła regulują temperaturę i przepływ powietrza. SET otwiera widok krzywej lub zatwierdza opcje, a M1–M3 przywołują skróty.',steps:['Sprawdź przewód, uziemienie, uchwyt i prawidłowe zamocowanie dyszy na zimnej kolbie.','Włącz stację i ustaw łagodny profil na pierwszą próbę.','Pokrętłem temperatury ustaw wartość, a pokrętłem nadmuchu przepływ.','Podnieś kolbę z uchwytu i zaczekaj na stabilizację wskazań.','Po pracy odłóż kolbę do uchwytu; nie odłączaj zasilania przed zakończeniem automatycznego chłodzenia.'],tips:['Producent podaje 1400 W, 100–480°C, przepływ do 120 L/min i ekran IPS 3,5 cala.','Rzeczywista temperatura na elemencie zależy też od dyszy, odległości, kąta, masy cieplnej PCB i przepływu.','Przed precyzyjnymi naprawami zweryfikuj temperaturę termoparą, a nie tylko wskazaniem ekranu.']},
+ modes:{title:'Soft, Standard i Top speed',intro:'Tryb określa dynamikę nagrzewania i sposób dostarczania energii. Najszybszy tryb nie jest najlepszy do każdej płyty.',steps:['Soft: wybieraj do delikatnych flexów, tworzyw, małych elementów i stopniowego podgrzewania.','Standard: tryb ogólny do większości prac SMD po dobraniu właściwej dyszy.','Top speed: szybkie dojście do temperatury i duża rezerwa mocy dla większej masy cieplnej; wymaga szczególnej kontroli.','Zacznij niżej i obserwuj topnik, spoiwo oraz zachowanie sąsiednich elementów.','Jeśli praca trwa zbyt długo, popraw podgrzewanie płyty, dyszę i technikę zamiast automatycznie maksymalizować temperaturę.'],tips:['Producent deklaruje dojście do 380°C w około 3 s w trybie top speed.','Za duży przepływ może przesunąć elementy 0201/01005, a za mały wydłuża grzanie i zwiększa nagrzanie całej płyty.','Profil zawsze dostosuj do stopu lutowniczego, konstrukcji płyty i wrażliwych elementów.']},
+ profiles:{title:'Krzywa, pięć punktów i lutowanie segmentowe',intro:'H314 pozwala zaprogramować temperaturę, przepływ oraz czas w kolejnych punktach procesu i zapisać ustawienia w kanałach.',steps:['Naciśnij SET, aby wejść do widoku krzywej.','Pokrętłem nadmuchu przełącz system krzywej i wybierz jeden z pięciu punktów.','M1/M2 przechodzą między wierszami/punktami; naciśnij pokrętło temperatury lub nadmuchu, aby wybrać temperaturę, przepływ albo czas.','Obróć odpowiednie pokrętło i ustaw wartość dla każdego punktu.','Przytrzymaj SET, aby zapisać dane, albo przytrzymaj M1–M3, aby przypisać profil do skrótu.','W systemie segmentowym podniesienie kolby rozpoczyna wykonanie zapisanych etapów; obserwuj proces i w razie nieprawidłowości przerwij.'],tips:['Profil krzywej zwiększa powtarzalność, ale nie zastępuje termopary na płycie.','Pierwszy etap może służyć do łagodnego podgrzania, kolejne do aktywacji topnika i rozpływu, a końcowy do kontrolowanego zejścia.','Nie kopiuj profilu CPU/BGA na mniejsze złącze FPC bez dostosowania energii.']},
+ presets:{title:'Parametry producenta i własne presety',intro:'W menu parametrów rozlutowywania znajdują się profile m.in. dla CPU bez kleju, instalacji CPU, NAND Android, usuwania kleju iPhone i gniazd płyty.',steps:['Przytrzymaj SET, wejdź do rozszerzonych aplikacji i wybierz parametry rozlutowywania.','M1/M2 wybierz typ pracy.','Przejrzyj wszystkie wartości przed użyciem — preset jest punktem startowym, nie gwarancją bezpiecznego procesu.','Dostosuj dyszę, odległość i podgrzewanie dolne do konkretnej płyty.','Przytrzymaj M1, M2 lub M3, aby zapisać zmieniony profil jako skrót.'],tips:['Do profilu dopisz nazwę płyty, stop lutowniczy, dyszę, odległość i wynik — sama temperatura nie opisuje procesu.','Element powinien zostać zdjęty po pełnym rozpływie; podważanie przed rozpływem zrywa pady.','W module poniżej wartości są konserwatywnymi punktami startowymi do strojenia termoparą, nie ustawieniami producenta dla konkretnej płyty.']},
+ nozzles:{title:'Dobór dyszy i prowadzenie kolby',intro:'Dysza powinna ogrzewać pole lutownicze równomiernie, bez niepotrzebnego grzania całej okolicy.',steps:['Dobierz dyszę możliwie zbliżoną do obszaru pracy, pozostawiając przestrzeń na równy przepływ.','Wymieniaj dyszę dopiero po wystudzeniu; użyj sprężynowej blokady zgodnie z konstrukcją H314.','Ustaw kolbę prostopadle lub pod kontrolowanym kątem i utrzymuj powtarzalną odległość.','Wstępnie ogrzej płytę ruchem okrężnym, a następnie skup energię na obszarze lutowania.','Chroń sąsiednie złącza i tworzywa osłoną odporną na temperaturę, ale nie zamykaj całkowicie odpływu ciepła.'],tips:['Zbyt wąska dysza tworzy gorący punkt; zbyt szeroka ogrzewa niepotrzebnie całą płytę.','Nie opieraj gorącej dyszy o element ani laminat.','Przy montażu kontroluj napięcie powierzchniowe spoiwa pod mikroskopem; nie przesuwaj układu po ustaleniu kulek.']},
+ settings:{title:'Ustawienia, użytkownicy, Wi‑Fi i aktualizacja',intro:'Długie naciśnięcie SET otwiera aplikacje rozszerzone. Ustawienia obejmują m.in. język, dźwięk, nadmuch standby, Wi‑Fi, odcisk palca, motyw, informacje, aktualizację i reset.',steps:['Przytrzymaj SET, wybierz Settings i zatwierdź SET.','M1/M2 przechodź po pozycjach; SET otwiera wybraną opcję, M3 wraca.','Wi‑Fi skonfiguruj w sieci 2,4 GHz zgodnie z procedurą AiXun; włącz Bluetooth w telefonie na czas parowania.','Aktualizację wykonaj przez OTA albo przewód USB-C i platformę AiXun.','Nie wyłączaj stacji podczas aktualizacji; po niej sprawdź kanały, temperaturę i automatyczne chłodzenie.'],tips:['Odcisk palca może wybierać użytkownika i jego ustawienia; najpierw ustaw hasło blokady.','H314 oferuje 9 kanałów i do 45 zestawów ustawień użytkowników.','Funkcje sieciowe i nazwy menu mogą różnić się zależnie od wersji firmware.']},
+ care:{title:'Konserwacja i typowe problemy',intro:'Regularna kontrola przepływu, uchwytu, dyszy i przewodu zmniejsza ryzyko przegrzania grzałki oraz płyty.',steps:['Po każdej pracy pozwól stacji schłodzić grzałkę automatycznie.','Na zimno sprawdź, czy dysza jest czysta, równo osadzona i nie jest zdeformowana.','Oczyść wloty powietrza i okolice uchwytu bez wprowadzania opiłków do obudowy.','Gdy temperatura jest niestabilna, sprawdź dyszę, przepływ, zabrudzenia i wykonaj kontrolę termoparą.','Jeżeli kolba nie przechodzi w standby po odłożeniu, sprawdź pozycję uchwytu/czujnika i ustawienia; nie zostawiaj jej bez nadzoru.','Uszkodzenia przewodu, zapach spalenizny, iskry lub błąd grzałki wymagają wyłączenia urządzenia i serwisu.'],tips:['Nie rozbieraj stacji podłączonej do sieci. Wewnątrz występuje napięcie niebezpieczne.','Nie wkładaj drutu ani metalowych narzędzi w kanał powietrza.','Po zmianie dyszy lub większej aktualizacji wykonaj kontrolny pomiar temperatury.']}
+};
+const h314Presets=[
+ ['Małe SMD / element pasywny','280–330°C','niski–średni','mała','krótko, ruch ciągły'],
+ ['Złącze FPC / tworzywo w pobliżu','260–320°C','niski','dopasowana','osłoń plastik, kontroluj termoparą'],
+ ['Układ QFN / mały IC','320–380°C','średni','zbliżona do układu','wstępne ogrzanie płyty'],
+ ['Duże pole masy / ekran','350–420°C','średni–wysoki','średnia/duża','rozważ preheater'],
+ ['BGA / CPU / NAND','profil indywidualny','kontrolowany','dopasowana','termopara i krzywa procesu']
+];
+let h314Tab='start';
+function renderH314Tabs(){
+ $('h314Tabs').innerHTML=h314Tabs.map(x=>'<button class="secondary '+(x[0]===h314Tab?'active':'')+'" data-h314="'+x[0]+'">'+esc(x[1])+'</button>').join('');
+ document.querySelectorAll('[data-h314]').forEach(b=>b.onclick=()=>{h314Tab=b.dataset.h314;renderH314Tabs();renderH314()});
+}
+function renderH314(){
+ const x=h314Data[h314Tab];let extra='';
+ if(h314Tab==='presets') extra='<div class="card"><h2>Orientacyjne punkty startowe</h2><div style="overflow:auto"><table class="presetTable"><thead><tr><th>Praca</th><th>Temperatura stacji</th><th>Nadmuch</th><th>Dysza</th><th>Uwagi</th></tr></thead><tbody>'+h314Presets.map(r=>'<tr>'+r.map(c=>'<td>'+esc(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div><div class="danger" style="margin-top:12px"><b>Uwaga:</b> są to zakresy orientacyjne. Stop lutowniczy, wielowarstwowa płyta, preheater i kalibracja stacji mogą całkowicie zmienić potrzebne ustawienia.</div></div>';
+ $('h314Content').innerHTML='<div class="card"><span class="badge">AiXun H314</span><h2>'+esc(x.title)+'</h2><p>'+esc(x.intro)+'</p></div><div class="grid"><div class="card"><h2>Procedura krok po kroku</h2>'+stepsHTML(x.steps)+'</div><div class="card"><h2>Porady warsztatowe</h2>'+tipsHTML(x.tips)+'</div></div>'+extra+'<div class="card"><h2>✅ Checklista przed grzaniem</h2><label class="workCheck"><input type="checkbox"> Bateria i zasilanie płyty odłączone</label><label class="workCheck"><input type="checkbox"> Elementy wrażliwe osłonięte</label><label class="workCheck"><input type="checkbox"> Dysza, profil i nadmuch dobrane</label><label class="workCheck"><input type="checkbox"> Topnik, chwytak i odciąg przygotowane</label><label class="workCheck"><input type="checkbox"> Po naprawie płyta ostygła przed testem</label></div>';
+}
+renderP3208Tabs();renderP3208();renderH314Tabs();renderH314();
 
 function enc(x){return encodeURIComponent((x||'').trim())}
 function webSearch(type){

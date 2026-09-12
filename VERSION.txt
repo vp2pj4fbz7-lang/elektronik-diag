@@ -1,2 +1,2 @@
-Elektronik Diag V6.9
-Build: ED-690-GRAPHIC-ATLAS
+Elektronik Diag V7.0
+Build: ED-700-AIXUN-WORKSHOP

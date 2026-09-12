@@ -1,10 +1,10 @@
 {
-  "name": "Elektronik Diag V6.9 – Graficzny Atlas",
-  "short_name": "Elektronik Diag V6.9",
-  "start_url": "./index.html?v=6.9",
+  "name": "Elektronik Diag V7.0 – AiXun Workshop",
+  "short_name": "Elektronik Diag V7.0",
+  "start_url": "./index.html?v=7.0",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0b1624",
   "theme_color": "#102238",
-  "description": "Diagnostyka warsztatowa i graficzny atlas podzespołów z procedurami pomiarowymi."
+  "description": "Diagnostyka warsztatowa, atlas podzespołów oraz moduły AiXun P3208 i H314."
 }
