@@ -1,0 +1,12 @@
+ELEKTRONIK DIAG V8.0 – AKADEMIA DIAGNOSTYKI PRO
+
+1. Rozpakuj archiwum ZIP.
+2. Wgraj całą zawartość folderu elektronik-diag-main do repozytorium GitHub,
+   zastępując wcześniejsze pliki.
+3. Zaczekaj na odświeżenie GitHub Pages.
+4. Otwórz w aplikacji plik RESET.html i użyj przycisku czyszczenia starej pamięci,
+   jeżeli iPad nadal pokazuje poprzednią wersję.
+5. Ponownie dodaj aplikację do ekranu początkowego tylko wtedy, gdy ikona nadal
+   uruchamia starą wersję.
+
+Wersja V8.0 zachowuje dotychczasowe moduły i zapis postępu Akademii w przeglądarce.

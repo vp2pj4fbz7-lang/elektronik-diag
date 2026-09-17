@@ -1,8 +1,11 @@
-# Elektronik Diag V7.3 – Programy diagnostyczne PC
+# Elektronik Diag V8.0 – Akademia Diagnostyki PRO
 
-Kompletna aplikacja PWA do diagnostyki elektroniki. Wersja V7.3 dodaje katalog programów komputerowych do lokalizacji i naprawy usterek elektroniki użytkowej, zachowując wszystkie wcześniejsze moduły.
+Kompletna aplikacja PWA do diagnostyki elektroniki. Wersja V8.0 rozbudowuje Akademię Diagnostyki i zachowuje wszystkie wcześniejsze moduły V7.3.
 
 ## Nowe moduły
+- Akademia Diagnostyki PRO – 33 lekcje z quizami i zapisem postępu.
+- 12 praktycznych przypadków w interaktywnym Trenerze usterek.
+- Nowe działy: bezpieczeństwo ESD, PCB, kamera termiczna, hot-air, laptopy, telefony, T-CON, audio, AGD, SMPS i kontrola jakości.
 - Programy diagnostyczne PC – 22 narzędzia: BoardView, BIOS/firmware, programatory pamięci, UART, analizatory logiczne, USB, telefony, dyski, komputery i audio.
 - Dobór programu według urządzenia i objawu, obsługa krok po kroku, interpretacja wyniku, ograniczenia i bezpieczeństwo.
 - Procedury DSO-152 PRO – 15 testów dla zasilania, PWM, audio, magistral, telefonów, czujników, samochodu, BMS i AGD.

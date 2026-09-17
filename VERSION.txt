@@ -1,2 +1,2 @@
-Elektronik Diag V7.3
-Build: ED-730-PC-DIAGNOSTICS
+Elektronik Diag V8.0
+Build: ED-800-ACADEMY-PRO
