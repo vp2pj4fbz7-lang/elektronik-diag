@@ -1,2 +1,2 @@
-Elektronik Diag V7.1
-Build: ED-710-FNIRSI-DSO152
+Elektronik Diag V7.3
+Build: ED-730-PC-DIAGNOSTICS

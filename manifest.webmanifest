@@ -1,10 +1,10 @@
 {
-  "name": "Elektronik Diag V7.1 – FNIRSI DSO-152",
-  "short_name": "Elektronik Diag V7.1",
-  "start_url": "./index.html?v=7.1",
+  "name": "Elektronik Diag V7.3 – Programy diagnostyczne PC",
+  "short_name": "Elektronik Diag V7.3",
+  "start_url": "./index.html?v=7.3",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0b1624",
   "theme_color": "#102238",
-  "description": "Diagnostyka warsztatowa, atlas podzespołów oraz moduły AiXun P3208, H314 i FNIRSI DSO-152."
+  "description": "Diagnostyka warsztatowa, atlas podzespołów, procedury DSO-152 i programy komputerowe do lokalizacji usterek elektroniki."
 }

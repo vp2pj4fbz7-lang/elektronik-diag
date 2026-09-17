@@ -1,8 +1,11 @@
-# Elektronik Diag V7.1 – FNIRSI DSO-152
+# Elektronik Diag V7.3 – Programy diagnostyczne PC
 
-Kompletna aplikacja PWA do diagnostyki elektroniki. Wersja V7.1 dodaje moduł obsługi oscyloskopu FNIRSI DSO-152, zachowując moduły AiXun P3208 i H314, bazę wiedzy, Akademię, Diagnostykę PRO i Graficzny Atlas.
+Kompletna aplikacja PWA do diagnostyki elektroniki. Wersja V7.3 dodaje katalog programów komputerowych do lokalizacji i naprawy usterek elektroniki użytkowej, zachowując wszystkie wcześniejsze moduły.
 
 ## Nowe moduły
+- Programy diagnostyczne PC – 22 narzędzia: BoardView, BIOS/firmware, programatory pamięci, UART, analizatory logiczne, USB, telefony, dyski, komputery i audio.
+- Dobór programu według urządzenia i objawu, obsługa krok po kroku, interpretacja wyniku, ograniczenia i bezpieczeństwo.
+- Procedury DSO-152 PRO – 15 testów dla zasilania, PWM, audio, magistral, telefonów, czujników, samochodu, BMS i AGD.
 - FNIRSI DSO-152 – obsługa, ustawienia, wyzwalanie, sonda, pomiary, asystent i przykłady warsztatowe.
 - AiXun P3208 – zasilacz DC, BOOT telefonu, analiza poboru, SC Repair, USB/QC, baterie i ustawienia.
 - AiXun H314 – obsługa hot-air, tryby, krzywe/segmenty, presety, dysze, Wi-Fi i konserwacja.

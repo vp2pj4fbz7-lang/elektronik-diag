@@ -1,0 +1,28 @@
+ELEKTRONIK DIAG V7.3 – PROGRAMY DIAGNOSTYCZNE PC
+
+NOWY MODUŁ
+1. Otwórz „Programy diagnostyczne PC” w menu aplikacji.
+2. Wybierz urządzenie, np. Laptop, Telewizor, Telefon, Konsola, Audio lub AGD.
+3. Wybierz objaw albo wpisz frazę, np. BIOS, UART, USB, zwarcie, brak startu.
+4. Otwórz kartę programu.
+5. Przeczytaj: zastosowanie, wymagane połączenie, obsługę krok po kroku,
+   interpretację wyniku oraz ograniczenia bezpieczeństwa.
+
+ZAWARTOŚĆ
+- 22 programy i narzędzia komputerowe,
+- BoardView i Gerber,
+- BIOS, firmware i programatory pamięci,
+- terminal UART,
+- analizatory logiczne I2C/SPI/UART,
+- diagnostyka USB i sieci,
+- Android oraz iPhone/iPad,
+- dyski, RAM, temperatury i stabilność komputerów,
+- diagnostyka toru audio.
+
+AKTUALIZACJA GITHUB PAGES
+Wgraj wszystkie pliki z paczki, łącznie z pc_diagnostics_tools.js i sw.js.
+Po aktualizacji otwórz stronę w Safari/Chrome, odśwież ją i uruchom ponownie ikonę PWA.
+
+BEZPIECZEŃSTWO
+Sprawdź napięcie logiki, pinout, masę i polaryzację przed podłączeniem interfejsu.
+Przed zapisem pamięci zawsze wykonaj co najmniej dwie zgodne kopie oryginalnego wsadu.
