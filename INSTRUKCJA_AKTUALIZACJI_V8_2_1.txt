@@ -1,0 +1,15 @@
+ELEKTRONIK DIAG V8.2.1 – POPRAWKA PRZEWIJANIA MENU
+
+Naprawiono boczne menu aplikacji:
+- lista modułów ma własne przewijanie pionowe,
+- można otworzyć wszystkie moduły znajdujące się poniżej ekranu,
+- dodano płynne przewijanie dotykowe na iPadzie,
+- uwzględniono dolny bezpieczny obszar ekranu,
+- w wąskim widoku menu nadal przewija się poziomo.
+
+AKTUALIZACJA
+Wgraj całą zawartość folderu elektronik-diag-main do GitHub, zastępując stare pliki.
+Po wdrożeniu odśwież aplikację. Jeśli nadal działa stara wersja, otwórz RESET.html,
+a następnie ponownie uruchom Elektronik Diag.
+
+Prawidłowa wersja: V8.2.1 • poprawione przewijanie menu

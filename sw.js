@@ -1,4 +1,4 @@
-const CACHE='elektronik-diag-v8-2-board-sectors-pro';
+const CACHE='elektronik-diag-v8-2-1-menu-scroll-fix';
 const ASSETS=['./','./index.html','./pc_diagnostics_tools.js','./electronic_components_module.js','./board_sectors_module.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./components.json','./device_categories.json','./elektronik_diag_db_v1.json'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));

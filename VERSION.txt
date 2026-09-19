@@ -1,2 +1,2 @@
-Elektronik Diag V8.2
-Build: ED-820-BOARD-SECTORS-PRO
+Elektronik Diag V8.2.1
+Build: ED-821-MENU-SCROLL-FIX
