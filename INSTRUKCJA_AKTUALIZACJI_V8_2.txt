@@ -1,0 +1,19 @@
+ELEKTRONIK DIAG V8.2 – SEKTORY PŁYT PRO
+
+NOWOŚCI
+- nowy moduł „Sektory płyt PRO” w głównym menu,
+- interaktywne zdjęcia poglądowe/mapy płyt: telewizor, telefon, laptop, komputer stacjonarny i tablet,
+- po 6 klikalnych sektorów dla każdego rodzaju urządzenia,
+- opis rozpoznawania sektora, typowych elementów, pomiarów, objawów i następnej decyzji,
+- cztery procedury zawężania usterki: urządzenie martwe, zwarcie, problem z uruchamianiem i awaria jednej funkcji,
+- grafiki i cała baza działają offline.
+
+AKTUALIZACJA GITHUB PAGES
+1. Rozpakuj ZIP.
+2. Wgraj całą zawartość folderu elektronik-diag-main do repozytorium, zastępując stare pliki.
+3. Szczególnie ważne są nowe: board_sectors_module.js, index.html, sw.js i manifest.webmanifest.
+4. Poczekaj na zakończenie wdrożenia GitHub Pages.
+5. Otwórz aplikację w Safari i odśwież stronę. Gdy nadal widać starą wersję, uruchom RESET.html, a potem ponownie otwórz aplikację.
+
+WERSJĘ ROZPOZNASZ PO NAPISIE:
+V8.2 • Sektory płyt PRO

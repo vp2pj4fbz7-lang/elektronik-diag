@@ -1,10 +1,10 @@
 {
-  "name": "Elektronik Diag V8.1 – Elementy elektroniczne PRO",
-  "short_name": "Elektronik Diag V8.1",
-  "start_url": "./index.html?v=8.1",
+  "name": "Elektronik Diag V8.2 – Sektory płyt PRO",
+  "short_name": "Elektronik Diag V8.2",
+  "start_url": "./index.html?v=8.2",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0b1624",
   "theme_color": "#102238",
-  "description": "Diagnostyka elektroniki, Akademia PRO oraz praktyczny moduł elementów R–IC ze zdjęciami poglądowymi, symbolami i pomiarami."
+  "description": "Diagnostyka elektroniki z interaktywnymi mapami sektorów płyt TV, telefonu, laptopa, komputera i tabletu."
 }

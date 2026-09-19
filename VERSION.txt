@@ -1,2 +1,2 @@
-Elektronik Diag V8.1
-Build: ED-810-ELEMENTS-PRO
+Elektronik Diag V8.2
+Build: ED-820-BOARD-SECTORS-PRO

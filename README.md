@@ -1,4 +1,8 @@
-# Elektronik Diag V8.1 – Elementy elektroniczne PRO
+# Elektronik Diag V8.2 – Sektory płyt PRO
+
+## Nowy moduł V8.2
+
+Zakładka **Sektory płyt PRO** uczy funkcjonalnego dzielenia płyt i zawężania usterki metodą wejście → blok → wyjście. Obejmuje telewizory, telefony, laptopy, komputery stacjonarne i tablety. Każda mapa ma klikalne sektory z punktami rozpoznawczymi, elementami, pomiarami, objawami i kolejną decyzją diagnostyczną. Wszystkie grafiki są zapisane w aplikacji i działają offline.
 
 ## Nowość V8.1
 
