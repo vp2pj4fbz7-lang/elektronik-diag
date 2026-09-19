@@ -1,2 +1,2 @@
-Elektronik Diag V8.0
-Build: ED-800-ACADEMY-PRO
+Elektronik Diag V8.1
+Build: ED-810-ELEMENTS-PRO

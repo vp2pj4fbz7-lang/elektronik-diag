@@ -1,0 +1,16 @@
+ELEKTRONIK DIAG V8.1 — AKTUALIZACJA
+
+1. Wgraj na GitHub całą zawartość folderu elektronik-diag-main.
+2. Zastąp istniejące pliki, szczególnie index.html, sw.js i manifest.webmanifest.
+3. Koniecznie dodaj nowy plik electronic_components_module.js.
+4. Po wdrożeniu otwórz RESET.html albo usuń aplikację z ekranu początkowego i dodaj ją ponownie.
+5. Sprawdź w menu moduł „Elementy elektroniczne”.
+
+Nowości V8.1:
+- osobny moduł Elementy elektroniczne PRO,
+- R, P/PR, C, L, Tr, D, T/Q oraz U/IC,
+- zdjęcia poglądowe i symbole schematowe,
+- opis, zastosowanie, odmiany oraz oznaczenia PCB,
+- pomiary krok po kroku i interpretacja wyników,
+- wyszukiwarka i filtry,
+- pełne działanie offline po pierwszym uruchomieniu.

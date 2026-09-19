@@ -1,6 +1,16 @@
-# Elektronik Diag V8.0 – Akademia Diagnostyki PRO
+# Elektronik Diag V8.1 – Elementy elektroniczne PRO
 
-Kompletna aplikacja PWA do diagnostyki elektroniki. Wersja V8.0 rozbudowuje Akademię Diagnostyki i zachowuje wszystkie wcześniejsze moduły V7.3.
+## Nowość V8.1
+
+- osobny moduł „Elementy elektroniczne”,
+- grupy R, P/PR, C, L, Tr, D, T/Q i U/IC,
+- zdjęcia poglądowe, symbole, zastosowania i odmiany,
+- bezpieczne procedury pomiarowe krok po kroku,
+- interpretacja wyniku prawidłowego i uszkodzenia,
+- wyszukiwanie i filtrowanie elementów,
+- praca offline dzięki pamięci PWA.
+
+Kompletna aplikacja PWA do diagnostyki elektroniki. Wersja V8.1 dodaje moduł Elementy elektroniczne PRO, zachowując Akademię Diagnostyki i wszystkie wcześniejsze moduły.
 
 ## Nowe moduły
 - Akademia Diagnostyki PRO – 33 lekcje z quizami i zapisem postępu.

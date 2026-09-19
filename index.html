@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-title" content="Elektronik Diag">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Elektronik Diag V8.0 – Akademia Diagnostyki PRO</title>
+<title>Elektronik Diag V8.1 – Elementy elektroniczne PRO</title>
 <style>
 :root{--bg:#0b1624;--side:#102238;--panel:#132b45;--panel2:#1c3c5d;--border:#355a7f;--text:#f6f9fc;--muted:#b9c9d9;--accent:#68b6ff;--ok:#57d38c;--bad:#ff7a7a}
 *{box-sizing:border-box}
@@ -48,22 +48,24 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 .trainerChoice{display:block;width:100%;text-align:left;margin:8px 0}.lessonStep{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}.lessonStep .num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--panel2);font-weight:900}
 .academyTop{display:grid;grid-template-columns:2fr 1fr;gap:14px}
 .moduleHero{background:linear-gradient(135deg,#153958,#102238);border:1px solid #4b7ca7;border-radius:18px;padding:18px;margin:12px 0}.moduleHero h2{font-size:25px}.specGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}.specTile{background:#0d1c2d;border:1px solid var(--border);border-radius:12px;padding:12px}.specTile b{display:block;color:var(--accent);font-size:19px;margin-bottom:3px}.moduleTabs{display:flex;gap:8px;overflow:auto;padding:4px 0 10px}.moduleTabs button{white-space:nowrap}.moduleTabs button.active{background:var(--accent);color:#07111a;border-color:var(--accent)}.presetTable{width:100%;border-collapse:collapse}.presetTable th,.presetTable td{padding:10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}.presetTable th{color:var(--muted);font-size:12px}.workCheck{display:flex;gap:9px;align-items:flex-start;padding:10px;margin:7px 0;background:#0f2135;border-radius:10px}.workCheck input{width:auto;margin-top:3px}.readingInput{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.readingInput label{font-size:13px;color:var(--muted)}
+.ecGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.ecCard{cursor:pointer;display:grid;grid-template-columns:145px 1fr;gap:15px;align-items:center}.ecCard:hover{border-color:var(--accent)}.ecPhoto{min-height:112px;border-radius:13px;overflow:hidden;background:linear-gradient(145deg,#d9e1e8,#778795);border:1px solid #62809a}.ecPhoto svg{display:block;width:100%;height:112px}.ecCode{font-size:31px;font-weight:950;color:var(--accent);line-height:1}.ecSymbol{background:#f7fafc;border-radius:13px;padding:10px;display:grid;place-items:center;min-height:180px}.ecSymbol svg{width:100%;max-width:330px;height:auto}.ecDetailTop{display:grid;grid-template-columns:minmax(270px,.9fr) 1.2fr;gap:15px}.ecDetailTop .ecPhoto svg{height:250px}.ecFacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.ecFact{background:#0d1c2d;border:1px solid var(--border);border-radius:11px;padding:11px}.ecFact b{display:block;color:var(--accent);margin-bottom:4px}.ecMeter{border-left:4px solid var(--accent);background:#102942;padding:11px 12px;margin:9px 0;border-radius:0 10px 10px 0}.ecWarn{border-left-color:#ffb85c;background:#342817}.ecSubtype{display:inline-block;padding:6px 9px;margin:3px;border-radius:999px;background:#0d1c2d;border:1px solid var(--border);color:#ddecfa}.ecLegend{font-size:12px;color:var(--muted);margin-top:7px}
 @media(max-width:1000px){.academyGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.academyTop{grid-template-columns:1fr}}
-@media(max-width:820px){.app{grid-template-columns:1fr}aside{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--border)}.nav{display:flex;overflow:auto}.nav button{min-width:max-content}main{padding:14px}.grid{grid-template-columns:1fr}.sourceBtns{grid-template-columns:1fr 1fr}.sheetTop,.sheetGrid{grid-template-columns:1fr}.atlasHero{grid-template-columns:1fr}.atlasCount{text-align:left}.specGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.readingInput{grid-template-columns:1fr}}
-@media(max-width:650px){.academyGrid{grid-template-columns:1fr}.compCard{grid-template-columns:75px 1fr}}
+@media(max-width:820px){.app{grid-template-columns:1fr}aside{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--border)}.nav{display:flex;overflow:auto}.nav button{min-width:max-content}main{padding:14px}.grid,.ecGrid{grid-template-columns:1fr}.sourceBtns{grid-template-columns:1fr 1fr}.sheetTop,.sheetGrid,.ecDetailTop{grid-template-columns:1fr}.atlasHero{grid-template-columns:1fr}.atlasCount{text-align:left}.specGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.readingInput{grid-template-columns:1fr}.ecFacts{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.academyGrid{grid-template-columns:1fr}.compCard{grid-template-columns:75px 1fr}.ecCard{grid-template-columns:110px 1fr}.ecPhoto svg{height:96px}.ecFacts{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="app">
 <aside>
 <div class="brand">Elektronik Diag</div>
-<div class="version">V8.0 • Akademia Diagnostyki PRO</div>
+<div class="version">V8.1 • Elementy elektroniczne PRO</div>
 <div class="nav">
 <button class="active" data-v="home">Pulpit</button>
 <button data-v="diagnostics">🧭 Diagnostyka PRO</button>
 <button data-v="academy">🎓 Akademia Diagnostyki</button>
 <button data-v="internet">🌐 Szukaj w Internecie</button>
 <button data-v="atlas">🧩 Atlas podzespołów</button>
+<button data-v="elements">🔬 Elementy elektroniczne</button>
 <button data-v="batteries">🔋 Baterie elektronarzędzi</button>
 <button data-v="packbuilder">🧰 Budowa pakietu 18650</button>
 <button data-v="smartphone">📱 Naprawa Smartphone</button>
@@ -80,13 +82,14 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 </aside>
 <main>
 <section id="home" class="view active">
-<h1>Elektronik Diag V8.0</h1><div class="card"><h2>✅ AKADEMIA DIAGNOSTYKI PRO</h2><p><b>Rozbudowany kurs lokalizacji i naprawy usterek elektroniki użytkowej wraz z quizami, zapisem postępu i trenerem praktycznym.</b></p><p class="muted small">Build: ED-800-ACADEMY-PRO</p></div>
+<h1>Elektronik Diag V8.1</h1><div class="card"><h2>✅ ELEMENTY ELEKTRONICZNE PRO</h2><p><b>Nowy praktyczny moduł R–IC: wygląd elementu, symbol, zastosowanie oraz pomiar krok po kroku.</b></p><p class="muted small">Build: ED-810-ELEMENTS-PRO</p></div>
 <p class="muted">Diagnostyka warsztatowa, szkolenie krok po kroku i graficzny atlas podzespołów.</p>
 <div class="grid">
 <div class="card"><h2>🧭 Diagnostyka PRO</h2><p>Procedury krok po kroku: zasada działania, pomiary, drzewo decyzji i typowe usterki.</p></div>
 <div class="card"><h2>🎓 Akademia Diagnostyki PRO</h2><p>33 lekcje szkoleniowe, quizy, zapis postępu i 12 praktycznych przypadków w Trenerze usterek.</p></div>
 <div class="card"><h2>🌐 Szukaj naprawy</h2><p>Wpisz model, objaw albo oznaczenie układu i otwórz wyszukiwanie w wybranym źródle.</p></div>
 <div class="card"><h2>🧩 Atlas podzespołów</h2><p>Podstawowe elementy elektroniczne z opisem, pomiarem i typowymi uszkodzeniami.</p></div>
+<div class="card"><h2>🔬 Elementy elektroniczne PRO</h2><p>Rezystory, potencjometry, kondensatory, cewki, transformatory, diody, tranzystory i układy scalone — ze zdjęciami poglądowymi, symbolami i pomiarami.</p></div>
 <div class="card"><h2>🔋 Baterie elektronarzędzi</h2><p>BMS, ogniwa 18650/21700, budowa pakietu krok po kroku, kalkulator S/P, analizator sekcji, pomiary, usterki i trener diagnostyczny.</p></div>
 <div class="card"><h2>⚡ AiXun P3208</h2><p>Zasilanie płyt, analiza poboru, uruchamianie telefonu, SC Repair, szybkie ładowanie i testy baterii.</p></div>
 <div class="card"><h2>🔥 AiXun H314</h2><p>Hot-air: tryby nadmuchu, profile krzywej i segmentowe, presety, dobór dyszy, Wi‑Fi i konserwacja.</p></div>
@@ -133,6 +136,15 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="card atlasHero"><div><h2>Graficzne karty warsztatowe</h2><p class="muted">Wybierz element, aby zobaczyć symbol, budowę lub blok funkcjonalny, oznaczenia na PCB, wyprowadzenia oraz procedurę sprawdzania multimetrem.</p></div><div class="atlasCount"><b id="atlasCount">0</b><span>kart elementów</span></div></div>
 <div class="toolbar"><input id="compSearch" placeholder="Szukaj: MOSFET, kondensator, BIOS..."><select id="compCat"></select></div>
 <div id="compList"></div><div id="compDetail"></div>
+</section>
+
+
+<section id="elements" class="view">
+<h1>🔬 Elementy elektroniczne PRO</h1>
+<p class="muted">Rozpoznawanie i sprawdzanie podstawowych elementów: od oznaczenia na PCB do poprawnej interpretacji wyniku miernika.</p>
+<div class="danger"><b>⚠️ Przed pomiarem:</b> odłącz zasilanie i rozładuj kondensatory. Pomiary oporu, ciągłości, pojemności i test diody wykonuj bez napięcia. Element w układzie może dawać wynik zmieniony przez inne podzespoły.</div>
+<div class="toolbar"><input id="ecSearch" placeholder="Szukaj: rezystor, LED, MOSFET, kondensator..."><select id="ecFilter"><option value="all">Wszystkie grupy</option><option value="pasywne">Pasywne</option><option value="półprzewodniki">Półprzewodniki</option><option value="magnetyczne">Magnetyczne</option><option value="scalone">Układy scalone</option></select></div>
+<div id="ecList" class="ecGrid"></div><div id="ecDetail"></div>
 </section>
 
 
@@ -1125,5 +1137,6 @@ renderSmartphone();
 
 </script>
 <script src="pc_diagnostics_tools.js"></script>
+<script src="electronic_components_module.js"></script>
 </body>
 </html>
