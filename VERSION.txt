@@ -1,2 +1,2 @@
-Elektronik Diag V8.2.1
-Build: ED-821-MENU-SCROLL-FIX
+Elektronik Diag V8.3
+Build: ED-830-SYMBOLE-OBLICZENIA

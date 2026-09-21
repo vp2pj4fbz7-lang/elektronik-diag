@@ -1,0 +1,20 @@
+ELEKTRONIK DIAG V8.3 – SYMBOLE I OBLICZENIA
+
+NOWY MODUŁ
+- symbole U, U1/U2, I, R, P, E/W, Q, C, L, f, T, Z, XC, XL, eta, delta i sigma,
+- masa GND oraz oznaczenia AC/DC i PWM,
+- opis znaczenia, jednostki, wzór, przykład obliczenia i zastosowanie warsztatowe,
+- wyszukiwarka i filtrowanie symboli,
+- kalkulatory: prawo Ohma, moc, dzielnik napięcia, energia baterii/czas pracy oraz reaktancja,
+- tabela przedrostków G, M, k, m, µ, n i p.
+
+AKTUALIZACJA NA GITHUB PAGES
+1. Rozpakuj ZIP.
+2. W repozytorium Elektronik Diag wybierz Add file -> Upload files.
+3. Wgraj CAŁĄ zawartość folderu elektronik-diag-main, zastępując istniejące pliki.
+4. Zatwierdź przez Commit changes.
+5. Poczekaj 1–3 minuty, otwórz RESET.html i wybierz wyczyszczenie starej wersji.
+6. Otwórz aplikację ponownie. Na ekranie głównym powinna być wersja V8.3.
+
+WAŻNE
+Nie wgrywaj samego index.html. Nowy moduł wymaga pliku formula_symbols_module.js oraz nowej wersji sw.js.
