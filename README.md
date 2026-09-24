@@ -1,4 +1,11 @@
-# Elektronik Diag V8.2 – Sektory płyt PRO
+# Elektronik Diag V8.4 – Schematy płyt PRO
+
+## Nowy moduł V8.4
+
+- interaktywne graficzne schematy sektorów i sekwencji zasilania dla 8 typów urządzeń,
+- 64 klikalne sektory z wejściami, wyjściami, sygnałami sterującymi, pomiarami i decyzjami diagnostycznymi,
+- widoki: mapa graficzna, tabela sekwencji oraz tory i szyny zasilania,
+- symulacja etapów: źródło/OFF, STANDBY/ALW, START i RUN.
 
 ## Nowy moduł V8.2
 

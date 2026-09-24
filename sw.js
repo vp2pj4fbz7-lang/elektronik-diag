@@ -1,5 +1,5 @@
-const CACHE='elektronik-diag-v8-3-symbole-obliczenia';
-const ASSETS=['./','./index.html','./pc_diagnostics_tools.js','./electronic_components_module.js','./board_sectors_module.js','./formula_symbols_module.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./components.json','./device_categories.json','./elektronik_diag_db_v1.json'];
+const CACHE='elektronik-diag-v8-4-schematy-plyt-pro';
+const ASSETS=['./','./index.html','./pc_diagnostics_tools.js','./electronic_components_module.js','./board_sectors_module.js','./formula_symbols_module.js','./advanced_schematics_module.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./components.json','./device_categories.json','./elektronik_diag_db_v1.json'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{

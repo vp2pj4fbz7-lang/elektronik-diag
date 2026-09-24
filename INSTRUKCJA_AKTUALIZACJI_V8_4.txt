@@ -1,0 +1,23 @@
+ELEKTRONIK DIAG V8.4 – SCHEMATY PŁYT PRO
+
+ROZBUDOWANY MODUŁ SCHEMATÓW
+- 8 graficznych map: telefon, laptop, telewizor, komputer PC, tablet, konsola, SMPS i moduł AGD,
+- 64 klikalne sektory funkcjonalne,
+- wizualizacja stanu: źródło/OFF, STANDBY/ALW, START i RUN,
+- trzy widoki: mapa graficzna, tabela sekwencji oraz tory i szyny zasilania,
+- opis wejścia i wyjścia każdego sektora,
+- sygnały EN, RESET, PGOOD, zegary oraz sterowanie,
+- typowe elementy, punkty pomiarowe, objawy i kolejna decyzja diagnostyczna,
+- szybkie wskazanie sektora startowego według objawu,
+- nawigacja poprzedni/następny sektor.
+
+AKTUALIZACJA NA GITHUB PAGES
+1. Rozpakuj ZIP.
+2. W repozytorium Elektronik Diag wybierz Add file -> Upload files.
+3. Wgraj CAŁĄ zawartość folderu elektronik-diag-main, zastępując istniejące pliki.
+4. Zatwierdź przez Commit changes.
+5. Poczekaj 1–3 minuty, otwórz RESET.html i wyczyść poprzednią wersję.
+6. Otwórz aplikację ponownie. Na pulpicie powinna być wersja V8.4.
+
+WAŻNE
+Nie wgrywaj samego index.html. Nowy moduł wymaga advanced_schematics_module.js oraz nowego sw.js.

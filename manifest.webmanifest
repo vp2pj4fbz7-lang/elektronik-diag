@@ -1,10 +1,10 @@
 {
-  "name": "Elektronik Diag V8.3 – Symbole i obliczenia",
-  "short_name": "Elektronik Diag V8.3",
-  "start_url": "./index.html?v=8.3",
+  "name": "Elektronik Diag V8.4 – Schematy płyt PRO",
+  "short_name": "Elektronik Diag V8.4",
+  "start_url": "./index.html?v=8.4",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0b1624",
   "theme_color": "#102238",
-  "description": "Diagnostyka elektroniki z modułem symboli, wzorów, przykładów obliczeń i kalkulatorów warsztatowych."
+  "description": "Diagnostyka elektroniki z interaktywnymi schematami płyt, mapami sektorów i sekwencjami zasilania."
 }

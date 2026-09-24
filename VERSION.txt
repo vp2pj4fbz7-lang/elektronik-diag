@@ -1,2 +1,2 @@
-Elektronik Diag V8.3
-Build: ED-830-SYMBOLE-OBLICZENIA
+Elektronik Diag V8.4
+Build: ED-840-SCHEMATY-PLYT-PRO
