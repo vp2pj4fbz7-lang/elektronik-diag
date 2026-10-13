@@ -1,2 +1,2 @@
-Elektronik Diag V8.4
-Build: ED-840-SCHEMATY-PLYT-PRO
+Elektronik Diag V8.5
+Build: ED-850-BIBLIOTEKA-SERWISOWA

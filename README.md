@@ -56,3 +56,15 @@ fetch('./elektronik_diag_db_v1.json')
 
 Można też wkleić bazę bezpośrednio do pliku JS jako stałą:
 const ELEKTRONIK_DB = {...};
+
+
+## Nowość V8.5 — Biblioteka serwisowa
+Dodano osobną pozycję „Biblioteka serwisowa” z sześcioma lokalnymi materiałami PDF:
+- Atlas mikrolutowania
+- Atlas elementów
+- Zasilacz laboratoryjny
+- Multimetr
+- Schematy i Boardview
+- Atlas diagnostyki usterek
+
+Pozostałe moduły, w tym wyszukiwanie datasheetów, zachowują dotychczasowe działanie. Service Worker ma nową nazwę cache i zapisuje PDF-y w cache przy pierwszym otwarciu. Ze względu na rozmiar dokumentów (około 270 MB łącznie) PDF-y nie są pobierane wszystkie podczas instalacji aplikacji: każdy dokument trzeba raz otworzyć online na danym urządzeniu, aby był dostępny offline.

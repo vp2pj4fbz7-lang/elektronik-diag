@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-title" content="Elektronik Diag">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Elektronik Diag V8.4 – Schematy płyt PRO</title>
+<title>Elektronik Diag V8.5 – Biblioteka serwisowa</title>
 <style>
 :root{--bg:#0b1624;--side:#102238;--panel:#132b45;--panel2:#1c3c5d;--border:#355a7f;--text:#f6f9fc;--muted:#b9c9d9;--accent:#68b6ff;--ok:#57d38c;--bad:#ff7a7a}
 *{box-sizing:border-box}
@@ -62,7 +62,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="app">
 <aside>
 <div class="brand">Elektronik Diag</div>
-<div class="version">V8.4 • schematy płyt PRO</div>
+<div class="version">V8.5 • Biblioteka serwisowa</div>
 <div class="nav">
 <button class="active" data-v="home">Pulpit</button>
 <button data-v="diagnostics">🧭 Diagnostyka PRO</button>
@@ -84,11 +84,12 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <button data-v="repairguide">🛠️ Zasady napraw</button>
 <button data-v="laws">📚 Słownik i formuły</button>
 <button data-v="datasheet">📄 Znajdź datasheet</button>
+<button data-v="library">📚 Biblioteka serwisowa</button>
 </div>
 </aside>
 <main>
 <section id="home" class="view active">
-<h1>Elektronik Diag V8.4</h1><div class="card"><h2>✅ SCHEMATY PŁYT PRO</h2><p><b>Graficzne mapy sektorów, tory zasilania oraz sekwencje uruchamiania urządzeń krok po kroku.</b></p><p class="muted small">Build: ED-840-SCHEMATY-PLYT-PRO</p></div>
+<h1>Elektronik Diag V8.5</h1><div class="card"><h2>✅ SCHEMATY PŁYT PRO</h2><p><b>Graficzne mapy sektorów, tory zasilania oraz sekwencje uruchamiania urządzeń krok po kroku.</b></p><p class="muted small">Build: ED-840-SCHEMATY-PLYT-PRO</p></div>
 <p class="muted">Diagnostyka warsztatowa, szkolenie krok po kroku i graficzny atlas podzespołów.</p>
 <div class="grid">
 <div class="card"><h2>🧭 Diagnostyka PRO</h2><p>Procedury krok po kroku: zasada działania, pomiary, drzewo decyzji i typowe usterki.</p></div>
@@ -314,6 +315,22 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="card"><p>Wpisz dokładne oznaczenie z obudowy elementu, np. <b>TPS51225</b>, <b>RT8243</b>, <b>25Q64</b>.</p>
 <input id="dsQuery" placeholder="Oznaczenie elementu">
 <div class="toolbar"><button class="primary" id="dsBtn">Szukaj datasheet</button><button class="secondary" id="googlePartBtn">Szukaj oznaczenia w Google</button></div>
+</div>
+</section>
+
+<section id="library" class="view">
+<h1>📚 Biblioteka serwisowa</h1>
+<div class="card">
+<p>Materiały PDF do nauki i diagnostyki. Dokumenty są częścią modułu; po pierwszym otwarciu przy połączeniu z Internetem Service Worker zapisze je w pamięci podręcznej, aby można je było ponownie otwierać offline na tym urządzeniu.</p>
+<p class="muted small">Ze względu na łączny rozmiar około 270 MB dokumenty są buforowane pojedynczo, a nie wszystkie podczas instalacji aplikacji. Otwórz każdy dokument przynajmniej raz online, aby przygotować go do pracy offline.</p>
+</div>
+<div class="grid">
+<div class="card"><h2>Atlas mikrolutowania</h2><p>Techniki mikrolutowania, narzędzia i praca przy małych elementach.</p><a class="primary" style="display:inline-block;text-decoration:none" href="./biblioteka/atlas-mikrolutowania.pdf" target="_blank" rel="noopener">Otwórz PDF</a></div>
+<div class="card"><h2>Atlas elementów</h2><p>Rozpoznawanie i podstawowe informacje o elementach elektronicznych.</p><a class="primary" style="display:inline-block;text-decoration:none" href="./biblioteka/atlas-elementow.pdf" target="_blank" rel="noopener">Otwórz PDF</a></div>
+<div class="card"><h2>Zasilacz laboratoryjny</h2><p>Przewodnik po używaniu zasilacza w diagnostyce.</p><a class="primary" style="display:inline-block;text-decoration:none" href="./biblioteka/zasilacz-laboratoryjny.pdf" target="_blank" rel="noopener">Otwórz PDF</a></div>
+<div class="card"><h2>Multimetr</h2><p>Przewodnik po pomiarach multimetrem.</p><a class="primary" style="display:inline-block;text-decoration:none" href="./biblioteka/multimetr.pdf" target="_blank" rel="noopener">Otwórz PDF</a></div>
+<div class="card"><h2>Schematy i Boardview</h2><p>Materiał PDF dotyczący schematów i Boardview.</p><a class="primary" style="display:inline-block;text-decoration:none" href="./biblioteka/schematy-boardview.pdf" target="_blank" rel="noopener">Otwórz PDF</a></div>
+<div class="card"><h2>Atlas diagnostyki usterek</h2><p>Materiał do diagnostyki usterek płyt.</p><a class="primary" style="display:inline-block;text-decoration:none" href="./biblioteka/atlas-diagnostyki.pdf" target="_blank" rel="noopener">Otwórz PDF</a></div>
 </div>
 </section>
 </main>
