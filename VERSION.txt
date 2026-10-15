@@ -1,2 +1,2 @@
-Elektronik Diag V8.5
-Build: ED-850-BIBLIOTEKA-SERWISOWA
+Elektronik Diag V8.6
+Build: ED-860-ATORCH-TESTER

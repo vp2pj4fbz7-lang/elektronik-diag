@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-title" content="Elektronik Diag">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Elektronik Diag V8.5 – Biblioteka serwisowa</title>
+<title>Elektronik Diag V8.6 – Tester ATORCH</title>
 <style>
 :root{--bg:#0b1624;--side:#102238;--panel:#132b45;--panel2:#1c3c5d;--border:#355a7f;--text:#f6f9fc;--muted:#b9c9d9;--accent:#68b6ff;--ok:#57d38c;--bad:#ff7a7a}
 *{box-sizing:border-box}
@@ -62,7 +62,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="app">
 <aside>
 <div class="brand">Elektronik Diag</div>
-<div class="version">V8.5 • Biblioteka serwisowa</div>
+<div class="version">V8.6 • Tester ATORCH</div>
 <div class="nav">
 <button class="active" data-v="home">Pulpit</button>
 <button data-v="diagnostics">🧭 Diagnostyka PRO</button>
@@ -78,6 +78,7 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <button data-v="p3208">⚡ AiXun P3208</button>
 <button data-v="h314">🔥 AiXun H314</button>
 <button data-v="dso152">〰️ FNIRSI DSO-152</button>
+<button data-v="atorch">🔋 Tester ATORCH DL24</button>
 <button data-v="pctools">💻 Programy diagnostyczne PC</button>
 <button data-v="schematics">🗺️ Schematy płyt</button>
 <button data-v="measurements">📏 Pomiary płyt</button>
@@ -332,6 +333,13 @@ input,select{width:100%;background:#0d1c2d;border:1px solid var(--border);color:
 <div class="card"><h2>Schematy i Boardview</h2><p>Materiał PDF dotyczący schematów i Boardview.</p><a class="primary" style="display:inline-block;text-decoration:none" href="./biblioteka/schematy-boardview.pdf" target="_blank" rel="noopener">Otwórz PDF</a></div>
 <div class="card"><h2>Atlas diagnostyki usterek</h2><p>Materiał do diagnostyki usterek płyt.</p><a class="primary" style="display:inline-block;text-decoration:none" href="./biblioteka/atlas-diagnostyki.pdf" target="_blank" rel="noopener">Otwórz PDF</a></div>
 </div>
+</section>
+<section id="atorch" class="view">
+<h1>🔋 Tester ATORCH DL24</h1>
+<p class="muted">Instrukcja warsztatowa po polsku, testowanie ogniw i pakietów, powerbanki, interpretacja wyników oraz kalkulatory.</p>
+<div class="moduleHero"><h2>Laboratorium pomiarowe ATORCH</h2><div class="specGrid"><div class="specTile"><b>V</b><span>Napięcie</span></div><div class="specTile"><b>A</b><span>Prąd obciążenia</span></div><div class="specTile"><b>W</b><span>Moc</span></div><div class="specTile"><b>Wh / mAh</b><span>Energia i ładunek</span></div></div></div>
+<div class="note"><b>Przed testem:</b> potwierdź dokładny wariant urządzenia i jego limity z etykiety/instrukcji producenta. Moduł opisuje ogólne zasady pracy z elektronicznym obciążeniem; dostępne tryby i zakresy mogą różnić się między wersjami ATORCH.</div>
+<div id="atorchTabs" class="moduleTabs"></div><div id="atorchContent"></div>
 </section>
 </main>
 </div>
@@ -1191,5 +1199,6 @@ renderSmartphone();
 <script src="board_sectors_module.js"></script>
 <script src="formula_symbols_module.js"></script>
 <script src="advanced_schematics_module.js"></script>
+<script src="atorch_module.js"></script>
 </body>
 </html>

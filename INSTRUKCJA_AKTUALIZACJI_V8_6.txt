@@ -1,0 +1,19 @@
+ELEKTRONIK DIAG V8.6 — MODUŁ ATORCH DL24
+
+Co dodano:
+- nową pozycję „Tester ATORCH DL24” w menu;
+- instrukcję bezpiecznego rozpoczęcia testu;
+- opis trybów CC/CP/CR/CV z zastrzeżeniem, że dostępność zależy od wersji testera;
+- procedury testowania pojedynczych ogniw 18650, pakietów oraz wyjść powerbanków;
+- kalkulator mocy, energii szacunkowej, mAh i rezystancji równoważnej;
+- wskazówki dotyczące interpretacji wyników i typowych problemów;
+- aktualizację cache Service Workera, aby nowy moduł mógł działać offline po pobraniu.
+
+Instalacja przez GitHub:
+1. Rozpakuj archiwum.
+2. Wgraj do repozytorium wszystkie pliki z katalogu elektronik-diag-main, zachowując strukturę.
+3. Jeśli GitHub pokazuje zmiany plików, zatwierdź je (Commit changes).
+4. Otwórz aplikację online i odśwież ją. Jeśli stara wersja pozostaje, zamknij kartę aplikacji i otwórz ponownie; w razie potrzeby wyczyść dane witryny/cache.
+
+Ważne:
+Moduł jest materiałem warsztatowym. Zakresy napięcia, prądu i mocy oraz dostępność trybów należy potwierdzić na etykiecie i w instrukcji konkretnej wersji ATORCH. Nie przekraczaj limitów urządzenia ani badanego źródła.
